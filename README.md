@@ -21,6 +21,6 @@ Welcome to my personal portfolio website! This project showcases my skills, proj
 
 ## 📫 Contact
 
-- Website: [your-website.com](https://your-website.com)
-- GitHub: [@yourusername](https://github.com/yourusername)
-- LinkedIn: [Your Name](https://linkedin.com/in/yourprofile)
+- Website: [pavanhutagi.com](https://pavanhutagi.com)
+- GitHub: [@pavanhutagi](https://github.com/pavanhutagi)
+- LinkedIn: [Pavan Hutagi](https://linkedin.com/in/pavan-hutagi)
