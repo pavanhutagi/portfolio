@@ -53,7 +53,7 @@ export default function Navbar() {
         isVisible ? "translate-y-0" : "translate-y-full"
       }`}
     >
-      <div className="max-w-fit mx-auto bg-gradient-to-t from-[#171717] to-[#1C1C1C] rounded-2xl px-10 py-5 border border-[#242424]">
+      <div className="max-w-fit mx-auto bg-gradient-to-t from-[#101010] to-[#151515] rounded-2xl px-10 py-5 border border-[#242424]">
         <div className="flex gap-16">
           {navLinks.map(({ href, label }) => (
             <button

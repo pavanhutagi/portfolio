@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-export function useIdleVisibility(idleTime: number = 3000) {
+export function useIdleVisibility(idleTime: number = 2000) {
   const [isVisible, setIsVisible] = useState(true);
   let timeoutId: NodeJS.Timeout;
 
