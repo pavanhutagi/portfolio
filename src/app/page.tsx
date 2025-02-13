@@ -52,6 +52,10 @@ export default function Root() {
             </div>
           </div>
         </section>
+
+        <section id="footer" className="flex items-center justify-center">
+          <div className="w-[1250px] h-[400px] bg-[#222222] rounded-t-[15px]"></div>
+        </section>
       </main>
 
       <div className="fixed inset-y-0 right-0 w-[25px] flex items-center">
