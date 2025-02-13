@@ -18,7 +18,7 @@ export default function LeftNeonBulb() {
         ${
           isLit
             ? "bg-[#dc2828] shadow-[0_0_40px_#c64e4c,0_0_120px_#c22422] hover:bg-[#ff4837]"
-            : "bg-[#90403d]/50 hover:bg-[#b6514d]/50"
+            : "bg-[#90403d] hover:bg-[#b6514d]"
         }
       `}
     />
