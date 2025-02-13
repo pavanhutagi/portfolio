@@ -45,7 +45,7 @@ export default function Social() {
           target="_blank"
           rel="noopener noreferrer"
           aria-label={label}
-          className="w-[50px] h-[50px] flex items-center justify-center rounded-full bg-white/50 hover:bg-white/80 transition-all cursor-pointer"
+          className="w-[50px] h-[50px] flex items-center justify-center rounded-full bg-[#D4D4D4] hover:bg-white transition-all cursor-pointer"
         >
           <Icon size={24} />
         </a>

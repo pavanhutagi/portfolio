@@ -14,7 +14,7 @@ export default function AudioControl() {
   return (
     <button
       onClick={togglePlay}
-      className={`fixed bottom-6 right-6 sm:bottom-8 sm:right-8 lg:bottom-10 lg:right-10 w-[50px] h-[50px] p-[13px] rounded-full bg-white/50 hover:bg-white/80 transition-all duration-300 ${
+      className={`fixed bottom-6 right-6 sm:bottom-8 sm:right-8 lg:bottom-10 lg:right-10 w-[50px] h-[50px] p-[13px] rounded-full bg-[#D4D4D4] hover:bg-white transition-all duration-300 ${
         isVisible ? "translate-x-0" : "translate-x-40"
       }`}
       aria-label={isPlaying ? "Mute music" : "Play music"}

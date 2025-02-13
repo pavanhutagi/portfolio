@@ -9,7 +9,7 @@ export default function Logo() {
 
   return (
     <Link
-      href="/home"
+      href="#"
       className={`fixed top-6 left-6 sm:top-8 sm:left-8 lg:top-10 lg:left-10 transition-all duration-300 z-50 ${
         isVisible ? "translate-x-0" : "-translate-x-40"
       }`}
