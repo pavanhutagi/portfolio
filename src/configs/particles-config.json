@@ -2,7 +2,7 @@
   "fullScreen": { "enable": false },
   "background": {
     "color": {
-      "value": "#111111"
+      "value": ""
     }
   },
   "particles": {
@@ -14,13 +14,13 @@
       }
     },
     "color": {
-      "value": "#2D2D2D"
+      "value": ""
     },
     "shape": {
       "type": "circle",
       "stroke": {
         "width": 0,
-        "color": "#2D2D2D"
+        "color": ""
       },
       "polygon": {
         "nb_sides": 5
@@ -50,7 +50,7 @@
     "line_linked": {
       "enable": true,
       "distance": 150,
-      "color": "#2D2D2D",
+      "color": "",
       "opacity": 0.5,
       "width": 1.5
     },

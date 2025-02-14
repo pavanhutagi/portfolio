@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useIdleVisibility } from "@/hooks/useIdleVisibility";
+import { useIdleVisibility } from "@/hooks/idle-visibility";
 
 export default function Logo() {
   const isVisible = useIdleVisibility();

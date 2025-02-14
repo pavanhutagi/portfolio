@@ -14,7 +14,7 @@ export default function HomeSection() {
       id="home"
       className="min-h-screen flex flex-col items-center justify-center text-center px-4"
     >
-      <h1 className="text-6xl text-white font-bold mb-10">
+      <h1 className="text-text dark:text-dark-text text-6xl font-bold mb-10">
         Hi, I'm Pavan Hutagi
       </h1>
 
@@ -30,7 +30,7 @@ export default function HomeSection() {
           }}
         />
 
-        <p className="text-2xl relative z-10">
+        <p className="text-dark-text text-2xl relative z-10">
           I build modern web solutions & love turning ideas into reality
         </p>
       </div>
