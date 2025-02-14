@@ -6,9 +6,10 @@ export default function LeftNeonBulb() {
   const [isLit, setIsLit] = useState(false);
 
   return (
-    <div
-      onClick={() => setIsLit(!isLit)}
-      className={`
+    <div className="fixed inset-y-0 left-0 w-[25px] flex items-center">
+      <div
+        onClick={() => setIsLit(!isLit)}
+        className={`
         w-full 
         h-[300px] 
         rounded-r-full 
@@ -21,6 +22,7 @@ export default function LeftNeonBulb() {
             : "bg-[#90403d] hover:bg-[#b6514d]"
         }
       `}
-    />
+      />
+    </div>
   );
 }
