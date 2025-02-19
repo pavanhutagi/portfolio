@@ -6,7 +6,7 @@ export default function FooterSection() {
   return (
     <footer
       id="footer"
-      className="w-[1250px] h-[300px] bg-[#414141] rounded-t-[50px] flex flex-col items-center gap-8 pt-10"
+      className="flex w-[90%] max-w-[1250px] flex-col items-center gap-8 rounded-t-[50px] bg-[#414141] pb-40 pt-10"
     >
       <Social />
     </footer>

@@ -2,13 +2,15 @@
 
 import { useCallback, useEffect, useState } from "react";
 
-import type { Engine } from "tsparticles-engine";
 import Particles from "react-tsparticles";
-import { loadSlim } from "tsparticles-slim";
-import particlesConfigJson from "../configs/particles-config.json";
 import resolveConfig from "tailwindcss/resolveConfig";
-import tailwindConfig from "../../tailwind.config";
+import type { Engine } from "tsparticles-engine";
+import { loadSlim } from "tsparticles-slim";
+
 import { useAppContext } from "@/context/app-context";
+
+import tailwindConfig from "../../tailwind.config";
+import particlesConfigJson from "../configs/particles-config.json";
 
 export default function ParticlesBackground() {
   const [particlesConfig, setParticlesConfig] = useState();
@@ -24,15 +26,15 @@ export default function ParticlesBackground() {
     const config = JSON.parse(JSON.stringify(particlesConfigJson));
 
     if (theme === "dark") {
-      config.background.color.value = colors.dark.background.DEFAULT;
-      config.particles.color.value = colors.dark.particles.DEFAULT;
-      config.particles.shape.stroke.color = colors.dark.particles.DEFAULT;
-      config.particles.line_linked.color = colors.dark.particles.DEFAULT;
+      config.background.color.value = colors.background.dark;
+      config.particles.color.value = colors.particles.dark;
+      config.particles.shape.stroke.color = colors.particles.dark;
+      config.particles.line_linked.color = colors.particles.dark;
     } else {
-      config.background.color.value = colors.background.DEFAULT;
-      config.particles.color.value = colors.particles.DEFAULT;
-      config.particles.shape.stroke.color = colors.particles.DEFAULT;
-      config.particles.line_linked.color = colors.particles.DEFAULT;
+      config.background.color.value = colors.background.light;
+      config.particles.color.value = colors.particles.light;
+      config.particles.shape.stroke.color = colors.particles.light;
+      config.particles.line_linked.color = colors.particles.light;
     }
 
     setParticlesConfig(config);

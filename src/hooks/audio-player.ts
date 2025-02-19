@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from "react";
 
 interface UseAudioPlayerProps {
   audioUrl: string;
@@ -14,13 +14,13 @@ export const useAudioPlayer = ({ audioUrl }: UseAudioPlayerProps) => {
     audioRef.current = audio;
 
     audio.play().catch((err) => {
-      console.error('Failed to auto-play audio:', err);
+      console.error("Failed to auto-play audio:", err);
       setIsPlaying(false);
     });
 
     return () => {
       audio.pause();
-      audio.src = '';
+      audio.src = "";
     };
   }, [audioUrl]);
 
@@ -36,7 +36,7 @@ export const useAudioPlayer = ({ audioUrl }: UseAudioPlayerProps) => {
 
       setIsPlaying(!isPlaying);
     } catch (err) {
-      console.error('Failed to play audio:', err);
+      console.error("Failed to play audio:", err);
       setIsPlaying(false);
     }
   };

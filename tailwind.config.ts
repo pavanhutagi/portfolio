@@ -11,47 +11,57 @@ const config: Config = {
     extend: {
       fontFamily: {
         oxanium: ["var(--font-oxanium)"],
+        sans: ["Inter", "system-ui", "sans-serif"],
       },
       colors: {
         primary: {
-          DEFAULT: "#C86765",
+          50: "#fdf2f2",
+          100: "#fde3e3",
+          200: "#fbb8b8",
+          300: "#f98080",
+          400: "#f65454",
+          500: "#e41e1e",
+          600: "#c86765",
+          700: "#944342",
+          800: "#7c1e1e",
+          900: "#641717",
         },
         secondary: {
-          DEFAULT: "#606377",
+          50: "#f5f6f7",
+          100: "#ebedf0",
+          200: "#d2d5dd",
+          300: "#b3b7c4",
+          400: "#606377",
+          500: "#343541",
+          600: "#2b2c36",
+          700: "#24252d",
+          800: "#1e1f24",
+          900: "#18181c",
         },
         background: {
-          DEFAULT: "#D4D4D4",
+          light: "#D4D4D4",
+          dark: "#121212",
         },
         text: {
-          DEFAULT: "#1E1E1E",
+          light: "#1E1E1E",
+          dark: "#D4D4D4",
         },
         border: {
-          DEFAULT: "#111111",
+          light: "#111111",
+          dark: "#111111",
         },
         particles: {
-          DEFAULT: "#A5A5A5",
+          light: "#A5A5A5",
+          dark: "#464646",
         },
-
-        dark: {
-          primary: {
-            DEFAULT: "#C86765",
-          },
-          secondary: {
-            DEFAULT: "#606377",
-          },
-          background: {
-            DEFAULT: "#111111",
-          },
-          text: {
-            DEFAULT: "#D4D4D4",
-          },
-          border: {
-            DEFAULT: "#111111",
-          },
-          particles: {
-            DEFAULT: "#464646",
-          },
-        },
+      },
+      screens: {
+        xs: "475px",
+        sm: "640px",
+        md: "768px",
+        lg: "1024px",
+        xl: "1280px",
+        "2xl": "1536px",
       },
     },
   },

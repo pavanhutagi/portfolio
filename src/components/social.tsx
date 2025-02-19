@@ -1,8 +1,7 @@
 "use client";
 
-import { FaGithub, FaInstagram, FaLinkedin } from "react-icons/fa";
-
 import { IconType } from "react-icons";
+import { FaGithub, FaInstagram, FaLinkedin } from "react-icons/fa";
 
 interface SocialLink {
   href: string;
@@ -38,7 +37,7 @@ export default function Social() {
           target="_blank"
           rel="noopener noreferrer"
           aria-label={label}
-          className="w-[40px] h-[40px] flex items-center justify-center rounded-full bg-[#D4D4D4] hover:bg-white transition-all cursor-pointer"
+          className="flex h-[40px] w-[40px] cursor-pointer items-center justify-center rounded-full bg-[#D4D4D4] transition-all hover:bg-white"
         >
           <Icon size={20} />
         </a>

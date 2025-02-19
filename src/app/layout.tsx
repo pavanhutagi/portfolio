@@ -1,7 +1,7 @@
-import "./globals.css";
-
 import type { Metadata } from "next";
 import { Oxanium } from "next/font/google";
+
+import "./globals.css";
 
 const oxanium = Oxanium({
   variable: "--font-oxanium",

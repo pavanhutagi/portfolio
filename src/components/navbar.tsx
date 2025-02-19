@@ -53,7 +53,7 @@ export default function Navbar() {
         isVisible ? "translate-y-0" : "translate-y-full"
       }`}
     >
-      <div className="max-w-fit mx-auto bg-gradient-to-t from-[#202020] to-[#303030] rounded-2xl px-10 py-5 border border-[#393939]">
+      <div className="mx-auto max-w-fit rounded-2xl border border-[#393939] bg-gradient-to-t from-[#202020] to-[#303030] px-10 py-5">
         <div className="flex gap-16">
           {navLinks.map(({ href, label }) => (
             <button
@@ -61,7 +61,7 @@ export default function Navbar() {
               onClick={() => scrollToSection(href)}
               className={`${
                 activeSection === href ? "text-[#C86765]" : "text-[#D4D4D4]"
-              } hover:opacity-50 transition-opacity`}
+              } transition-opacity hover:opacity-50`}
             >
               {label}
             </button>

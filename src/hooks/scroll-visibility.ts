@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 
 export function useScrollVisibility(threshold: number = 10) {
   const [isVisible, setIsVisible] = useState(true);
@@ -11,8 +11,8 @@ export function useScrollVisibility(threshold: number = 10) {
       setLastScrollY(currentScrollY);
     };
 
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
   }, [lastScrollY, threshold]);
 
   return isVisible;

@@ -11,17 +11,22 @@ type Theme = "light" | "dark";
 interface AppContextType {
   theme: Theme;
   toggleTheme: () => void;
+  isLeftNeonBulbLit: boolean;
+  setIsLeftNeonBulbLit: (isLit: boolean) => void;
+  isRightNeonBulbLit: boolean;
+  setIsRightNeonBulbLit: (isLit: boolean) => void;
 }
-
-const AppContext = createContext<AppContextType | undefined>(undefined);
 
 interface AppProviderProps {
   children: ReactNode;
 }
 
+const AppContext = createContext<AppContextType | undefined>(undefined);
+
 export default function AppContextProvider({ children }: AppProviderProps) {
   const [theme, setTheme] = useState<Theme>("dark");
-
+  const [isLeftNeonBulbLit, setIsLeftNeonBulbLit] = useState(false);
+  const [isRightNeonBulbLit, setIsRightNeonBulbLit] = useState(false);
   useEffect(() => {
     const root = window.document.documentElement;
 
@@ -35,16 +40,16 @@ export default function AppContextProvider({ children }: AppProviderProps) {
     setTheme((prev) => (prev === "light" ? "dark" : "light"));
   };
 
-  return (
-    <AppContext.Provider
-      value={{
-        theme,
-        toggleTheme,
-      }}
-    >
-      {children}
-    </AppContext.Provider>
-  );
+  const value = {
+    theme,
+    toggleTheme,
+    isLeftNeonBulbLit,
+    setIsLeftNeonBulbLit,
+    isRightNeonBulbLit,
+    setIsRightNeonBulbLit,
+  };
+
+  return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
 }
 
 export function useAppContext() {
