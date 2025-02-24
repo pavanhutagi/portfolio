@@ -7,7 +7,7 @@ import Logo from "@/components/logo";
 import Navbar from "@/components/navbar";
 import ParticlesBackground from "@/components/particles-background";
 import RightNeonBulb from "@/components/right-neon-bulb";
-import Scroll from "@/components/scroll";
+import ScrollControl from "@/components/scroll-control";
 import ThemeToggle from "@/components/theme-toggle";
 import AppContextProvider from "@/context/app-context";
 import AboutSection from "@/sections/about";
@@ -32,7 +32,7 @@ function MainContent() {
 
       <AudioControl />
       <Navbar />
-      <Scroll />
+      <ScrollControl />
 
       <Footer />
     </div>

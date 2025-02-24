@@ -8,6 +8,42 @@ export default function ContactSection() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
+  const [status, setStatus] = useState<
+    "idle" | "loading" | "success" | "error"
+  >("idle");
+
+  const handleSubmit = async () => {
+    try {
+      setStatus("loading");
+
+      const response = await fetch("/api/send-email", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ name, email, message }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || "Failed to send email");
+      }
+
+      setStatus("success");
+      setName("");
+      setEmail("");
+      setMessage("");
+
+      // Reset success status after 3 seconds
+      setTimeout(() => setStatus("idle"), 3000);
+    } catch (error) {
+      console.error("Error:", error);
+      setStatus("error");
+      // Reset error status after 3 seconds
+      setTimeout(() => setStatus("idle"), 3000);
+    }
+  };
 
   return (
     <section
@@ -37,7 +73,18 @@ export default function ContactSection() {
             onChange={(value) => setMessage(value)}
           />
 
-          <Button>Send</Button>
+          <Button onClick={handleSubmit} disabled={status === "loading"}>
+            {status === "loading" ? "Sending..." : "Send"}
+          </Button>
+
+          {status === "success" && (
+            <p className="text-green-500">Message sent successfully!</p>
+          )}
+          {status === "error" && (
+            <p className="text-red-500">
+              Failed to send message. Please try again.
+            </p>
+          )}
         </div>
       </div>
     </section>

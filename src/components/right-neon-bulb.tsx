@@ -6,7 +6,7 @@ export default function RightNeonBulb() {
   const { isRightNeonBulbLit, setIsRightNeonBulbLit } = useAppContext();
 
   return (
-    <div className="invisible opacity-0 transition-all duration-300 md:visible md:opacity-100">
+    <div className="transition-all duration-300 visible opacity-100">
       <div className="fixed inset-y-0 right-0 flex w-[20px] items-center">
         <div
           onClick={() => setIsRightNeonBulbLit(!isRightNeonBulbLit)}

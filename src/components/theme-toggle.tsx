@@ -12,7 +12,7 @@ export default function ThemeToggle() {
   return (
     <button
       onClick={toggleTheme}
-      className={`fixed right-6 top-6 z-50 flex h-[50px] w-[50px] items-center justify-center rounded-full bg-background-dark transition-transform duration-300 dark:bg-background-light sm:right-8 sm:top-8 lg:right-10 lg:top-10 ${
+      className={`fixed right-5 top-5 z-50 flex w-[40px] h-[40px] sm:w-[45px] sm:h-[45px] lg:w-[50px] lg:h-[50px] items-center justify-center rounded-full bg-background-dark transition-transform duration-300 dark:bg-background-light sm:right-8 sm:top-8 lg:right-10 lg:top-10 ${
         isVisible ? "translate-x-0" : "translate-x-40"
       }`}
       aria-label="Toggle theme"

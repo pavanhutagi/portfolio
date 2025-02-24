@@ -15,7 +15,7 @@ export default function AudioControl() {
     <div className="invisible opacity-0 transition-all duration-300 md:visible md:opacity-100">
       <button
         onClick={togglePlay}
-        className={`bg-background-dark dark:bg-background-light fixed bottom-6 left-6 h-[50px] w-[50px] rounded-full p-[13px] transition-transform duration-300 sm:bottom-8 sm:left-8 lg:bottom-10 lg:left-10 ${
+        className={`bg-background-dark dark:bg-background-light fixed bottom-6 left-6 w-[40px] h-[40px] sm:w-[45px] sm:h-[45px] lg:w-[50px] lg:h-[50px] rounded-full p-[13px] transition-transform duration-300 sm:bottom-8 sm:left-8 lg:bottom-10 lg:left-10 ${
           isVisible ? "translate-x-0" : "-translate-x-40"
         }`}
         aria-label={isPlaying ? "Mute music" : "Play music"}

@@ -15,7 +15,13 @@ export default function Logo() {
         isVisible ? "translate-x-0" : "-translate-x-40"
       }`}
     >
-      <Image src="/images/logo.png" alt="Avatar" width={50} height={50} />
+      <Image
+        src="/images/logo.png"
+        alt="Avatar"
+        className="w-[40px] h-[40px] sm:w-[45px] sm:h-[45px] lg:w-[50px] lg:h-[50px]"
+        width={50}
+        height={50}
+      />
     </Link>
   );
 }

@@ -16,14 +16,14 @@ export default function HomeSection() {
   return (
     <section
       id="home"
-      className="flex min-h-screen flex-col items-center justify-center text-center"
+      className="flex min-h-screen flex-col items-center justify-center text-center gap-4 sm:gap-6"
     >
-      <h1 className="text-text-light dark:text-text-dark mb-6 sm:mb-8 md:mb-10 text-4xl font-extrabold sm:text-5xl md:text-6xl">
+      <h1 className="text-text-light dark:text-text-dark font-extrabold text-3xl sm:text-4xl md:text-5xl">
         Hi, I'm Pavan Hutagi
       </h1>
 
       <div
-        className={`group relative cursor-pointer rounded-full text-text-dark px-5 py-3 w-[80%] sm:w-auto ${
+        className={`group relative cursor-pointer rounded-full text-text-dark px-3 py-2 md:px-5 md:py-3 w-[70%] sm:w-auto ${
           isLeftNeonBulbLit && isRightNeonBulbLit
             ? "bg-primary-500"
             : isLeftNeonBulbLit
@@ -42,7 +42,7 @@ export default function HomeSection() {
           }}
         />
 
-        <p className="text-dark-text text-l relative z-10 sm:text-xl md:text-2xl">
+        <p className="text-dark-text relative z-10 text-sm sm:text-lg md:text-xl">
           I build modern web solutions & love turning ideas into reality
         </p>
       </div>
