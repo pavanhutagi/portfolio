@@ -27,9 +27,9 @@ export default function HomeSection() {
           isLeftNeonBulbLit && isRightNeonBulbLit
             ? "bg-primary-500"
             : isLeftNeonBulbLit
-              ? "bg-gradient-to-r from-primary-500 to-secondary-500"
+              ? "bg-gradient-to-b sm:bg-gradient-to-r from-primary-500 to-secondary-500"
               : isRightNeonBulbLit
-                ? "bg-gradient-to-l from-primary-500 to-secondary-500"
+                ? "bg-gradient-to-t sm:bg-gradient-to-l from-primary-500 to-secondary-500"
                 : "bg-secondary-500"
         }`}
         onMouseMove={handleMouseMove}

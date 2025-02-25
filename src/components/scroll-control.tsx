@@ -42,7 +42,7 @@ export default function ScrollControl() {
     <div className="invisible opacity-0 transition-all duration-300 md:visible md:opacity-100">
       <button
         onClick={isAtTop ? scrollToBottom : scrollToTop}
-        className={`bg-background-dark dark:bg-background-light fixed bottom-6 right-6 z-50 flex w-[40px] h-[40px] sm:w-[45px] sm:h-[45px] lg:w-[50px] lg:h-[50px] items-center justify-center rounded-full transition-transform duration-300 sm:bottom-8 sm:right-8 lg:bottom-10 lg:right-10 ${
+        className={`bg-background-dark dark:bg-background-light drop-shadow-[0_0_4px_rgba(0,0,0,0.2)] fixed bottom-6 right-6 z-50 flex w-[40px] h-[40px] sm:w-[45px] sm:h-[45px] lg:w-[50px] lg:h-[50px] items-center justify-center rounded-full transition-transform duration-300 sm:bottom-8 sm:right-8 lg:bottom-10 lg:right-10 ${
           isVisible ? "translate-x-0" : "translate-x-40"
         }`}
       >

@@ -18,7 +18,7 @@ export default function Logo() {
       <Image
         src="/images/logo.png"
         alt="Avatar"
-        className="w-[40px] h-[40px] sm:w-[45px] sm:h-[45px] lg:w-[50px] lg:h-[50px]"
+        className="w-[40px] h-[40px] sm:w-[45px] sm:h-[45px] lg:w-[50px] lg:h-[50px] drop-shadow-[0_0_4px_rgba(0,0,0,0.2)]"
         width={50}
         height={50}
       />
