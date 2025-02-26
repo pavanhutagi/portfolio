@@ -7,7 +7,7 @@ export default function LeftNeonBulb() {
 
   return (
     <div>
-      <div className="fixed inset-x-0 top-0 flex h-[20px] w-full justify-center sm:fixed sm:left-0 sm:top-1/2 sm:-translate-y-1/2 sm:h-auto sm:w-[20px]">
+      <div className="fixed inset-x-0 top-0 flex h-[20px] w-full justify-center z-50 sm:fixed sm:left-0 sm:top-1/2 sm:-translate-y-1/2 sm:h-auto sm:w-[20px]">
         <div
           onClick={() => setIsLeftNeonBulbLit(!isLeftNeonBulbLit)}
           className={`h-full w-[200px] cursor-pointer rounded-b-full sm:h-[300px] sm:w-full sm:rounded-b-none sm:rounded-r-full

@@ -14,36 +14,31 @@ import AboutSection from "@/sections/about";
 import ContactSection from "@/sections/contact";
 import HomeSection from "@/sections/home";
 
-function MainContent() {
-  return (
-    <div className="flex flex-col items-center justify-center">
-      <Logo />
-      <ThemeToggle />
-
-      <LeftNeonBulb />
-
-      <main className="w-full flex flex-col gap-20 lg:gap-0 mb-20 lg:mb-0">
-        <HomeSection />
-        <AboutSection />
-        <ContactSection />
-      </main>
-
-      <RightNeonBulb />
-
-      <AudioControl />
-      <Navbar />
-      <ScrollControl />
-
-      <Footer />
-    </div>
-  );
-}
-
 export default function Root() {
   return (
     <AppContextProvider>
       <ParticlesBackground />
-      <MainContent />
+
+      <div className="flex flex-col items-center justify-center">
+        <Logo />
+        <ThemeToggle />
+
+        <LeftNeonBulb />
+
+        <main className="w-full flex flex-col gap-20 lg:gap-0 mb-20 lg:mb-0">
+          <HomeSection />
+          <AboutSection />
+          <ContactSection />
+        </main>
+
+        <RightNeonBulb />
+
+        <AudioControl />
+        <Navbar />
+        <ScrollControl />
+
+        <Footer />
+      </div>
     </AppContextProvider>
   );
 }

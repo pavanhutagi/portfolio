@@ -49,7 +49,7 @@ export default function Navbar() {
 
   return (
     <nav
-      className={`fixed bottom-0 left-1/2 -translate-x-1/2 p-10 transition-transform duration-300 ${
+      className={`fixed bottom-0 left-1/2 -translate-x-1/2 p-10 transition-transform duration-300 z-50 ${
         isVisible ? "translate-y-0" : "translate-y-full"
       } hidden md:block`}
     >

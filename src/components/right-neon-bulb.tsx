@@ -7,7 +7,7 @@ export default function RightNeonBulb() {
 
   return (
     <div>
-      <div className="fixed inset-x-0 bottom-0 flex h-[20px] w-full justify-center sm:fixed sm:right-0 sm:left-auto sm:top-0 sm:bottom-0 sm:h-full sm:w-[20px] sm:items-center">
+      <div className="fixed inset-x-0 bottom-0 flex h-[20px] w-full justify-center z-50 sm:fixed sm:right-0 sm:left-auto sm:top-0 sm:bottom-0 sm:h-full sm:w-[20px] sm:items-center">
         <div
           onClick={() => setIsRightNeonBulbLit(!isRightNeonBulbLit)}
           className={`h-full w-[200px] cursor-pointer rounded-t-full sm:h-[300px] sm:w-full sm:rounded-none sm:rounded-tl-full sm:rounded-bl-full
