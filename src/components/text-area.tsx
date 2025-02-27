@@ -5,18 +5,13 @@ interface TextAreaProps {
   rows: number;
 }
 
-export default function TextArea({
-  placeholder,
-  value,
-  onChange,
-  rows,
-}: TextAreaProps) {
+export default function TextArea({ placeholder, value, onChange, rows }: TextAreaProps) {
   return (
     <textarea
       placeholder={placeholder}
       value={value}
       onChange={(e) => onChange(e.target.value)}
-      className="bg-secondary-500 dark:bg-secondary-200 text-text-dark dark:text-text-light rounded-[15px] p-3 sm:p-4 max-h-[500px] min-h-[100px] outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
+      className="bg-secondary-500 dark:bg-secondary-200 text-text-dark dark:text-text-light rounded-[15px] p-3 sm:p-4 max-h-[400px] min-h-[400px] outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
       rows={rows}
     />
   );

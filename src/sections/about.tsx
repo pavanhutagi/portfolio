@@ -15,12 +15,9 @@ export default function AboutSection() {
   };
 
   return (
-    <section
-      id="about"
-      className="flex min-h-screen items-center justify-center"
-    >
-      <div className="bg-background-dark dark:bg-background-light flex h-[80vh] lg:h-[700px] w-[90%] max-w-[1200px] items-center justify-center rounded-[50px] relative">
-        <div className="w-full h-full px-8 py-12 relative overflow-hidden">
+    <section id="about" className="flex min-h-screen items-center justify-center">
+      <div className=" overflow-hidden flex h-[80vh] lg:h-[700px] w-[90%] max-w-[1200px] items-center justify-center rounded-[50px] relative">
+        <div className="w-full h-full relative overflow-hidden">
           {/* Navigation buttons */}
           <button
             onClick={() => handleNavigation("prev")}
@@ -44,36 +41,16 @@ export default function AboutSection() {
             style={{ transform: `translateX(-${activeSection * 100}%)` }}
           >
             {/* Section 1: About Me */}
-            <div className="min-w-full h-full flex-shrink-0 flex flex-col items-center justify-center p-8">
-              <h2 className="text-3xl font-bold mb-6">About Me</h2>
-              <div className="text-lg">
-                This is the first section with information about me.
-              </div>
-            </div>
+            <div className="min-w-full h-full flex-shrink-0 flex flex-col items-center justify-center p-8 bg-[#808080]"></div>
 
             {/* Section 2: Skills */}
-            <div className="min-w-full h-full flex-shrink-0 flex flex-col items-center justify-center p-8">
-              <h2 className="text-3xl font-bold mb-6">Skills</h2>
-              <div className="text-lg">
-                This section showcases my skills and expertise.
-              </div>
-            </div>
+            <div className="min-w-full h-full flex-shrink-0 flex flex-col items-center justify-center p-8 bg-[#545454]"></div>
 
             {/* Section 3: Experience */}
-            <div className="min-w-full h-full flex-shrink-0 flex flex-col items-center justify-center p-8">
-              <h2 className="text-3xl font-bold mb-6">Experience</h2>
-              <div className="text-lg">
-                Here you can find information about my work experience.
-              </div>
-            </div>
+            <div className="min-w-full h-full flex-shrink-0 flex flex-col items-center justify-center p-8 bg-[#808080]"></div>
 
             {/* Section 4: Education */}
-            <div className="min-w-full h-full flex-shrink-0 flex flex-col items-center justify-center p-8">
-              <h2 className="text-3xl font-bold mb-6">Education</h2>
-              <div className="text-lg">
-                This section contains details about my educational background.
-              </div>
-            </div>
+            <div className="min-w-full h-full flex-shrink-0 flex flex-col items-center justify-center p-8 bg-[#545454]"></div>
           </div>
 
           {/* Dots indicator */}
@@ -83,9 +60,7 @@ export default function AboutSection() {
                 key={index}
                 onClick={() => setActiveSection(index)}
                 className={`h-3 rounded-full transition-all ${
-                  activeSection === index
-                    ? "bg-primary-400 w-6"
-                    : "bg-gray-400 w-3"
+                  activeSection === index ? "bg-primary-400 w-6" : "bg-gray-400 w-3"
                 }`}
                 aria-label={`Go to section ${index + 1}`}
               />
