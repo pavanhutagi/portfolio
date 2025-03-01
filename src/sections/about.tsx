@@ -115,7 +115,7 @@ const AboutContent = ({ id, isActive }: SectionProps) => {
                   <div className="w-8 h-8 rounded-full bg-white flex items-center justify-center">
                     <span className="text-l">🎧</span>
                   </div>
-                  <h3 className="font-bold text-text-dark dark:text-text-light">Music & DJ</h3>
+                  <h3 className="font-bold text-text-dark dark:text-text-light">DJ</h3>
                 </div>
                 <p className="text-sm text-text-dark dark:text-text-light">
                   I mix beats, create soundscapes, and love making people move.

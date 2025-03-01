@@ -43,7 +43,7 @@ export default function HomeSection() {
         />
 
         <p className="text-dark-text relative z-10 text-sm sm:text-lg md:text-xl">
-          I love turning ideas into reality — whether in code, design, or on the dance floor.
+          I love turning ideas into reality — whether in code, design, or on the dance floor
         </p>
       </div>
     </section>
