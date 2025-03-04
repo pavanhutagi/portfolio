@@ -1,10 +1,9 @@
+"use client";
+
 import React from "react";
 
 import type { DetailPopupProps } from "@/types/about";
 
-/**
- * Popup component for displaying detailed subsection content
- */
 export const DetailPopup = ({ icon, title, onClose, children }: DetailPopupProps) => {
   return (
     <div className="absolute inset-0 bg-background-dark dark:bg-background-light z-10 flex flex-col h-full overflow-hidden p-4">

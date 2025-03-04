@@ -1,3 +1,5 @@
+"use client";
+
 export default function ChatHeader() {
   return (
     <div className="bg-[#4b279e] p-4 flex items-center">

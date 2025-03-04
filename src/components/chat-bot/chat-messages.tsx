@@ -1,3 +1,5 @@
+"use client";
+
 import { Message } from "@/types/chat-bot";
 
 type ChatMessagesProps = {

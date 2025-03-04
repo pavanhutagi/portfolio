@@ -13,11 +13,10 @@ export default function ScrollControl() {
   useEffect(() => {
     const handleScroll = () => {
       const scrollTop = window.scrollY;
-      const isTop = scrollTop < 100; // Consider "top" when scrolled less than 100px
+      const isTop = scrollTop < 100;
       setIsAtTop(isTop);
     };
 
-    // Initial check
     handleScroll();
 
     window.addEventListener("scroll", handleScroll);
@@ -47,15 +46,9 @@ export default function ScrollControl() {
         }`}
       >
         {isAtTop ? (
-          <FaArrowDown
-            size={20}
-            className="text-text-dark dark:text-text-light"
-          />
+          <FaArrowDown size={20} className="text-text-dark dark:text-text-light" />
         ) : (
-          <FaArrowUp
-            size={20}
-            className="text-text-dark dark:text-text-light"
-          />
+          <FaArrowUp size={20} className="text-text-dark dark:text-text-light" />
         )}
       </button>
     </div>

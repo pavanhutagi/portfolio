@@ -1,3 +1,5 @@
+"use client";
+
 import { ChangeEvent, FC, useEffect, useState } from "react";
 
 export interface TextInputProps {
@@ -23,7 +25,6 @@ const TextInput: FC<TextInputProps> = ({
   const [touched, setTouched] = useState(false);
   const [error, setError] = useState("");
 
-  // Reset touched state when value is cleared
   useEffect(() => {
     if (value === "") {
       setTouched(false);

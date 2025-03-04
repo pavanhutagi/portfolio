@@ -1,3 +1,5 @@
+"use client";
+
 import { ChangeEvent, FC, useEffect, useState } from "react";
 
 export interface TextAreaProps {
@@ -17,7 +19,6 @@ const TextArea: FC<TextAreaProps> = ({
 }) => {
   const [touched, setTouched] = useState(false);
 
-  // Reset touched state when value is cleared
   useEffect(() => {
     if (value === "") {
       setTouched(false);

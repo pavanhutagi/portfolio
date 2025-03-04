@@ -1,3 +1,5 @@
+"use client";
+
 import { useEffect, useState } from "react";
 
 import { FaPaperPlane } from "react-icons/fa";
@@ -8,7 +10,6 @@ import { getBotResponse } from "@/configs/bot-responses";
 import { Message } from "@/types/chat-bot";
 
 export default function ChatBot() {
-  // Chatbot states
   const [chatInput, setChatInput] = useState("");
   const [chatMessages, setChatMessages] = useState<Message[]>([
     {
@@ -19,11 +20,9 @@ export default function ChatBot() {
   ]);
   const [isTyping, setIsTyping] = useState(false);
 
-  // Auto-scroll chat to bottom when messages change
   useEffect(() => {
     const chatContainer = document.getElementById("chat-messages");
     if (chatContainer) {
-      // Smoothly scroll the chat container to the bottom
       chatContainer.scrollTo({
         top: chatContainer.scrollHeight,
         behavior: "smooth",
@@ -36,7 +35,6 @@ export default function ChatBot() {
 
     if (!chatInput.trim()) return;
 
-    // Add user message
     const userMessage: Message = {
       text: chatInput,
       isBot: false,
@@ -46,10 +44,8 @@ export default function ChatBot() {
     setChatMessages((prev) => [...prev, userMessage]);
     setChatInput("");
 
-    // Simulate bot typing
     setIsTyping(true);
 
-    // Simulate bot response after a delay
     setTimeout(() => {
       const botResponse: Message = {
         text: getBotResponse(chatInput),
@@ -68,12 +64,10 @@ export default function ChatBot() {
     >
       <ChatHeader />
 
-      {/* Chat area with blue border */}
       <div id="chat-messages" className="flex-grow bg-[#1E1E1E] h-[525px] overflow-y-auto">
         <ChatMessages messages={chatMessages} isTyping={isTyping} />
       </div>
 
-      {/* Chat input */}
       <div className="bg-[#6B7280] p-2 rounded-t-2xl">
         <form onSubmit={handleChatSubmit} className="flex items-center">
           <input
