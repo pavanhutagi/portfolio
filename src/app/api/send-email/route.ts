@@ -35,11 +35,84 @@ export async function POST(request: Request) {
         ${message}
       `,
       html: `
-        <h3>New Contact Form Submission</h3>
-        <p><strong>Name:</strong> ${name}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Message:</strong></p>
-        <p>${message.replace(/\n/g, "<br>")}</p>
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+          <meta charset="UTF-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <title>Contact Form Submission</title>
+          <style>
+            body {
+              font-family: Arial, sans-serif;
+              line-height: 1.6;
+              color: #333333;
+              max-width: 600px;
+              margin: 0 auto;
+              padding: 20px;
+            }
+            .container {
+              border: 1px solid #dddddd;
+              border-radius: 5px;
+              padding: 20px;
+              background-color: #f9f9f9;
+            }
+            .header {
+              background-color: #4a5568;
+              color: white;
+              padding: 15px;
+              border-radius: 5px;
+              margin: -20px -20px 20px -20px;
+            }
+            .content {
+              padding: 0 10px;
+            }
+            .field {
+              margin-bottom: 15px;
+            }
+            .label {
+              font-weight: bold;
+              margin-bottom: 5px;
+            }
+            .message-box {
+              background-color: white;
+              border: 1px solid #dddddd;
+              border-radius: 3px;
+              padding: 15px;
+              margin-top: 5px;
+            }
+            .footer {
+              margin-top: 20px;
+              font-size: 12px;
+              color: #666666;
+              text-align: center;
+            }
+          </style>
+        </head>
+        <body>
+          <div class="container">
+            <div class="header">
+              <h2 style="margin: 0; text-align: center;">New Contact Form Submission</h2>
+            </div>
+            <br/>
+            <div class="content">
+              <div class="field">
+                <div class="label">Name: ${name}</div>
+              </div>
+              <div class="field">
+                <div class="label">Email: ${email}</div>
+              </div>
+              <div class="field">
+                <div class="label">Message:</div>
+                <div class="message-box">${message.replace(/\n/g, "<br>")}</div>
+              </div>
+            </div>
+            <br/>
+            <div class="footer">
+              <p>This email was sent from your website contact form.</p>
+            </div>
+          </div>
+        </body>
+        </html>
       `,
     };
 
