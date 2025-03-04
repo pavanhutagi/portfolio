@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import Button from "@/components/button";
 import ChatBot from "@/components/chat-bot";
@@ -10,8 +10,18 @@ export default function ContactSection() {
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const [isFormValid, setIsFormValid] = useState(false);
+
+  useEffect(() => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const valid =
+      name.trim() !== "" && email.trim() !== "" && message.trim() !== "" && emailRegex.test(email);
+    setIsFormValid(valid);
+  }, [name, email, message]);
 
   const handleSubmit = async () => {
+    if (!isFormValid) return;
+
     try {
       setStatus("loading");
 
@@ -34,12 +44,10 @@ export default function ContactSection() {
       setEmail("");
       setMessage("");
 
-      // Reset success status after 3 seconds
       setTimeout(() => setStatus("idle"), 3000);
     } catch (error) {
       console.error("Error:", error);
       setStatus("error");
-      // Reset error status after 3 seconds
       setTimeout(() => setStatus("idle"), 3000);
     }
   };
@@ -49,31 +57,45 @@ export default function ContactSection() {
       id="contact"
       className="flex min-h-screen items-center justify-center relative overflow-hidden"
     >
-      <div className="flex flex-col lg:flex-row gap-10 w-[90%] max-w-[1200px] relative z-10">
+      <div className="flex flex-col justify-center items-center lg:flex-row gap-10 w-[90%] max-w-[1200px] relative z-10">
         <ChatBot />
 
-        {/* Responsive divider - vertical on lg screens, horizontal on smaller screens */}
         <div className="hidden lg:block w-[2px] bg-gray-700 dark:bg-gray-300 self-stretch mx-4 opacity-80"></div>
         <div className="block lg:hidden h-[2px] w-full bg-gray-700 dark:bg-gray-300 my-4 opacity-80"></div>
 
         <div className="flex flex-col gap-4 w-full">
+          <p className="text-gray-600 dark:text-gray-300 text-2xl font-bold">Get in touch</p>
+
           <p className="text-gray-600 dark:text-gray-300 text-lg">
             Have a question or want to work together? Fill out the form below and I'll get back to
             you as soon as possible.
           </p>
 
-          <TextInput placeholder="Name" value={name} onChange={(value) => setName(value)} />
+          <TextInput
+            placeholder="Name"
+            value={name}
+            onChange={(value) => setName(value)}
+            required
+            type="text"
+          />
 
-          <TextInput placeholder="Email" value={email} onChange={(value) => setEmail(value)} />
+          <TextInput
+            placeholder="Email"
+            value={email}
+            onChange={(value) => setEmail(value)}
+            required
+            type="email"
+          />
 
           <TextArea
             placeholder="Message"
             value={message}
-            rows={15}
+            rows={10}
             onChange={(value) => setMessage(value)}
+            required
           />
 
-          <Button onClick={handleSubmit} disabled={status === "loading"}>
+          <Button onClick={handleSubmit} disabled={status === "loading" || !isFormValid}>
             {status === "loading" ? "Sending..." : "Send"}
           </Button>
 

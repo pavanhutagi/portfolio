@@ -23,7 +23,11 @@ export default function ChatBot() {
   useEffect(() => {
     const chatContainer = document.getElementById("chat-messages");
     if (chatContainer) {
-      chatContainer.scrollTop = chatContainer.scrollHeight;
+      // Smoothly scroll the chat container to the bottom
+      chatContainer.scrollTo({
+        top: chatContainer.scrollHeight,
+        behavior: "smooth",
+      });
     }
   }, [chatMessages]);
 
@@ -59,11 +63,13 @@ export default function ChatBot() {
   };
 
   return (
-    <div className="bg-[#1E1E1E] rounded-[15px] w-full h-[680px] lg:h-auto flex flex-col overflow-hidden relative backdrop-blur-sm">
+    <div
+      className={`bg-[#1E1E1E] rounded-[15px] w-full flex flex-col overflow-hidden relative backdrop-blur-sm`}
+    >
       <ChatHeader />
 
       {/* Chat area with blue border */}
-      <div className="flex-grow bg-[#1E1E1E]">
+      <div id="chat-messages" className="flex-grow bg-[#1E1E1E] h-[525px] overflow-y-auto">
         <ChatMessages messages={chatMessages} isTyping={isTyping} />
       </div>
 
@@ -79,7 +85,11 @@ export default function ChatBot() {
           />
           <button
             type="submit"
-            className="bg-[#1a1a1a] text-white rounded-full hover:bg-red-600 transition-colors p-3 shadow-l cursor-pointer"
+            className={`${
+              chatInput.trim()
+                ? "bg-[#1a1a1a] hover:bg-red-600 text-white"
+                : "bg-gray-600 cursor-not-allowed text-gray-400"
+            } rounded-full transition-colors p-3 shadow-l`}
             disabled={!chatInput.trim()}
           >
             <FaPaperPlane />

@@ -122,26 +122,4 @@ export const subsectionData: SubsectionsDataMap = {
       </div>
     ),
   },
-  spiritual: {
-    icon: "🌀",
-    title: "Spiritual",
-    shortDescription:
-      "I believe in the power of intuition, energy, and the universe guiding my journey.",
-    detailContent: (
-      <div className="space-y-4">
-        <p>My spiritual practice grounds my creative work and personal growth. It includes:</p>
-        <ul className="list-disc pl-5 space-y-2">
-          <li>Meditation and mindfulness practices</li>
-          <li>Exploring the connection between consciousness and creativity</li>
-          <li>Finding meaning and purpose in my work</li>
-          <li>Cultivating intuition as a creative tool</li>
-          <li>Balancing analytical thinking with spiritual awareness</li>
-        </ul>
-        <p>
-          I believe that tapping into something larger than ourselves can lead to more authentic and
-          impactful creative work.
-        </p>
-      </div>
-    ),
-  },
 };

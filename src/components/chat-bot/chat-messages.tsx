@@ -9,7 +9,7 @@ export default function ChatMessages({ messages, isTyping }: ChatMessagesProps) 
   return (
     <div
       id="chat-messages"
-      className="flex-grow overflow-y-auto py-4 px-4 space-y-4 h-[545px] custom-scrollbar"
+      className="flex-grow overflow-y-auto py-4 px-4 space-y-4 custom-scrollbar"
     >
       {messages.map((msg, index) => (
         <div key={index} className={`flex ${msg.isBot ? "justify-start" : "justify-end"}`}>

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import { useIdleVisibility } from "@/hooks/idle-visibility";
 
@@ -13,12 +13,19 @@ const navLinks = [
 export default function Navbar() {
   const isVisible = useIdleVisibility();
   const [activeSection, setActiveSection] = useState("home");
+  const isScrollingRef = useRef(false);
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
+      isScrollingRef.current = true;
       setActiveSection(sectionId);
+
+      element.scrollIntoView({ behavior: "smooth" });
+
+      setTimeout(() => {
+        isScrollingRef.current = false;
+      }, 1000);
     }
   };
 
@@ -26,6 +33,8 @@ export default function Navbar() {
     const sections = navLinks.map(({ href }) => document.getElementById(href));
 
     const handleScroll = () => {
+      if (isScrollingRef.current) return;
+
       const scrollPosition = window.scrollY + window.innerHeight / 3;
 
       sections.forEach((section) => {

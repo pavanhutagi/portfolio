@@ -27,9 +27,9 @@ export default function HomeSection() {
           isLeftNeonBulbLit && isRightNeonBulbLit
             ? "bg-primary-500"
             : isLeftNeonBulbLit
-              ? "bg-gradient-to-b sm:bg-gradient-to-r from-primary-500 to-secondary-500"
+              ? "bg-gradient-to-b md:bg-gradient-to-r from-primary-500 to-secondary-500"
               : isRightNeonBulbLit
-                ? "bg-gradient-to-t sm:bg-gradient-to-l from-primary-500 to-secondary-500"
+                ? "bg-gradient-to-t md:bg-gradient-to-l from-primary-500 to-secondary-500"
                 : "bg-secondary-500"
         }`}
         onMouseMove={handleMouseMove}
@@ -43,7 +43,7 @@ export default function HomeSection() {
         />
 
         <p className="text-dark-text relative z-10 text-sm sm:text-lg md:text-xl">
-          I love turning ideas into reality — whether in code, design, or on the dance floor
+          I love turning ideas into reality - whether in code, design, or on the dance floor.
         </p>
       </div>
     </section>
