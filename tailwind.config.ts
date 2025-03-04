@@ -52,7 +52,7 @@ const config: Config = {
         },
         particles: {
           light: "#A5A5A5",
-          dark: "#464646",
+          dark: "#282828",
         },
       },
       screens: {

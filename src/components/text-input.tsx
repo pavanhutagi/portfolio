@@ -57,7 +57,9 @@ const TextInput: FC<TextInputProps> = ({
         className="bg-secondary-500 dark:bg-secondary-200 text-text-dark dark:text-text-light rounded-[15px] p-3 sm:p-4 outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
       />
 
-      {touched && error && <p className="text-red-500 text-sm">{error}</p>}
+      {touched && error && (
+        <p className="text-primary-500 dark:text-primary-400 text-sm">{error}</p>
+      )}
     </div>
   );
 };

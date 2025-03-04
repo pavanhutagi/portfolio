@@ -39,7 +39,7 @@ const TextArea: FC<TextAreaProps> = ({
         rows={rows}
       />
       {required && touched && value === "" && (
-        <p className="text-red-500 text-sm">{placeholder} is required</p>
+        <p className="text-primary-500 dark:text-primary-400 text-sm">{placeholder} is required</p>
       )}
     </div>
   );

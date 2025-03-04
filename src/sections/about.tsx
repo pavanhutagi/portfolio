@@ -34,8 +34,8 @@ export default function AboutSection() {
                     </h2>
 
                     <h4 className="text-l text-text-dark dark:text-text-light">
-                      A frontend engineer, designer, DJ, and breakdancer from Bangalore, with roots
-                      in Belagavi. I thrive at the intersection of technology, creativity, and
+                      A developer, designer, DJ, and breakdancer from Bengaluru, with roots in
+                      Belagavi. I thrive at the intersection of technology, creativity, and
                       movement.
                     </h4>
 

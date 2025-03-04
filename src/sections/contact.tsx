@@ -64,9 +64,9 @@ export default function ContactSection() {
         <div className="block lg:hidden h-[2px] w-full bg-gray-700 dark:bg-gray-300 my-4 opacity-80"></div>
 
         <div className="flex flex-col gap-4 w-full">
-          <p className="text-gray-600 dark:text-gray-300 text-2xl font-bold">Get in touch</p>
+          <p className="text-text-light dark:text-text-dark text-2xl font-bold">Get in touch</p>
 
-          <p className="text-gray-600 dark:text-gray-300 text-lg">
+          <p className="text-text-light dark:text-text-dark text-lg">
             Have a question or want to work together? Fill out the form below and I'll get back to
             you as soon as possible.
           </p>

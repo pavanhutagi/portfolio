@@ -6,52 +6,94 @@ import type { SubsectionsDataMap } from "@/types/about";
  * Content data for all subsections in the About section
  */
 export const subsectionData: SubsectionsDataMap = {
-  frontend: {
+  developer: {
     icon: "💻",
-    title: "Frontend Engineer",
+    title: "Developer",
     shortDescription:
-      "I craft sleek, interactive web experiences with clean code and modern UI/UX.",
+      "I specialize in developing scalable, high-performance web applications with a focus on UX.",
     detailContent: (
-      <div className="space-y-4">
+      <div className="flex flex-col gap-6">
         <p>
-          As a frontend engineer, I specialize in creating responsive, intuitive, and visually
-          appealing web applications. My expertise includes:
+          I specialize in developing scalable, high-performance web applications with a strong focus
+          on user experience, accessibility, and efficiency. With over six years of experience, I
+          have worked on enterprise-level tools, UI systems, and interactive web applications that
+          streamline workflows and enhance usability.
         </p>
-        <ul className="list-disc pl-5 space-y-2">
-          <li>Modern JavaScript frameworks (React, Vue, Next.js)</li>
-          <li>CSS frameworks and preprocessors (Tailwind, SCSS)</li>
-          <li>Performance optimization and accessibility</li>
-          <li>State management and API integration</li>
-          <li>Animation and interactive experiences</li>
-        </ul>
+
+        <div className="flex flex-col gap-3">
+          <h4 className="font-bold text-lg">Technical Expertise</h4>
+          <ul style={{ listStyleType: "disc", paddingLeft: "1.25rem" }}>
+            <li>Frameworks & Languages: Next.js, React, TypeScript, Angular</li>
+            <li>Styling & UI Development: Tailwind CSS, SCSS, Material UI, Styled-components</li>
+            <li>State Management & API Integration: Redux, Context API, REST, GraphQL</li>
+            <li>
+              Performance & Accessibility: Optimized rendering, SEO best practices, WCAG compliance
+            </li>
+            <li>Interactive UI: Drag-and-drop builders, animations, multi-language support</li>
+          </ul>
+        </div>
+
+        <div className="flex flex-col gap-3">
+          <h4 className="font-bold text-lg">Work Experience</h4>
+
+          <div className="flex flex-col gap-2">
+            <p className="font-bold flex items-center">
+              Frontend Engineer - Consultant (DemTech.ai, 2024 - 2025)
+            </p>
+            <ul style={{ listStyleType: "disc", paddingLeft: "1.25rem" }}>
+              <li>
+                Built the UI foundation for BeCause, a citizen mobilization tool for NGOs using
+                Next.js, TypeScript, and Material UI.
+              </li>
+              <li>
+                Developed a drag-and-drop campaign builder with Puck, allowing NGOs to create
+                interactive campaign pages.
+              </li>
+              <li>Designed an admin dashboard for centralized campaign management.</li>
+              <li>Engineered a server-side Data Grid for handling large datasets efficiently.</li>
+            </ul>
+          </div>
+
+          <div className="flex flex-col gap-2">
+            <p className="font-bold">Software Developer (IBM India Pvt. Ltd, 2018 - 2023)</p>
+            <ul style={{ listStyleType: "disc", paddingLeft: "1.25rem" }}>
+              <li>
+                Led the UI development for DataBlocks, a data transformation tool, using Angular &
+                Express.js.
+              </li>
+              <li>
+                Built a drag-and-drop interface with Angular Material CDK for seamless data
+                configuration.
+              </li>
+              <li>
+                Developed the Challenges Module, enabling IBM sellers to configure and track
+                incentives.
+              </li>
+              <li>
+                Optimized backend queries, reducing load time from 2-3 minutes to 5-10 seconds.
+              </li>
+              <li>
+                Created a universal registration tool, improving authentication across IBM's React
+                applications.
+              </li>
+            </ul>
+          </div>
+        </div>
+
         <p>
-          I'm passionate about creating seamless user experiences that blend technical excellence
-          with creative design.
+          I'm passionate about blending technology and design, building scalable UI architectures,
+          and crafting seamless, high-performance web experiences.
         </p>
       </div>
     ),
   },
-  design: {
+  designer: {
     icon: "🎨",
-    title: "Design",
+    title: "Designer",
     shortDescription: "I shape compelling visuals through UI/UX, graphic design, and branding.",
     detailContent: (
-      <div className="space-y-4">
-        <p>
-          My design philosophy centers on creating meaningful, purposeful experiences that resonate
-          with users. My design skills include:
-        </p>
-        <ul className="list-disc pl-5 space-y-2">
-          <li>UI/UX design and prototyping</li>
-          <li>Brand identity and visual systems</li>
-          <li>Design thinking and user research</li>
-          <li>Illustration and graphic design</li>
-          <li>Design tools: Figma, Adobe Creative Suite</li>
-        </ul>
-        <p>
-          I believe good design should be both beautiful and functional, solving real problems while
-          delighting users.
-        </p>
+      <div className="flex flex-col gap-6">
+        <p>I shape compelling visuals through UI/UX, graphic design, and branding.</p>
       </div>
     ),
   },
@@ -60,65 +102,29 @@ export const subsectionData: SubsectionsDataMap = {
     title: "DJ",
     shortDescription: "I mix beats, create soundscapes, and love making people move.",
     detailContent: (
-      <div className="space-y-4">
-        <p>Music has always been a core part of my creative expression. As a DJ, I:</p>
-        <ul className="list-disc pl-5 space-y-2">
-          <li>Mix across genres including house, techno, and hip-hop</li>
-          <li>Create seamless journeys through sound</li>
-          <li>Read crowds and adapt to create memorable experiences</li>
-          <li>Produce original tracks and remixes</li>
-          <li>Collaborate with other artists and venues</li>
-        </ul>
-        <p>
-          DJing teaches me about rhythm, timing, and the power of creating emotional
-          experiences—skills that translate to all my creative work.
-        </p>
+      <div className="flex flex-col gap-6">
+        <p>I mix beats, create soundscapes, and love making people move.</p>
       </div>
     ),
   },
-  breakdancing: {
+  breakdancer: {
     icon: "🕺",
-    title: "Breakdancing",
-    shortDescription: "For me, rhythm is everywhere—in code, music, and movement.",
+    title: "Breakdancer",
+    shortDescription: "For me, rhythm is everywhere - in code, music, and movement.",
     detailContent: (
-      <div className="space-y-4">
-        <p>
-          Breakdancing (breaking) is both my physical practice and creative outlet. Through
-          breaking, I:
-        </p>
-        <ul className="list-disc pl-5 space-y-2">
-          <li>Express myself through movement and improvisation</li>
-          <li>Connect with a global community and culture</li>
-          <li>Develop discipline, persistence, and growth mindset</li>
-          <li>Learn to overcome challenges through practice</li>
-          <li>Find inspiration in the intersection of music and movement</li>
-        </ul>
-        <p>
-          The principles I learn on the dance floor—creativity, adaptability, and
-          self-expression—influence my approach to design and development.
-        </p>
+      <div className="flex flex-col gap-6">
+        <p>For me, rhythm is everywhere - in code, music, and movement.</p>
       </div>
     ),
   },
-  backpacking: {
+  backpacker: {
     icon: "🎒",
-    title: "Backpacking",
+    title: "Backpacker",
     shortDescription:
       "Exploring remote places, new cultures, and chasing experiences fuels my creativity.",
     detailContent: (
-      <div className="space-y-4">
-        <p>Travel and exploration are essential to how I see the world. Through backpacking, I:</p>
-        <ul className="list-disc pl-5 space-y-2">
-          <li>Immerse myself in diverse cultures and perspectives</li>
-          <li>Discover new ways of thinking and problem-solving</li>
-          <li>Challenge my comfort zone and build adaptability</li>
-          <li>Connect with people from all walks of life</li>
-          <li>Find inspiration in natural and human-made wonders</li>
-        </ul>
-        <p>
-          My travels inform my creative work by exposing me to different aesthetics, stories, and
-          ways of communicating.
-        </p>
+      <div className="flex flex-col gap-6">
+        <p>Exploring remote places, new cultures, and chasing experiences fuels my creativity.</p>
       </div>
     ),
   },
