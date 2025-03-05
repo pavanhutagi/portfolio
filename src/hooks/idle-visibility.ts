@@ -1,7 +1,12 @@
 import { useEffect, useState } from "react";
 
-export function useIdleVisibility(idleTime: number = 3000) {
+import { useAppContext } from "@/context/app-context";
+
+export function useIdleVisibility() {
   const [isVisible, setIsVisible] = useState(true);
+  const { isMenuOpen, setIsMenuOpen } = useAppContext();
+  const idleTime = isMenuOpen ? 6000 : 3000;
+
   let timeoutId: NodeJS.Timeout;
 
   useEffect(() => {
@@ -13,6 +18,7 @@ export function useIdleVisibility(idleTime: number = 3000) {
       setIsVisible(true);
 
       timeoutId = setTimeout(() => {
+        setIsMenuOpen(false);
         setIsVisible(false);
       }, idleTime);
     };
@@ -20,6 +26,7 @@ export function useIdleVisibility(idleTime: number = 3000) {
     document.addEventListener("mousemove", handleMouseMove);
 
     timeoutId = setTimeout(() => {
+      setIsMenuOpen(false);
       setIsVisible(false);
     }, idleTime);
 

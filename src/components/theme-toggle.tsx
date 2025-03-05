@@ -12,10 +12,9 @@ export default function ThemeToggle() {
   return (
     <button
       onClick={toggleTheme}
-      className={`fixed right-6 top-6 z-50 drop-shadow-[0_0_4px_rgba(0,0,0,0.2)] flex w-[40px] h-[40px] sm:w-[45px] sm:h-[45px] lg:w-[50px] lg:h-[50px] items-center justify-center rounded-full bg-background-dark transition-transform duration-300 dark:bg-background-light sm:right-8 sm:top-8 lg:right-10 lg:top-10 ${
-        isVisible ? "translate-x-0" : "translate-x-40"
+      className={`fixed mb-14 sm:mb-16 bottom-6 left-6 sm:bottom-8 sm:left-8 md:top-8 md:bottom-auto md:left-auto md:right-8 md:mb-0 z-50 drop-shadow-[0_0_4px_rgba(0,0,0,0.2)] flex w-[40px] h-[40px] sm:w-[45px] sm:h-[45px] lg:w-[50px] lg:h-[50px] items-center justify-center rounded-full bg-background-dark transition-transform duration-300 dark:bg-background-light ${
+        isVisible ? "translate-x-0" : "-translate-x-40 md:translate-x-40"
       }`}
-      aria-label="Toggle theme"
     >
       {theme === "dark" ? (
         <FaSun className="h-5 w-5 text-text-light" />

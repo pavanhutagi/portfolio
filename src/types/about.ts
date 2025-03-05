@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 
-export type SubsectionId = "developer" | "designer" | "dj" | "breakdancer" | "backpacker";
+export type SubsectionId = "webDeveloper" | "designer" | "dj" | "breakdancer" | "backpacker";
 
 export interface SubsectionCardProps {
   icon: string;

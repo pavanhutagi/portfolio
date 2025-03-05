@@ -1,10 +1,4 @@
-import React, {
-  ReactNode,
-  createContext,
-  useContext,
-  useEffect,
-  useState,
-} from "react";
+import React, { ReactNode, createContext, useContext, useEffect, useState } from "react";
 
 type Theme = "light" | "dark";
 
@@ -15,6 +9,8 @@ interface AppContextType {
   setIsLeftNeonBulbLit: (isLit: boolean) => void;
   isRightNeonBulbLit: boolean;
   setIsRightNeonBulbLit: (isLit: boolean) => void;
+  isMenuOpen: boolean;
+  setIsMenuOpen: (isOpen: boolean) => void;
 }
 
 interface AppProviderProps {
@@ -27,6 +23,8 @@ export default function AppContextProvider({ children }: AppProviderProps) {
   const [theme, setTheme] = useState<Theme>("dark");
   const [isLeftNeonBulbLit, setIsLeftNeonBulbLit] = useState(false);
   const [isRightNeonBulbLit, setIsRightNeonBulbLit] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
   useEffect(() => {
     const root = window.document.documentElement;
 
@@ -47,6 +45,8 @@ export default function AppContextProvider({ children }: AppProviderProps) {
     setIsLeftNeonBulbLit,
     isRightNeonBulbLit,
     setIsRightNeonBulbLit,
+    isMenuOpen,
+    setIsMenuOpen,
   };
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;

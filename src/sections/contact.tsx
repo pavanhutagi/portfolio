@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 
 import Button from "@/components/button";
-import ChatBot from "@/components/chat-bot";
+import ChatBot from "@/components/chat-bot/chat-bot";
 import TextArea from "@/components/text-area";
 import TextInput from "@/components/text-input";
 

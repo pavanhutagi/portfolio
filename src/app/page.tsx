@@ -4,6 +4,7 @@ import AudioControl from "@/components/audio-control";
 import Footer from "@/components/footer";
 import LeftNeonBulb from "@/components/left-neon-bulb";
 import Logo from "@/components/logo";
+import MenuButton from "@/components/menu-button";
 import Navbar from "@/components/navbar";
 import ParticlesBackground from "@/components/particles-background";
 import RightNeonBulb from "@/components/right-neon-bulb";
@@ -22,6 +23,7 @@ export default function Root() {
       <div className="flex flex-col items-center justify-center">
         <Logo />
         <ThemeToggle />
+        <MenuButton />
 
         <LeftNeonBulb />
 
