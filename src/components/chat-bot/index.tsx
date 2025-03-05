@@ -9,7 +9,11 @@ import ChatMessages from "@/components/chat-bot/chat-messages";
 import { getBotResponse } from "@/configs/bot-responses";
 import { Message } from "@/types/chat-bot";
 
-export default function ChatBot() {
+interface ChatBotProps {
+  height: number;
+}
+
+export default function ChatBot({ height }: ChatBotProps) {
   const [chatInput, setChatInput] = useState("");
   const [chatMessages, setChatMessages] = useState<Message[]>([
     {
@@ -60,11 +64,11 @@ export default function ChatBot() {
 
   return (
     <div
-      className={`bg-[#1E1E1E] rounded-[15px] w-full flex flex-col overflow-hidden relative backdrop-blur-sm`}
+      className={`bg-[#1E1E1E] rounded-[15px] w-full h-[85vh] lg:h-[${height}px] flex flex-col overflow-hidden relative backdrop-blur-sm `}
     >
       <ChatHeader />
 
-      <div id="chat-messages" className="flex-grow bg-[#1E1E1E] h-[525px] overflow-y-auto">
+      <div id="chat-messages" className="flex-grow bg-[#1E1E1E] overflow-y-auto">
         <ChatMessages messages={chatMessages} isTyping={isTyping} />
       </div>
 

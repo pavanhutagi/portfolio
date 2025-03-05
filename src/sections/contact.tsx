@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import Button from "@/components/button";
 import ChatBot from "@/components/chat-bot";
@@ -13,6 +13,8 @@ export default function ContactSection() {
   const [message, setMessage] = useState("");
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [isFormValid, setIsFormValid] = useState(false);
+  const [contactFormHeight, setContactFormHeight] = useState(0);
+  const contactFormRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -20,6 +22,37 @@ export default function ContactSection() {
       name.trim() !== "" && email.trim() !== "" && message.trim() !== "" && emailRegex.test(email);
     setIsFormValid(valid);
   }, [name, email, message]);
+
+  useEffect(() => {
+    // Function to calculate and set the form height
+    const calculateFormHeight = () => {
+      if (contactFormRef.current) {
+        const height = contactFormRef.current.offsetHeight;
+        setContactFormHeight(height);
+      }
+    };
+
+    // Create a ResizeObserver to watch for size changes
+    const resizeObserver = new ResizeObserver(() => {
+      calculateFormHeight();
+    });
+
+    // Start observing the form element
+    if (contactFormRef.current) {
+      resizeObserver.observe(contactFormRef.current);
+    }
+
+    // Calculate initially
+    calculateFormHeight();
+
+    // Cleanup
+    return () => {
+      if (contactFormRef.current) {
+        resizeObserver.unobserve(contactFormRef.current);
+      }
+      resizeObserver.disconnect();
+    };
+  }, []);
 
   const handleSubmit = async () => {
     if (!isFormValid) return;
@@ -60,12 +93,15 @@ export default function ContactSection() {
       className="flex min-h-screen items-center justify-center relative overflow-hidden"
     >
       <div className="flex flex-col justify-center items-center lg:flex-row gap-10 w-[90%] max-w-[1200px] relative z-10">
-        <ChatBot />
+        <ChatBot height={contactFormHeight} />
 
         <div className="hidden lg:block w-[2px] bg-gray-700 dark:bg-gray-300 self-stretch mx-4 opacity-80"></div>
         <div className="block lg:hidden h-[2px] w-full bg-gray-700 dark:bg-gray-300 my-4 opacity-80"></div>
 
-        <div className="flex flex-col gap-4 w-full">
+        <div
+          ref={contactFormRef}
+          className="flex flex-col justify-center gap-4 w-full lg:h-[700px]"
+        >
           <p className="text-text-light dark:text-text-dark text-2xl font-bold">Get in touch</p>
 
           <p className="text-text-light dark:text-text-dark text-lg">
