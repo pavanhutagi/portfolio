@@ -1,6 +1,25 @@
 import React from "react";
 
-const WebDeveloper: React.FC = () => {
+import {
+  SiAngular,
+  SiCss3,
+  SiDocker,
+  SiExpress,
+  SiGit,
+  SiGithub,
+  SiHtml5,
+  SiJavascript,
+  SiJest,
+  SiNextdotjs,
+  SiNodedotjs,
+  SiReact,
+  SiRedux,
+  SiSass,
+  SiTailwindcss,
+  SiTypescript,
+} from "react-icons/si";
+
+export default function WebDeveloper() {
   return (
     <div className="flex flex-col gap-6">
       <p className="text-sm md:text-lg">
@@ -10,17 +29,114 @@ const WebDeveloper: React.FC = () => {
         streamline workflows and enhance usability.
       </p>
 
-      <div className="flex flex-col gap-3">
-        <h4 className="font-bold text-lg">Technical Expertise</h4>
-        <ul style={{ listStyleType: "disc", paddingLeft: "1.25rem" }}>
-          <li>Frameworks & Languages: Next.js, React, TypeScript, Angular</li>
-          <li>Styling & UI Development: Tailwind CSS, SCSS, Material UI, Styled-components</li>
-          <li>State Management & API Integration: Redux, Context API, REST</li>
-          <li>
-            Performance & Accessibility: Optimized rendering, SEO best practices, WCAG compliance
-          </li>
-          <li>Interactive UI: Drag-and-drop builders, animations, multi-language support</li>
-        </ul>
+      <div className="flex flex-col md:flex-row gap-4">
+        <div className="flex flex-col gap-2 border border-gray-300 dark:border-gray-700 rounded-lg p-4 w-full md:w-1/2">
+          <p className="font-bold text-lg">Technologies</p>
+          <div className="flex flex-wrap gap-2">
+            <div className="border border-gray-700 rounded-lg p-2 bg-white">
+              <span className="flex items-center gap-2">
+                <SiNextdotjs size={16} className="text-black" />
+                <p className="text-black">Next.js</p>
+              </span>
+            </div>
+            <div className="border border-gray-700 rounded-lg p-2 bg-white">
+              <span className="flex items-center gap-2">
+                <SiReact size={16} className="text-[#61DAFB]" />
+                <p className="text-black">React</p>
+              </span>
+            </div>
+            <div className="border border-gray-700 rounded-lg p-2 bg-white">
+              <span className="flex items-center gap-2">
+                <SiTypescript size={16} className="text-[#3178C6]" />
+                <p className="text-black">TypeScript</p>
+              </span>
+            </div>
+            <div className="border border-gray-700 rounded-lg p-2 bg-white">
+              <span className="flex items-center gap-2">
+                <SiJavascript size={16} className="text-[#F7DF1E]" />
+                <p className="text-black">JavaScript</p>
+              </span>
+            </div>
+            <div className="border border-gray-700 rounded-lg p-2 bg-white">
+              <span className="flex items-center gap-2">
+                <SiHtml5 size={16} className="text-[#E34F26]" />
+                <p className="text-black">HTML5</p>
+              </span>
+            </div>
+            <div className="border border-gray-700 rounded-lg p-2 bg-white">
+              <span className="flex items-center gap-2">
+                <SiCss3 size={16} className="text-[#1572B6]" />
+                <p className="text-black">CSS3</p>
+              </span>
+            </div>
+            <div className="border border-gray-700 rounded-lg p-2 bg-white">
+              <span className="flex items-center gap-2">
+                <SiTailwindcss size={16} className="text-[#06B6D4]" />
+                <p className="text-black">Tailwind CSS</p>
+              </span>
+            </div>
+            <div className="border border-gray-700 rounded-lg p-2 bg-white">
+              <span className="flex items-center gap-2">
+                <SiSass size={16} className="text-[#CC6699]" />
+                <p className="text-black">SASS/SCSS</p>
+              </span>
+            </div>
+            <div className="border border-gray-700 rounded-lg p-2 bg-white">
+              <span className="flex items-center gap-2">
+                <SiAngular size={16} className="text-[#DD0031]" />
+                <p className="text-black">Angular</p>
+              </span>
+            </div>
+            <div className="border border-gray-700 rounded-lg p-2 bg-white">
+              <span className="flex items-center gap-2">
+                <SiRedux size={16} className="text-[#764ABC]" />
+                <p className="text-black">Redux</p>
+              </span>
+            </div>
+            <div className="border border-gray-700 rounded-lg p-2 bg-white">
+              <span className="flex items-center gap-2">
+                <SiNodedotjs size={16} className="text-[#339933]" />
+                <p className="text-black">Node.js</p>
+              </span>
+            </div>
+            <div className="border border-gray-700 rounded-lg p-2 bg-white">
+              <span className="flex items-center gap-2">
+                <SiExpress size={16} className="text-black" />
+                <p className="text-black">Express.js</p>
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div className="flex flex-col gap-2 border border-gray-300 dark:border-gray-700 rounded-lg p-4 w-full md:w-1/2">
+          <p className="font-bold text-lg">Tools</p>
+          <div className="flex flex-wrap gap-2">
+            <div className="border border-gray-700 rounded-lg p-2 bg-white">
+              <span className="flex items-center gap-2">
+                <SiGit size={16} className="text-[#F05032]" />
+                <p className="text-black">Git</p>
+              </span>
+            </div>
+            <div className="border border-gray-700 rounded-lg p-2 bg-white">
+              <span className="flex items-center gap-2">
+                <SiGithub size={16} className="text-black" />
+                <p className="text-black">GitHub</p>
+              </span>
+            </div>
+            <div className="border border-gray-700 rounded-lg p-2 bg-white">
+              <span className="flex items-center gap-2">
+                <SiDocker size={16} className="text-[#2496ED]" />
+                <p className="text-black">Docker</p>
+              </span>
+            </div>
+            <div className="border border-gray-700 rounded-lg p-2 bg-white">
+              <span className="flex items-center gap-2">
+                <SiJest size={16} className="text-[#C21325]" />
+                <p className="text-black">Jest</p>
+              </span>
+            </div>
+          </div>
+        </div>
       </div>
 
       <div className="flex flex-col gap-3">
@@ -74,6 +190,4 @@ const WebDeveloper: React.FC = () => {
       </p>
     </div>
   );
-};
-
-export default WebDeveloper;
+}

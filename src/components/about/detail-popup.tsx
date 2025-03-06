@@ -37,8 +37,8 @@ export const DetailPopup = ({ icon, title, onClose, children }: DetailPopupProps
         </button>
       </div>
 
-      <div className="flex-1 overflow-y-auto p-4 mt-4 mb-4 text-text-dark dark:text-text-light">
-        <div className="prose prose-invert max-w-none">{children}</div>
+      <div className="flex-1 overflow-y-auto p-4 mt-4 mb-4 text-text-dark dark:text-text-light flex">
+        <div className="w-full flex">{children}</div>
       </div>
     </div>
   );

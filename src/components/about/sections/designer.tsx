@@ -1,11 +1,11 @@
 import React from "react";
 
-const Designer: React.FC = () => {
+import ComingSoon from "@/components/coming-soon";
+
+export default function Designer() {
   return (
-    <div className="flex flex-col gap-6">
-      <p>I shape compelling visuals through UI/UX, graphic design, and branding.</p>
+    <div className="w-full h-full flex-1 flex">
+      <ComingSoon />
     </div>
   );
-};
-
-export default Designer;
+}

@@ -2,8 +2,8 @@
 
 import React, { useState } from "react";
 
-import { DetailPopup } from "@/components/about/DetailPopup";
-import { SubsectionCard } from "@/components/about/SubsectionCard";
+import { DetailPopup } from "@/components/about/detail-popup";
+import { SubsectionCard } from "@/components/about/subsection-card";
 import { subsectionData } from "@/data/about-content";
 import type { SubsectionId } from "@/types/about";
 
