@@ -92,11 +92,11 @@ export default function ContactSection() {
       id="contact"
       className="flex min-h-screen items-center justify-center relative overflow-hidden"
     >
-      <div className="flex flex-col justify-center items-center lg:flex-row gap-10 w-[90%] max-w-[1200px] relative z-10">
+      <div className="flex flex-col justify-center items-center lg:flex-row gap-14 w-[90%] max-w-[1200px] relative z-10">
         <ChatBot height={contactFormHeight} />
 
-        <div className="hidden lg:block w-[2px] bg-gray-700 dark:bg-gray-300 self-stretch mx-4 opacity-80"></div>
-        <div className="block lg:hidden h-[2px] w-full bg-gray-700 dark:bg-gray-300 my-4 opacity-80"></div>
+        {/* <div className="hidden lg:block w-[2px] bg-gray-700 dark:bg-gray-300 self-stretch mx-4 opacity-80"></div>
+        <div className="block lg:hidden h-[2px] w-full bg-gray-700 dark:bg-gray-300 my-4 opacity-80"></div> */}
 
         <div
           ref={contactFormRef}
