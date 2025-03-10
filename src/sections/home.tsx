@@ -65,6 +65,10 @@ export default function HomeSection() {
           I love turning ideas into reality - whether in code, design, or on the dance floor.
         </p>
       </div>
+
+      <p className="text-text-secondary dark:text-text-secondaryDark">
+        The portfolio is still under development.
+      </p>
     </section>
   );
 }

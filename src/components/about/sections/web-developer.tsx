@@ -13,6 +13,8 @@ import {
   SiJavascript,
   SiJest,
   SiLaravel,
+  SiMongodb,
+  SiMysql,
   SiNextdotjs,
   SiNodedotjs,
   SiNotion,
@@ -52,7 +54,7 @@ export default function WebDeveloper() {
       href={item.url}
       target="_blank"
       rel="noopener noreferrer"
-      className="border border-gray-700 rounded-lg p-2 bg-white"
+      className="border border-gray-700 rounded-lg p-2 bg-white hover:border-primary-500 transition-colors duration-200"
     >
       <span className="flex items-center gap-2">
         {item.icon}
@@ -136,6 +138,43 @@ export default function WebDeveloper() {
     },
   ];
 
+  // Databases data
+  const databases: TechItem[] = [
+    {
+      name: "MySQL",
+      url: "https://www.mysql.com/",
+      icon: <SiMysql size={16} className="text-[#4479A1]" />,
+    },
+    {
+      name: "MongoDB",
+      url: "https://www.mongodb.com/",
+      icon: <SiMongodb size={16} className="text-[#47A248]" />,
+    },
+    {
+      name: "IBM DB2",
+      url: "https://www.ibm.com/products/db2",
+      icon: (
+        <svg
+          width="16"
+          height="16"
+          viewBox="0 0 32 32"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path d="M2 2H30V30H2V2Z" fill="#054ADA" />
+          <path
+            d="M16 24.5C20.6944 24.5 24.5 20.6944 24.5 16C24.5 11.3056 20.6944 7.5 16 7.5C11.3056 7.5 7.5 11.3056 7.5 16C7.5 20.6944 11.3056 24.5 16 24.5Z"
+            fill="white"
+          />
+          <path
+            d="M16 21C18.7614 21 21 18.7614 21 16C21 13.2386 18.7614 11 16 11C13.2386 11 11 13.2386 11 16C11 18.7614 13.2386 21 16 21Z"
+            fill="#054ADA"
+          />
+        </svg>
+      ),
+    },
+  ];
+
   // Styling & UI data
   const stylingUI: TechItem[] = [
     {
@@ -157,6 +196,29 @@ export default function WebDeveloper() {
           <path
             d="M30.343 21.976a1 1 0 00.502-.864l.018-5.787a1 1 0 01.502-.864l3.137-1.802a1 1 0 011.498.867v10.521a1 1 0 01-.502.867l-11.839 6.8a1 1 0 01-.994.001l-9.291-5.314a1 1 0 01-.504-.868v-5.305c0-.006.007-.01.013-.007.005.003.012 0 .012-.007v-.006c0-.004.002-.008.006-.01l7.652-4.396c.007-.004.004-.015-.004-.015a.008.008 0 01-.008-.008l.015-5.201a1 1 0 00-1.5-.87l-5.687 3.277a1 1 0 01-.998 0L6.666 9.7a1 1 0 00-1.499.866v9.4a1 1 0 01-1.496.869l-3.166-1.81a1 1 0 01-.504-.87l.028-16.43A1 1 0 011.527.86l10.845 6.229a1 1 0 00.996 0L24.21.86a1 1 0 011.498.868v16.434a1 1 0 01-.501.867l-5.678 3.27a1 1 0 00.004 1.735l3.132 1.783a1 1 0 00.993-.002l6.685-3.839z"
             fill="#0081CB"
+          />
+        </svg>
+      ),
+    },
+    {
+      name: "Angular Material",
+      url: "https://material.angular.io/",
+      icon: (
+        <svg
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M12 2.5L2.5 6.167L4.1 17.831L12 22.5L19.9 17.831L21.5 6.167L12 2.5Z"
+            fill="#FFA726"
+          />
+          <path d="M12 2.5L12 22.5L19.9 17.831L21.5 6.167L12 2.5Z" fill="#FB8C00" />
+          <path
+            d="M12 5.7L6.7 17.3H8.9L10.3 13.7H13.7L15.1 17.3H17.3L12 5.7ZM12 8.9L13.1 11.7H10.9L12 8.9Z"
+            fill="white"
           />
         </svg>
       ),
@@ -290,6 +352,24 @@ export default function WebDeveloper() {
           <path
             d="M12 8C9.79 8 8 9.79 8 12C8 14.21 9.79 16 12 16C14.21 16 16 14.21 16 12C16 9.79 14.21 8 12 8ZM12 14C10.9 14 10 13.1 10 12C10 10.9 10.9 10 12 10C13.1 10 14 10.9 14 12C14 13.1 13.1 14 12 14Z"
             fill="#4285F4"
+          />
+        </svg>
+      ),
+    },
+    {
+      name: "Firefox DevTools",
+      url: "https://firefox-dev.tools/",
+      icon: (
+        <svg
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M21.634 8.557C21.634 8.557 21.634 8.557 21.634 8.557C20.943 5.661 18.668 3.197 15.8 2.286C16.902 3.663 17.539 5.143 17.8 6.714C17.8 6.714 17.8 6.714 17.8 6.714C15.714 3.857 12.571 3.143 10.143 1C9.857 1 9.571 1.143 9.429 1.286C9.286 1.286 9.286 1.429 9.286 1.571C8.571 2.714 8.429 4 8.571 5.286C8.857 7.571 10.143 9.714 12.143 11C10.429 9.857 9.143 7.857 8.857 5.714C7.286 7.429 6.571 9.857 7 12.286C7.143 13.143 7.429 14 7.857 14.714C5.429 13.143 4 10.429 4 7.571C4 7.143 4 6.714 4.143 6.286C1.857 8.714 1 12 2 15.143C2.857 18.143 5.143 20.571 8.143 21.571C11.429 22.714 15.143 22 17.857 19.857C20.857 17.571 22.286 13.714 21.634 8.557ZM16.714 18.714C14.143 20.429 10.714 20.143 8.429 18.143C8.143 17.857 7.857 17.571 7.714 17.286C9.429 17.714 11.286 17.429 12.714 16.429C14.143 15.429 15 13.857 15.143 12.143C16.143 12.714 16.857 13.714 17.143 14.857C17.429 16.143 17.286 17.571 16.714 18.714Z"
+            fill="#FF9500"
           />
         </svg>
       ),
@@ -438,6 +518,7 @@ export default function WebDeveloper() {
             {renderTechCategory("Frontend Frameworks", frontendFrameworks)}
             {renderTechCategory("Backend Frameworks", backendFrameworks)}
             {renderTechCategory("Languages", languages)}
+            {renderTechCategory("Databases", databases)}
             {renderTechCategory("Styling & UI", stylingUI)}
             {renderTechCategory("State Management", stateManagement)}
             {renderTechCategory("Testing", testing)}
