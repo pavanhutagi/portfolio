@@ -66,7 +66,7 @@ export default function HomeSection() {
         </p>
       </div>
 
-      <p className="text-text-secondary dark:text-text-secondaryDark">
+      <p className="text-text-secondary dark:text-text-secondaryDark text-sm">
         The portfolio is still under development.
       </p>
     </section>
