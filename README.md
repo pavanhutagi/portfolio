@@ -18,9 +18,3 @@ Welcome to my personal portfolio website! This project showcases my skills, proj
 - Tailwind CSS
 - Modern CSS features
 - Responsive design principles
-
-## 📫 Contact
-
-- Website: [pavanhutagi.com](https://pavanhutagi.com)
-- GitHub: [@pavanhutagi](https://github.com/pavanhutagi)
-- LinkedIn: [Pavan Hutagi](https://linkedin.com/in/pavan-hutagi)
