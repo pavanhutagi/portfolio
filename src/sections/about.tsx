@@ -2,6 +2,8 @@
 
 import React, { useState } from "react";
 
+import clsx from "clsx";
+
 import { DetailPopup } from "@/components/about/detail-popup";
 import { SubsectionCard } from "@/components/about/subsection-card";
 import { subsectionData } from "@/data/about-content";
@@ -20,22 +22,36 @@ export default function AboutSection() {
 
   return (
     <section id="about" className="flex h-screen items-center justify-center">
-      <div className="overflow-hidden flex h-[80vh] lg:h-[700px] w-[90%] max-w-[1200px] rounded-[50px]">
+      <div
+        className={clsx(
+          "overflow-hidden flex",
+          "h-[80vh] lg:h-[700px]",
+          "w-[90%] max-w-[1200px]",
+          "rounded-[50px]"
+        )}
+      >
         <div className="w-full h-full relative">
           <div className="w-full h-full">
             <div
-              className={`w-full h-full flex flex-col md:flex-row overflow-scroll ${
-                activePopup ? "md:block" : ""
-              }`}
+              className={clsx("w-full h-full", "flex flex-col md:flex-row", "overflow-scroll", {
+                "md:block": activePopup,
+              })}
             >
-              <div className={`${activePopup ? "w-full" : "w-full md:w-1/2"} h-full`}>
-                <div className="bg-background-dark dark:bg-background-light h-full w-full flex justify-center flex-col p-6 relative">
+              <div className={clsx("h-full", activePopup ? "w-full" : "w-full md:w-1/2")}>
+                <div
+                  className={clsx(
+                    "bg-background-dark dark:bg-background-light",
+                    "h-full w-full",
+                    "flex justify-center flex-col",
+                    "p-6 relative"
+                  )}
+                >
                   <div className="overflow-scroll flex flex-col gap-6">
-                    <h2 className="text-3xl font-bold text-text-dark dark:text-text-light">
+                    <h2 className="text-3xl font-bold text-text-primaryDark dark:text-text-primary">
                       Hey, I'm Pavan 👋
                     </h2>
 
-                    <h4 className="text-l text-text-dark dark:text-text-light">
+                    <h4 className="text-l text-text-primaryDark dark:text-text-primary">
                       A developer, designer, DJ, and breakdancer from Bengaluru, with roots in
                       Belagavi. I thrive at the intersection of technology, creativity, and
                       movement.
@@ -53,7 +69,7 @@ export default function AboutSection() {
                       ))}
                     </div>
 
-                    <span className="text-text-dark dark:text-text-light">
+                    <span className="text-text-primaryDark dark:text-text-primary">
                       For me, life is about building, moving, and creating one project, one beat,
                       and one adventure at a time.
                     </span>
@@ -72,7 +88,7 @@ export default function AboutSection() {
               </div>
 
               {!activePopup && (
-                <div className="w-full md:w-1/2 h-full flex items-center justify-center">
+                <div className={clsx("w-full md:w-1/2 h-full", "flex items-center justify-center")}>
                   <div className="bg-[#a65959] h-full w-full">
                     <img
                       src="/images/me.jpeg"

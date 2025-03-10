@@ -17,7 +17,9 @@ export default function ChatMessages({ messages, isTyping }: ChatMessagesProps) 
         <div key={index} className={`flex ${msg.isBot ? "justify-start" : "justify-end"}`}>
           <div
             className={`max-w-[80%] rounded-2xl px-4 py-3 ${
-              msg.isBot ? "bg-[#374151] text-white" : "bg-[#674b91] text-white"
+              msg.isBot
+                ? "bg-secondary-300 dark:bg-secondary-400 text-text-primary dark:text-text-primaryDark"
+                : "bg-primary-300 dark:bg-primary-400 text-text-primary dark:text-text-primaryDark"
             }`}
           >
             <p>{msg.text}</p>

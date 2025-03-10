@@ -2,6 +2,8 @@
 
 import { useEffect, useRef, useState } from "react";
 
+import clsx from "clsx";
+
 import Button from "@/components/button";
 import ChatBot from "@/components/chat-bot/chat-bot";
 import TextArea from "@/components/text-area";
@@ -90,21 +92,47 @@ export default function ContactSection() {
   return (
     <section
       id="contact"
-      className="flex min-h-screen items-center justify-center relative overflow-hidden"
+      className={clsx(
+        "flex",
+        "min-h-screen",
+        "items-center",
+        "justify-center",
+        "relative",
+        "overflow-hidden"
+      )}
     >
-      <div className="flex flex-col justify-center items-center lg:flex-row gap-14 w-[90%] max-w-[1200px] relative z-10">
+      <div
+        className={clsx(
+          "flex",
+          "flex-col",
+          "justify-center",
+          "items-center",
+          "lg:flex-row",
+          "gap-14",
+          "w-[90%]",
+          "max-w-[1200px]",
+          "relative",
+          "z-10"
+        )}
+      >
         <ChatBot height={contactFormHeight} />
-
-        {/* <div className="hidden lg:block w-[2px] bg-gray-700 dark:bg-gray-300 self-stretch mx-4 opacity-80"></div>
-        <div className="block lg:hidden h-[2px] w-full bg-gray-700 dark:bg-gray-300 my-4 opacity-80"></div> */}
 
         <div
           ref={contactFormRef}
-          className="flex flex-col justify-center gap-4 w-full lg:h-[700px]"
+          className={clsx("flex", "flex-col", "justify-center", "gap-4", "w-full", "lg:h-[700px]")}
         >
-          <p className="text-text-light dark:text-text-dark text-2xl font-bold">Get in touch</p>
+          <p
+            className={clsx(
+              "text-text-primary",
+              "dark:text-text-primaryDark",
+              "text-2xl",
+              "font-bold"
+            )}
+          >
+            Get in touch
+          </p>
 
-          <p className="text-text-light dark:text-text-dark text-lg">
+          <p className={clsx("text-text-primary", "dark:text-text-primaryDark", "text-lg")}>
             Have a question or want to work together? Fill out the form below and I'll get back to
             you as soon as possible.
           </p>
@@ -138,10 +166,12 @@ export default function ContactSection() {
           </Button>
 
           {status === "success" && (
-            <p className="text-green-500 text-center">Message sent successfully!</p>
+            <p className={clsx("text-success-500", "text-center")}>Message sent successfully!</p>
           )}
           {status === "error" && (
-            <p className="text-red-500 text-center">Failed to send message. Please try again.</p>
+            <p className={clsx("text-error-500", "text-center")}>
+              Failed to send message. Please try again.
+            </p>
           )}
         </div>
       </div>

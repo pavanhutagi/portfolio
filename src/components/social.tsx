@@ -1,5 +1,6 @@
 "use client";
 
+import clsx from "clsx";
 import { IconType } from "react-icons";
 import { FaGithub, FaInstagram, FaLinkedin } from "react-icons/fa";
 
@@ -29,7 +30,7 @@ const socialLinks: SocialLink[] = [
 
 export default function Social() {
   return (
-    <div className="flex gap-8">
+    <div className={clsx("flex gap-8")}>
       {socialLinks.map(({ href, icon: Icon, label }) => (
         <a
           key={href}
@@ -37,7 +38,16 @@ export default function Social() {
           target="_blank"
           rel="noopener noreferrer"
           aria-label={label}
-          className="flex h-[40px] w-[40px] cursor-pointer items-center justify-center rounded-full bg-[#D4D4D4] transition-all hover:bg-white"
+          className={clsx(
+            // Layout
+            "flex items-center justify-center",
+            // Dimensions
+            "h-[40px] w-[40px]",
+            // Appearance
+            "rounded-full bg-[#D4D4D4]",
+            // Interactive states
+            "cursor-pointer transition-all hover:bg-white"
+          )}
         >
           <Icon size={20} />
         </a>

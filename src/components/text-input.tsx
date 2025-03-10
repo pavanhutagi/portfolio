@@ -2,12 +2,15 @@
 
 import { ChangeEvent, FC, useEffect, useState } from "react";
 
+import clsx from "clsx";
+
 export interface TextInputProps {
   placeholder: string;
   value: string;
   onChange: (value: string) => void;
   required?: boolean;
   type?: "text" | "email" | "password";
+  className?: string;
 }
 
 const validateEmail = (email: string): boolean => {
@@ -21,6 +24,7 @@ const TextInput: FC<TextInputProps> = ({
   onChange,
   required = false,
   type = "text",
+  className,
 }) => {
   const [touched, setTouched] = useState(false);
   const [error, setError] = useState("");
@@ -55,11 +59,17 @@ const TextInput: FC<TextInputProps> = ({
         onBlur={() => {
           setTouched(true);
         }}
-        className="bg-secondary-500 dark:bg-secondary-200 text-text-dark dark:text-text-light rounded-[15px] p-3 sm:p-4 outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
+        className={clsx(
+          "rounded-[15px] p-3 sm:p-4 outline-none",
+          "bg-secondary-500 dark:bg-secondary-200",
+          "text-text-primaryDark dark:text-text-primary",
+          "focus:ring-2 focus:ring-primary-500 focus:border-primary-500",
+          className
+        )}
       />
 
       {touched && error && (
-        <p className="text-primary-500 dark:text-primary-400 text-sm">{error}</p>
+        <p className={clsx("text-sm", "text-primary-500 dark:text-primary-400")}>{error}</p>
       )}
     </div>
   );

@@ -1,20 +1,25 @@
 "use client";
 
+import clsx from "clsx";
+
 interface ButtonProps {
   children: React.ReactNode;
   onClick?: () => void;
   disabled?: boolean;
+  className?: string;
 }
 
-export default function Button({ children, onClick, disabled }: ButtonProps) {
+export default function Button({ children, onClick, disabled, className }: ButtonProps) {
   return (
     <button
       onClick={onClick}
-      className={`rounded-[15px] p-3 sm:p-4 ${
+      className={clsx(
+        "rounded-[15px] p-3 sm:p-4",
         disabled
-          ? "bg-gray-400 dark:bg-gray-600 cursor-not-allowed"
-          : "bg-[#a82121] dark:bg-[#f34848] hover:bg-[#dc3b3b] dark:hover:bg-[#c44848] text-text-dark dark:text-text-light"
-      }`}
+          ? "bg-gray-400 dark:bg-gray-600 cursor-not-allowed text-text-secondary dark:text-text-secondaryDark"
+          : "bg-primary-400 hover:bg-primary-500 text-text-light",
+        className
+      )}
       disabled={disabled}
     >
       {children}

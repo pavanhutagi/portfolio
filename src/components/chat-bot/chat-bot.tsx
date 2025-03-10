@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 
+import clsx from "clsx";
 import { FaPaperPlane } from "react-icons/fa";
 
 import ChatHeader from "@/components/chat-bot/chat-header";
@@ -64,30 +65,54 @@ export default function ChatBot({ height }: ChatBotProps) {
 
   return (
     <div
-      className={`bg-[#1E1E1E] rounded-[15px] w-full h-[85vh] lg:h-[${height}px] flex flex-col overflow-hidden relative backdrop-blur-sm `}
+      className={clsx(
+        "flex flex-col",
+        "w-full",
+        `h-[85vh] lg:h-[${height}px]`,
+        "bg-secondary-500 dark:bg-secondary-200",
+        "rounded-[15px]",
+        "overflow-hidden",
+        "relative",
+        "backdrop-blur-sm"
+      )}
     >
       <ChatHeader />
 
-      <div id="chat-messages" className="flex-grow bg-[#1E1E1E] overflow-y-auto">
+      <div
+        id="chat-messages"
+        className={clsx("flex-grow", "bg-secondary-500 dark:bg-secondary-200", "overflow-y-auto")}
+      >
         <ChatMessages messages={chatMessages} isTyping={isTyping} />
       </div>
 
-      <div className="bg-[#6B7280] p-2 rounded-t-2xl">
+      <div className={clsx("bg-gray-400 dark:bg-gray-600 ", "p-2", "rounded-t-2xl")}>
         <form onSubmit={handleChatSubmit} className="flex items-center">
           <input
             type="text"
             value={chatInput}
             onChange={(e) => setChatInput(e.target.value)}
             placeholder="Type your message here"
-            className="flex-grow px-2 bg-[#6B7280] text-white placeholder-gray-300 rounded-lg focus:outline-none pb-1"
+            className={clsx(
+              "flex-grow",
+              "px-2 pb-1",
+              "bg-gray-400 dark:bg-gray-600 ",
+              "text-text-primary dark:text-text-primaryDark",
+              "placeholder-text-secondary dark:placeholder-text-secondaryDark",
+              "rounded-lg",
+              "focus:outline-none"
+            )}
           />
           <button
             type="submit"
-            className={`${
+            className={clsx(
+              "rounded-full",
+              "p-3",
+              "shadow-l",
+              "transition-colors",
               chatInput.trim()
                 ? "bg-[#1a1a1a] hover:bg-red-600 text-white"
-                : "bg-gray-600 cursor-not-allowed text-gray-400"
-            } rounded-full transition-colors p-3 shadow-l`}
+                : "bg-gray-500 cursor-not-allowed text-gray-400"
+            )}
             disabled={!chatInput.trim()}
           >
             <FaPaperPlane />

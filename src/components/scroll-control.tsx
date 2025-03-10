@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 
+import clsx from "clsx";
 import { FaArrowDown, FaArrowUp } from "react-icons/fa";
 
 import { useAppContext } from "@/context/app-context";
@@ -12,11 +13,11 @@ export default function ScrollControl() {
   const [isAtTop, setIsAtTop] = useState(true);
   const { isMenuOpen } = useAppContext();
 
-  const visibilityClass = isMenuOpen
-    ? "translate-x-0"
-    : isVisible
-      ? "translate-x-0"
-      : "translate-x-40";
+  // Using clsx to organize visibility classes
+  const visibilityClass = clsx({
+    "translate-x-0": isMenuOpen || isVisible,
+    "translate-x-40": !isMenuOpen && !isVisible,
+  });
 
   useEffect(() => {
     const handleScroll = () => {
@@ -48,9 +49,24 @@ export default function ScrollControl() {
   return (
     <button
       onClick={isAtTop ? scrollToBottom : scrollToTop}
-      className={`bg-background-dark dark:bg-background-light drop-shadow-[0_0_4px_rgba(0,0,0,0.2)] fixed bottom-6 right-6 sm:bottom-8 sm:right-8 lg:bottom-10 lg:right-10 z-50 flex w-[40px] h-[40px] sm:w-[45px] sm:h-[45px] lg:w-[50px] lg:h-[50px] items-center justify-center rounded-full transition-transform duration-300 ${
+      className={clsx(
+        // Base styles
+        "fixed z-50 flex items-center justify-center rounded-full transition-transform duration-300",
+
+        // Styling
+        "bg-background-elevatedDark dark:bg-background-elevated",
+        "text-text-primaryDark dark:text-text-primary",
+        "drop-shadow-[0_0_4px_rgba(0,0,0,0.2)]",
+
+        // Responsive sizing
+        "w-[40px] h-[40px] sm:w-[45px] sm:h-[45px] lg:w-[50px] lg:h-[50px]",
+
+        // Positioning
+        "bottom-6 right-6 sm:bottom-8 sm:right-8 lg:bottom-10 lg:right-10",
+
+        // Visibility state
         visibilityClass
-      }`}
+      )}
     >
       {isAtTop ? (
         <FaArrowDown size={20} className="text-text-dark dark:text-text-light" />

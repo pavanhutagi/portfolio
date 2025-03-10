@@ -1,5 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 
+import clsx from "clsx";
+
 import { navLinks } from "@/constants/nav-links";
 
 export default function Menu() {
@@ -48,15 +50,25 @@ export default function Menu() {
   }, []);
 
   return (
-    <div className="fixed right-6 top-8 sm:right-8 sm:top-8 lg:right-10 lg:top-10 z-40 visible opacity-100 md:invisible md:opacity-0 flex justify-between items-center bg-gray-400 dark:bg-gray-800 rounded-3xl p-4 w-[150px]">
+    <div
+      className={clsx(
+        "fixed z-40 flex items-center justify-between p-4 rounded-3xl w-[150px]",
+        "right-6 top-8 sm:right-8 sm:top-8 lg:right-10 lg:top-10",
+        "visible opacity-100 md:invisible md:opacity-0",
+        "bg-background-subtleDark dark:bg-background-subtle"
+      )}
+    >
       <div className="flex flex-col gap-4">
         {navLinks.map(({ href, label }) => (
           <button
             key={href}
             onClick={() => scrollToSection(href)}
-            className={`${
-              activeSection === href ? "text-primary-500" : "text-text-light dark:text-text-dark"
-            } transition-opacity hover:opacity-50 flex`}
+            className={clsx(
+              "flex transition-opacity hover:opacity-50",
+              activeSection === href
+                ? "text-primary-500"
+                : "text-text-primaryDark dark:text-text-primary"
+            )}
           >
             {label}
           </button>
