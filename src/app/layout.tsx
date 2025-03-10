@@ -1,16 +1,13 @@
-import type { Metadata } from "next";
-import { Oxanium } from "next/font/google";
-
 import "./globals.css";
 
-const oxanium = Oxanium({
-  variable: "--font-oxanium",
+import { Inter } from "next/font/google";
+
+const inter = Inter({
   subsets: ["latin"],
-  display: "swap",
-  weight: ["300", "400"],
+  weight: "400",
 });
 
-export const metadata: Metadata = {
+export const metadata = {
   title: "Pavan Hutagi",
   description: "Portfolio of Pavan Hutagi",
 };
@@ -21,8 +18,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body className={`${oxanium.className} antialiased`}>{children}</body>
+    <html lang="en">
+      <body className={inter.className}>{children}</body>
     </html>
   );
 }
