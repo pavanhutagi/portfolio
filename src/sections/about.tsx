@@ -52,9 +52,10 @@ export default function AboutSection() {
                     </h2>
 
                     <h4 className="text-l text-text-primaryDark dark:text-text-primary">
-                      A developer, designer, DJ, and breakdancer from Bengaluru, with roots in
-                      Belagavi. I thrive at the intersection of technology, creativity, and
-                      movement.
+                      Frontend Engineer & Architect with 7+ years of experience building scalable,
+                      high-performance web applications. A developer, designer, and DJ from Bengaluru,
+                      with roots in Belagavi — I thrive at the intersection of technology, creativity,
+                      and movement.
                     </h4>
 
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">

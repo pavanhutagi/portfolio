@@ -28,7 +28,7 @@ export const getBotResponse = (input: string): string => {
     lowerInput.includes("offer") ||
     lowerInput.includes("do you")
   ) {
-    return "I offer web development, design, and consulting services. Is there a specific service you'd like to know more about?";
+    return "I offer frontend development, UI/UX design, graphic design, and technical architecture services. Is there a specific service you'd like to know more about?";
   }
 
   // Pricing inquiries
@@ -62,7 +62,7 @@ export const getBotResponse = (input: string): string => {
     lowerInput.includes("about") ||
     lowerInput.includes("who are you")
   ) {
-    return "I'm a dedicated developer focused on creating amazing digital experiences. Check out my About section to learn more about my background and skills!";
+    return "I'm a Frontend Engineer & Architect with 7+ years of experience, currently at Perficient working on Ford's digital transformation. Check out my About section to learn more about my background and skills!";
   }
 
   // Location
@@ -71,7 +71,7 @@ export const getBotResponse = (input: string): string => {
     lowerInput.includes("location") ||
     lowerInput.includes("address")
   ) {
-    return "I'm based in [Your Location], but I work with clients globally! The internet is my playground.";
+    return "I'm based in Bengaluru, India, but I work with clients globally! The internet is my playground.";
   }
 
   // Timeline questions
@@ -121,7 +121,7 @@ export const getBotResponse = (input: string): string => {
     lowerInput.includes("framework") ||
     lowerInput.includes("language")
   ) {
-    return "I'm proficient in modern technologies like React, Node.js, and various other frameworks and languages. I choose the right tools for each unique project!";
+    return "I'm proficient in Next.js, TypeScript, React, Redux, Zustand, Tailwind CSS, Angular, and various backend technologies like Node.js, Express.js, and Laravel. I choose the right tools for each unique project!";
   }
 
   // Skills and expertise
@@ -131,7 +131,7 @@ export const getBotResponse = (input: string): string => {
     lowerInput.includes("specialty") ||
     lowerInput.includes("good at")
   ) {
-    return "My core skills include front-end and back-end development, responsive design, API integration, and performance optimization. I'm particularly strong in creating intuitive user experiences!";
+    return "My core skills include frontend architecture, Next.js, TypeScript, React, Redux, Zustand, Tailwind CSS, UI/UX design, accessibility (WCAG), and performance optimization. I'm particularly strong in building scalable, user-centric digital experiences!";
   }
 
   // Experience
@@ -141,7 +141,7 @@ export const getBotResponse = (input: string): string => {
     lowerInput.includes("background") ||
     lowerInput.includes("history")
   ) {
-    return "I have 6 years of experience in web development, working with clients ranging from startups to established businesses. My diverse background allows me to tackle a wide range of projects!";
+    return "I have 7+ years of experience as a Frontend Engineer & Architect, building scalable web applications for enterprises like Ford and IBM. My diverse background allows me to tackle a wide range of projects!";
   }
 
   // Education and certifications
@@ -151,7 +151,7 @@ export const getBotResponse = (input: string): string => {
     lowerInput.includes("certification") ||
     lowerInput.includes("qualified")
   ) {
-    return "I hold a degree in masters of computer application and have several certifications in web technologies. I'm also constantly learning to stay up-to-date with the latest industry trends!";
+    return "I hold an MCA (Master of Computer Applications) from R V College of Engineering, Bengaluru, and a BCA from Gogte College of Commerce, Belagavi. I'm constantly learning to stay up-to-date with the latest industry trends!";
   }
 
   // Availability

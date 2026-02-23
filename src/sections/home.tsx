@@ -62,12 +62,12 @@ export default function HomeSection() {
         />
 
         <p className={clsx("text-text-primaryDark relative z-10", "text-sm sm:text-lg md:text-xl")}>
-          I love turning ideas into reality - whether in code, design, or on the dance floor.
+          I love turning ideas into reality — whether in code, design, or on the dance floor.
         </p>
       </div>
 
       <p className="text-text-secondary dark:text-text-secondaryDark text-sm">
-        The portfolio is still under development.
+        This portfolio is still under development
       </p>
     </section>
   );

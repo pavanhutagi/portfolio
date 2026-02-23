@@ -11,8 +11,9 @@ const oxanium = Oxanium({
 });
 
 export const metadata: Metadata = {
-  title: "Pavan Hutagi",
-  description: "Portfolio of Pavan Hutagi",
+  title: "Pavan Hutagi | Frontend Engineer & Architect",
+  description:
+    "Portfolio of Pavan Hutagi — Frontend Engineer & Architect with 7+ years of experience building scalable, high-performance web applications. UI/UX & Graphic Designer based in Bengaluru.",
 };
 
 export default function RootLayout({

@@ -22,7 +22,14 @@ export default function ChatMessages({ messages, isTyping }: ChatMessagesProps) 
                 : "bg-primary-300 dark:bg-primary-400 text-text-primary dark:text-text-primaryDark"
             }`}
           >
-            <p>{msg.text}</p>
+            <div className="space-y-2">
+              {msg.text
+                .split(/\n\n+/)
+                .filter((p) => p.trim())
+                .map((paragraph, i) => (
+                  <p key={i}>{paragraph.trim()}</p>
+                ))}
+            </div>
             <span className="text-xs opacity-70 block mt-1">
               {msg.timestamp.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}
             </span>

@@ -1,13 +1,12 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import clsx from "clsx";
 import { FaPaperPlane } from "react-icons/fa";
 
 import ChatHeader from "@/components/chat-bot/chat-header";
 import ChatMessages from "@/components/chat-bot/chat-messages";
-import { getBotResponse } from "@/configs/bot-responses";
 import { Message } from "@/types/chat-bot";
 
 interface ChatBotProps {
@@ -18,12 +17,13 @@ export default function ChatBot({ height }: ChatBotProps) {
   const [chatInput, setChatInput] = useState("");
   const [chatMessages, setChatMessages] = useState<Message[]>([
     {
-      text: "Hey, how can I help you today?",
+      text: "Hey! I'm Pavan — well, an AI version of me. Ask me anything about my work, skills, or just say hi!",
       isBot: true,
       timestamp: new Date(),
     },
   ]);
   const [isTyping, setIsTyping] = useState(false);
+  const abortControllerRef = useRef<AbortController | null>(null);
 
   useEffect(() => {
     const chatContainer = document.getElementById("chat-messages");
@@ -35,10 +35,10 @@ export default function ChatBot({ height }: ChatBotProps) {
     }
   }, [chatMessages]);
 
-  const handleChatSubmit = (e: React.FormEvent) => {
+  const handleChatSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (!chatInput.trim()) return;
+    if (!chatInput.trim() || isTyping) return;
 
     const userMessage: Message = {
       text: chatInput,
@@ -46,21 +46,52 @@ export default function ChatBot({ height }: ChatBotProps) {
       timestamp: new Date(),
     };
 
-    setChatMessages((prev) => [...prev, userMessage]);
+    const updatedMessages = [...chatMessages, userMessage];
+    setChatMessages(updatedMessages);
     setChatInput("");
-
     setIsTyping(true);
 
-    setTimeout(() => {
+    abortControllerRef.current = new AbortController();
+
+    try {
+      const response = await fetch("/api/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          messages: updatedMessages.map((msg) => ({
+            text: msg.text,
+            isBot: msg.isBot,
+          })),
+        }),
+        signal: abortControllerRef.current.signal,
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || "Something went wrong");
+      }
+
       const botResponse: Message = {
-        text: getBotResponse(chatInput),
+        text: data.response,
         isBot: true,
         timestamp: new Date(),
       };
 
       setChatMessages((prev) => [...prev, botResponse]);
+    } catch (error: unknown) {
+      if (error instanceof Error && error.name === "AbortError") return;
+
+      const errorMessage: Message = {
+        text: "Oops, something went wrong on my end. Try again in a bit!",
+        isBot: true,
+        timestamp: new Date(),
+      };
+      setChatMessages((prev) => [...prev, errorMessage]);
+    } finally {
       setIsTyping(false);
-    }, 1000);
+      abortControllerRef.current = null;
+    }
   };
 
   return (
@@ -109,11 +140,11 @@ export default function ChatBot({ height }: ChatBotProps) {
               "p-3",
               "shadow-l",
               "transition-colors",
-              chatInput.trim()
+              chatInput.trim() && !isTyping
                 ? "bg-[#1a1a1a] hover:bg-red-600 text-white"
                 : "bg-gray-500 cursor-not-allowed text-gray-400"
             )}
-            disabled={!chatInput.trim()}
+            disabled={!chatInput.trim() || isTyping}
           >
             <FaPaperPlane />
           </button>

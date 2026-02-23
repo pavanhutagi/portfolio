@@ -27,7 +27,7 @@ export default function Root() {
 
         <LeftNeonBulb />
 
-        <main className="w-full flex flex-col gap-20 lg:gap-0 mb-20 lg:mb-0">
+        <main className="w-full flex flex-col gap-20 mb-20">
           <HomeSection />
           <AboutSection />
           <ContactSection />

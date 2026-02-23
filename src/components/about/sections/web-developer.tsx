@@ -274,6 +274,28 @@ export default function WebDeveloper() {
       url: "https://redux.js.org/",
       icon: <SiRedux size={16} className="text-[#764ABC]" />,
     },
+    {
+      name: "Zustand",
+      url: "https://zustand-demo.pmnd.rs/",
+      icon: (
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M12 2L2 7L12 12L22 7L12 2Z"
+            stroke="#443B3B"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+          <path
+            d="M2 17L12 22L22 17"
+            stroke="#443B3B"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
+      ),
+    },
   ];
 
   // Testing data
@@ -282,6 +304,11 @@ export default function WebDeveloper() {
       name: "Jest",
       url: "https://jestjs.io/",
       icon: <SiJest size={16} className="text-[#C21325]" />,
+    },
+    {
+      name: "React Testing Library",
+      url: "https://testing-library.com/react",
+      icon: <SiReact size={16} className="text-[#61DAFB]" />,
     },
   ];
 
@@ -431,52 +458,60 @@ export default function WebDeveloper() {
   // Work experience data
   const workExperiences: WorkExperience[] = [
     {
+      title: "Technical Architect",
+      type: "Full-Time",
+      company: "Perficient, Bengaluru",
+      period: "May 2025 - Present",
+      responsibilities: [
+        "Contributing to Ford's global digital transformation, modernizing their e-commerce ecosystem using Next.js, TypeScript, and Tailwind CSS.",
+        "Designing and optimizing core modules — Landing Page, Vehicle Dashboard, and Recalls — enhancing scalability, performance, and accessibility.",
+        "Building server utilities for locale-specific Terms & Conditions, enabling dynamic consent tracking.",
+        "Refactoring the Recalls module to reduce load time, streamline data fetching, and ensure WCAG compliance.",
+        "Enhancing layout responsiveness across viewports, maintaining consistent grid and design fidelity.",
+        "Collaborating with product, design, and backend teams to align UX, accessibility, and performance goals.",
+        "Mentoring developers on frontend architecture, TypeScript practices, and clean code principles.",
+      ],
+    },
+    {
       title: "Frontend Engineer",
       type: "Consultant",
       company: "DemTech.ai, Bengaluru",
       period: "February 2024 - January 2025",
       responsibilities: [
-        "Laid the groundwork for the UI foundation of BeCause, a Citizen Mobilization Tool, using Next.js, TypeScript, Redux, Material UI, and Puck, enabling NGOs to manage campaigns and configurations.",
-        "Built a design system by developing reusable wrapper components using Material UI.",
-        "Created an admin dashboard to provide a unified view of all modules within the BeCause tool, improving accessibility and management.",
-        "Designed and developed a UI screen for configuring Material UI themes through an intuitive interface.",
-        "Engineered a campaigns module for end-to-end campaign configuration, including design and content.",
-        "Crafted a visual builder using Puck, enabling users to design campaign pages with a drag-and-drop interface.",
-        "Developed a server-side Data Grid component with search, sort, and pagination features for efficient data handling.",
+        "Led the frontend development of BeCause, a citizen-mobilization platform enabling NGOs to manage campaigns, outreach, and user engagement.",
+        "Defined a scalable architecture using Next.js, TypeScript, and Redux, improving maintainability across features.",
+        "Built a reusable design system with Material UI, establishing consistent visual language and faster delivery.",
+        "Designed and implemented a white-label theme system, enabling NGOs to customize branding dynamically.",
+        "Developed an admin dashboard & drag-and-drop visual campaign builder using Puck for intuitive design control.",
+        "Built a server-side Data Grid with search, sort, and pagination for optimized data rendering and filtering.",
+        "Reduced UI build time by over 40% through component reusability, modular design, and performance tuning.",
       ],
     },
     {
       title: "Software Developer",
       type: "Full-Time",
-      company: "IBM India Private Limited, Bengaluru",
+      company: "IBM, Bengaluru",
       period: "September 2018 - December 2023",
       responsibilities: [
-        "Datablocks Product (Tech Lead): Served as the technical leader for DataBlocks, a product designed to foster model developers in configuring data transformation and manipulation models.",
-        "Mentored interns and junior developers, fostering understanding and implementation of technical requirements.",
-        "Designed UI wireframes using Sketch App, adhering to IBM's Carbon Design System and UI/UX principles.",
-        "Established a standard, comprehensible, and reusable UI codebase using Angular and Express.js.",
-        "Implemented the 'Drag & Drop' feature on UI with Angular Material CDK.",
-        "Challenges Module (Tech Lead): Headed a module that configures incentives-related challenges for IBM Sellers.",
-        "Designed a comprehensive UI flow diagram, illustrating the entire application workflow.",
-        "Integrated National Language System (NLS) for multi-lingual interface.",
-        "Managed the migration of two years worth of data from legacy tables to newly defined tables.",
-        "Digital Sales Tool Mapping: Implemented modules to automate the mapping of Client Contact Experience (CCX) modules to Sales Development Representative (SDR) profiles.",
-        "Developed a universal tool for user registration and management, designed for easy integration with IBM React applications.",
-        "Contributed to an in-house web application building framework using technologies - Next.js, Redux and IBM Carbon components.",
-        "Seller Profile Incentive Module: Streamlined and refactored the code utilized for configuring incentive elements within the seller profiles.",
-        "Optimised backend code and SQL queries, resulting in a significant reduction of load time from 2-3 minutes to just 5-10 seconds.",
-        "Transaction Adjustments Module: Developed backend services to perform data validation, bulk insertion, and bulk deletion, facilitating efficient adjustment of seller's incentives.",
+        "Led frontend development for DataBlocks, building reusable Angular components and drag-and-drop workflows aligned with Carbon Design System.",
+        "Led the development of Challenges Module, integrating multilingual support (NLS) and migrating 2 years of legacy data to modern systems.",
+        "Automated Sales Tool Mapping to connect CCX tools (chat, scheduler, and email) with SDR profiles.",
+        "Refactored Seller Incentive Module, cutting load time from 2–3 minutes to under 10 seconds through backend and SQL optimization.",
+        "Built backend APIs for Transaction Adjustments to support bulk data validation and updates.",
+        "Contributed to IBM's internal Next.js + Redux + Carbon Design System framework called RDX, improving developer efficiency and frontend consistency.",
+        "Mentored interns and enforced Carbon Design System adoption for UI quality and accessibility.",
       ],
     },
     {
-      title: "Software Developer",
+      title: "Software Developer Intern",
       type: "Internship",
-      company: "IBM India Private Limited, Bengaluru",
+      company: "IBM, Bengaluru",
       period: "January 2018 - June 2018",
       responsibilities: [
-        "Completed an internship with IBM CIO, focusing on the Sales Incentives System.",
-        "Developed web solutions to meet specific business needs, utilizing technologies such as AngularJS, PHP, & IBM DB2.",
-        "Engaged in Agile Methodologies to ensure efficient and effective project management and delivery.",
+        "Completed internship under IBM CIO, contributing to the Sales Incentives Management System used by global sales teams.",
+        "Developed responsive web modules using AngularJS, PHP, and IBM DB2, improving performance and reliability.",
+        "Collaborated in Agile sprints with senior developers on planning, implementation, and testing.",
+        "Delivered production-ready components that evolved into enterprise-grade modules.",
       ],
     },
   ];
@@ -505,7 +540,7 @@ export default function WebDeveloper() {
     <div className="flex flex-col gap-6">
       <p className="text-sm md:text-lg">
         I specialize in developing scalable, high-performance web applications with a strong focus
-        on user experience, accessibility, and efficiency. With over 6 years of experience, I have
+        on user experience, accessibility, and efficiency. With 7+ years of experience, I have
         worked on enterprise-level tools, UI systems, and interactive web applications that
         streamline workflows and enhance usability.
       </p>
