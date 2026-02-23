@@ -3,13 +3,11 @@
 import { useCallback, useEffect, useState } from "react";
 
 import Particles from "react-tsparticles";
-import resolveConfig from "tailwindcss/resolveConfig";
 import type { Engine } from "tsparticles-engine";
 import { loadSlim } from "tsparticles-slim";
 
 import { useAppContext } from "@/context/app-context";
 
-import tailwindConfig from "../../tailwind.config";
 import particlesConfigJson from "../configs/particles-config.json";
 
 export default function ParticlesBackground() {
@@ -21,20 +19,18 @@ export default function ParticlesBackground() {
   }, []);
 
   useEffect(() => {
-    const fullConfig = resolveConfig(tailwindConfig);
-    const colors: any = fullConfig.theme.colors;
     const config = JSON.parse(JSON.stringify(particlesConfigJson));
 
     if (theme === "dark") {
-      config.background.color.value = colors.background.dark;
-      config.particles.color.value = colors.particles.dark;
-      config.particles.shape.stroke.color = colors.particles.dark;
-      config.particles.line_linked.color = colors.particles.dark;
+      config.background.color.value = "#121212";
+      config.particles.color.value = "#252525";
+      config.particles.shape.stroke.color = "#252525";
+      config.particles.line_linked.color = "#252525";
     } else {
-      config.background.color.value = colors.background.light;
-      config.particles.color.value = colors.particles.light;
-      config.particles.shape.stroke.color = colors.particles.light;
-      config.particles.line_linked.color = colors.particles.light;
+      config.background.color.value = "#ebebeb";
+      config.particles.color.value = "#d3d3d3";
+      config.particles.shape.stroke.color = "#d3d3d3";
+      config.particles.line_linked.color = "#d3d3d3";
     }
 
     setParticlesConfig(config);

@@ -1,5 +1,6 @@
-import { GoogleGenerativeAI } from "@google/generative-ai";
 import { NextRequest, NextResponse } from "next/server";
+
+import { GoogleGenerativeAI } from "@google/generative-ai";
 
 const SYSTEM_PROMPT = `You are Pavan Hutagi. You ARE Pavan — not an AI assistant pretending to be him. Always respond in first person as yourself. Be warm, friendly, approachable, and a little witty. Keep responses concise (2-4 sentences usually) unless someone asks for detail.
 

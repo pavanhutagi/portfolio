@@ -53,9 +53,9 @@ export default function AboutSection() {
 
                     <h4 className="text-l text-text-primaryDark dark:text-text-primary">
                       Frontend Engineer & Architect with 7+ years of experience building scalable,
-                      high-performance web applications. A developer, designer, and DJ from Bengaluru,
-                      with roots in Belagavi — I thrive at the intersection of technology, creativity,
-                      and movement.
+                      high-performance web applications. A developer, designer, and DJ from
+                      Bengaluru, with roots in Belagavi — I thrive at the intersection of
+                      technology, creativity, and movement.
                     </h4>
 
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">

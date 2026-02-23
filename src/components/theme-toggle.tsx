@@ -30,8 +30,8 @@ export default function ThemeToggle() {
 
         // Styling
         "flex items-center justify-center",
-        "bg-background-elevatedDark dark:bg-background-elevated",
-        "text-text-primaryDark dark:text-text-primary",
+        "bg-[#4a4a4a]",
+        "text-text-light",
         "drop-shadow-[0_0_4px_rgba(0,0,0,0.2)]",
         "rounded-full",
 
@@ -45,7 +45,7 @@ export default function ThemeToggle() {
       {theme === "dark" ? (
         <FaSun className="h-5 w-5 text-text-light" />
       ) : (
-        <FaMoon className="h-5 w-5 text-text-dark" />
+        <FaMoon className="h-5 w-5 text-text-light" />
       )}
     </button>
   );

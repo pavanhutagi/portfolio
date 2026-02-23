@@ -21,8 +21,8 @@ export default function AudioControl() {
           "fixed flex items-center justify-center rounded-full transition-transform duration-300",
 
           // Styling
-          "bg-background-elevatedDark dark:bg-background-elevated",
-          "text-text-primaryDark dark:text-text-primary",
+          "bg-[#4a4a4a]",
+          "text-text-light",
           "drop-shadow-[0_0_4px_rgba(0,0,0,0.2)]",
 
           // Positioning
@@ -37,9 +37,9 @@ export default function AudioControl() {
         )}
       >
         {isPlaying ? (
-          <FaVolumeUp className="h-5 w-5 text-text-dark dark:text-text-light" />
+          <FaVolumeUp className="h-5 w-5 text-text-light" />
         ) : (
-          <FaVolumeMute className="h-5 w-5 text-text-dark dark:text-text-light" />
+          <FaVolumeMute className="h-5 w-5 text-text-light" />
         )}
       </button>
     </div>

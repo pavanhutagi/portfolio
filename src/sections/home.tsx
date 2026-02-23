@@ -20,9 +20,9 @@ export default function HomeSection() {
     if (isLeftNeonBulbLit && isRightNeonBulbLit) {
       return "bg-primary-500";
     } else if (isLeftNeonBulbLit) {
-      return "bg-gradient-to-b md:bg-gradient-to-r from-primary-500 to-secondary-500";
+      return "bg-linear-to-b md:bg-linear-to-r from-primary-500 to-secondary-500";
     } else if (isRightNeonBulbLit) {
-      return "bg-gradient-to-t md:bg-gradient-to-l from-primary-500 to-secondary-500";
+      return "bg-linear-to-t md:bg-linear-to-l from-primary-500 to-secondary-500";
     } else {
       return "bg-secondary-500";
     }

@@ -54,8 +54,8 @@ export default function ScrollControl() {
         "fixed z-50 flex items-center justify-center rounded-full transition-transform duration-300",
 
         // Styling
-        "bg-background-elevatedDark dark:bg-background-elevated",
-        "text-text-primaryDark dark:text-text-primary",
+        "bg-[#4a4a4a]",
+        "text-text-light",
         "drop-shadow-[0_0_4px_rgba(0,0,0,0.2)]",
 
         // Responsive sizing
@@ -69,9 +69,9 @@ export default function ScrollControl() {
       )}
     >
       {isAtTop ? (
-        <FaArrowDown size={20} className="text-text-dark dark:text-text-light" />
+        <FaArrowDown size={20} className="text-text-light" />
       ) : (
-        <FaArrowUp size={20} className="text-text-dark dark:text-text-light" />
+        <FaArrowUp size={20} className="text-text-light" />
       )}
     </button>
   );

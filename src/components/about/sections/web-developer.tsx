@@ -278,7 +278,13 @@ export default function WebDeveloper() {
       name: "Zustand",
       url: "https://zustand-demo.pmnd.rs/",
       icon: (
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
           <path
             d="M12 2L2 7L12 12L22 7L12 2Z"
             stroke="#443B3B"
@@ -323,7 +329,7 @@ export default function WebDeveloper() {
           alt="Cursor IDE"
           width={18}
           height={18}
-          className="rounded-sm"
+          className="rounded-xs"
         />
       ),
     },

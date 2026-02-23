@@ -23,8 +23,8 @@ export default function MenuButton() {
           "w-[40px] h-[40px] sm:w-[45px] sm:h-[45px] lg:w-[50px] lg:h-[50px]",
 
           // Styling
-          "rounded-full bg-background-elevatedDark dark:bg-background-elevated",
-          "text-text-primaryDark dark:text-text-primary",
+          "rounded-full bg-[#4a4a4a]",
+          "text-text-light",
           "drop-shadow-[0_0_4px_rgba(0,0,0,0.2)]",
 
           // Layout
@@ -40,7 +40,7 @@ export default function MenuButton() {
           "visible opacity-100 md:invisible md:opacity-0"
         )}
       >
-        <FaBars className="h-5 w-5 text-text-dark dark:text-text-light" />
+        <FaBars className="h-5 w-5 text-text-light" />
       </button>
 
       {isMenuOpen && <Menu />}

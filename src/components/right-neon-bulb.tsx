@@ -20,7 +20,7 @@ export default function RightNeonBulb() {
 
     // Conditional styles based on lit state
     isRightNeonBulbLit
-      ? "bg-primary-500 shadow-[0_0_40px_theme(colors.primary.600),0_0_120px_theme(colors.primary.700)] hover:bg-primary-400"
+      ? "bg-primary-500 shadow-[0_0_40px_var(--color-primary-600),0_0_120px_var(--color-primary-700)] hover:bg-primary-400"
       : "bg-primary-700 hover:bg-primary-600"
   );
 

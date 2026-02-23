@@ -23,12 +23,12 @@ export default function LeftNeonBulb() {
             // Base styles
             "h-full w-[200px] cursor-pointer rounded-b-full",
             // Responsive styles
-            "md:h-[300px] md:w-full md:rounded-b-none md:rounded-r-full",
+            "md:h-[300px] md:w-full md:rounded-tr-full md:rounded-br-full md:rounded-bl-none",
             // Conditional styles based on state
             isLeftNeonBulbLit
               ? [
                   "bg-primary-500",
-                  "shadow-[0_0_40px_theme(colors.primary.600),0_0_120px_theme(colors.primary.700)]",
+                  "shadow-[0_0_40px_var(--color-primary-600),0_0_120px_var(--color-primary-700)]",
                   "hover:bg-primary-400",
                 ]
               : ["bg-primary-700", "hover:bg-primary-600"]

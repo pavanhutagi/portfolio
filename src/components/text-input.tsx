@@ -60,7 +60,7 @@ const TextInput: FC<TextInputProps> = ({
           setTouched(true);
         }}
         className={clsx(
-          "rounded-[15px] p-3 sm:p-4 outline-none",
+          "rounded-[15px] p-3 sm:p-4 outline-hidden",
           "bg-secondary-500 dark:bg-secondary-200",
           "text-text-primaryDark dark:text-text-primary",
           "focus:ring-2 focus:ring-primary-500 focus:border-primary-500",

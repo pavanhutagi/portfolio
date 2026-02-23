@@ -104,14 +104,14 @@ export default function ChatBot({ height }: ChatBotProps) {
         "rounded-[15px]",
         "overflow-hidden",
         "relative",
-        "backdrop-blur-sm"
+        "backdrop-blur-xs"
       )}
     >
       <ChatHeader />
 
       <div
         id="chat-messages"
-        className={clsx("flex-grow", "bg-secondary-500 dark:bg-secondary-200", "overflow-y-auto")}
+        className={clsx("grow", "bg-secondary-500 dark:bg-secondary-200", "overflow-y-auto")}
       >
         <ChatMessages messages={chatMessages} isTyping={isTyping} />
       </div>
@@ -124,13 +124,13 @@ export default function ChatBot({ height }: ChatBotProps) {
             onChange={(e) => setChatInput(e.target.value)}
             placeholder="Type your message here"
             className={clsx(
-              "flex-grow",
+              "grow",
               "px-2 pb-1",
               "bg-gray-400 dark:bg-gray-600 ",
               "text-text-primary dark:text-text-primaryDark",
               "placeholder-text-secondary dark:placeholder-text-secondaryDark",
               "rounded-lg",
-              "focus:outline-none"
+              "focus:outline-hidden"
             )}
           />
           <button
@@ -141,7 +141,7 @@ export default function ChatBot({ height }: ChatBotProps) {
               "shadow-l",
               "transition-colors",
               chatInput.trim() && !isTyping
-                ? "bg-[#1a1a1a] hover:bg-red-600 text-white"
+                ? "bg-background-subtleDark hover:bg-red-600 text-white"
                 : "bg-gray-500 cursor-not-allowed text-gray-400"
             )}
             disabled={!chatInput.trim() || isTyping}
