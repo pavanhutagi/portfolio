@@ -23,7 +23,10 @@ export default function ChatBot({ height }: ChatBotProps) {
     },
   ]);
   const [isTyping, setIsTyping] = useState(false);
+  const [isSpeaking, setIsSpeaking] = useState(false);
+
   const abortControllerRef = useRef<AbortController | null>(null);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
 
   useEffect(() => {
     const chatContainer = document.getElementById("chat-messages");
@@ -35,20 +38,60 @@ export default function ChatBot({ height }: ChatBotProps) {
     }
   }, [chatMessages]);
 
-  const handleChatSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+  const addMessageAndPlayTTS = async (botResponse: Message) => {
+    try {
+      setIsSpeaking(true);
 
-    if (!chatInput.trim() || isTyping) return;
+      const response = await fetch("/api/tts", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ text: botResponse.text }),
+      });
+
+      if (!response.ok) {
+        throw new Error("TTS failed");
+      }
+
+      const arrayBuffer = await response.arrayBuffer();
+      const blob = new Blob([arrayBuffer], { type: "audio/mpeg" });
+      const url = URL.createObjectURL(blob);
+
+      if (audioRef.current) {
+        audioRef.current.pause();
+        audioRef.current.currentTime = 0;
+      }
+
+      const audio = new Audio(url);
+      audioRef.current = audio;
+
+      audio.onended = () => {
+        setIsSpeaking(false);
+        URL.revokeObjectURL(url);
+      };
+
+      setChatMessages((prev) => [...prev, botResponse]);
+      setIsTyping(false);
+
+      await audio.play();
+    } catch (error) {
+      console.error("Failed to play TTS audio:", error);
+      setChatMessages((prev) => [...prev, botResponse]);
+      setIsTyping(false);
+      setIsSpeaking(false);
+    }
+  };
+
+  const sendMessage = async (text: string) => {
+    if (!text.trim() || isTyping) return;
 
     const userMessage: Message = {
-      text: chatInput,
+      text,
       isBot: false,
       timestamp: new Date(),
     };
 
     const updatedMessages = [...chatMessages, userMessage];
     setChatMessages(updatedMessages);
-    setChatInput("");
     setIsTyping(true);
 
     abortControllerRef.current = new AbortController();
@@ -78,7 +121,7 @@ export default function ChatBot({ height }: ChatBotProps) {
         timestamp: new Date(),
       };
 
-      setChatMessages((prev) => [...prev, botResponse]);
+      await addMessageAndPlayTTS(botResponse);
     } catch (error: unknown) {
       if (error instanceof Error && error.name === "AbortError") return;
 
@@ -88,10 +131,20 @@ export default function ChatBot({ height }: ChatBotProps) {
         timestamp: new Date(),
       };
       setChatMessages((prev) => [...prev, errorMessage]);
-    } finally {
       setIsTyping(false);
+    } finally {
       abortControllerRef.current = null;
     }
+  };
+
+  const handleChatSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    if (!chatInput.trim() || isTyping) return;
+
+    const currentInput = chatInput;
+    setChatInput("");
+    await sendMessage(currentInput);
   };
 
   return (

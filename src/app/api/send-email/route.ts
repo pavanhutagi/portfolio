@@ -13,7 +13,15 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
     }
 
-    // Create a transporter
+    if (!process.env.EMAIL_USER || !process.env.EMAIL_PASSWORD) {
+      console.error("EMAIL_USER or EMAIL_PASSWORD environment variables are not set");
+      return NextResponse.json(
+        { error: "Email service is not configured. Please try again later." },
+        { status: 500 }
+      );
+    }
+
+    // Create a transporter (Gmail with app password)
     const transporter = nodemailer.createTransport({
       service: "gmail",
       auth: {
