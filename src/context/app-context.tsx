@@ -13,6 +13,8 @@ interface AppContextType {
   setIsMenuOpen: (isOpen: boolean) => void;
   isChatOpen: boolean;
   setIsChatOpen: (isOpen: boolean) => void;
+  isChatBotActive: boolean;
+  setIsChatBotActive: (isActive: boolean) => void;
 }
 
 interface AppProviderProps {
@@ -27,6 +29,7 @@ export default function AppContextProvider({ children }: AppProviderProps) {
   const [isRightNeonBulbLit, setIsRightNeonBulbLit] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isChatOpen, setIsChatOpen] = useState(false);
+  const [isChatBotActive, setIsChatBotActive] = useState(false);
 
   useEffect(() => {
     const root = window.document.documentElement;
@@ -52,6 +55,8 @@ export default function AppContextProvider({ children }: AppProviderProps) {
     setIsMenuOpen,
     isChatOpen,
     setIsChatOpen,
+    isChatBotActive,
+    setIsChatBotActive,
   };
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;

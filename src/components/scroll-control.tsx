@@ -10,7 +10,7 @@ import { useIdleVisibility } from "@/hooks/idle-visibility";
 
 export default function ChatToggle() {
   const isVisible = useIdleVisibility();
-  const { isMenuOpen, isChatOpen, setIsChatOpen } = useAppContext();
+  const { isMenuOpen, isChatOpen, setIsChatOpen, isChatBotActive } = useAppContext();
 
   const visibilityClass = clsx({
     "translate-x-0": isMenuOpen || isVisible || isChatOpen,
@@ -52,11 +52,12 @@ export default function ChatToggle() {
         onClick={() => setIsChatOpen(!isChatOpen)}
         className={clsx(
           "fixed z-50 flex items-center justify-center rounded-full transition-all duration-300",
-          "bg-[#4a4a4a]",
-          "text-text-light",
           "drop-shadow-[0_0_4px_rgba(0,0,0,0.2)]",
           "w-[40px] h-[40px] sm:w-[45px] sm:h-[45px] lg:w-[50px] lg:h-[50px]",
           "bottom-6 right-6 sm:bottom-8 sm:right-8 lg:bottom-10 lg:right-10",
+          !isChatOpen && isChatBotActive
+            ? "bg-primary-500 animate-pulse-ring"
+            : "bg-[#4a4a4a]",
           visibilityClass
         )}
       >
