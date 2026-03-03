@@ -1,11 +1,10 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 
 import clsx from "clsx";
 
 import Button from "@/components/button";
-import ChatBot from "@/components/chat-bot/chat-bot";
 import TextArea from "@/components/text-area";
 import TextInput from "@/components/text-input";
 
@@ -15,8 +14,6 @@ export default function ContactSection() {
   const [message, setMessage] = useState("");
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [isFormValid, setIsFormValid] = useState(false);
-  const [contactFormHeight, setContactFormHeight] = useState(0);
-  const contactFormRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -24,37 +21,6 @@ export default function ContactSection() {
       name.trim() !== "" && email.trim() !== "" && message.trim() !== "" && emailRegex.test(email);
     setIsFormValid(valid);
   }, [name, email, message]);
-
-  useEffect(() => {
-    // Function to calculate and set the form height
-    const calculateFormHeight = () => {
-      if (contactFormRef.current) {
-        const height = contactFormRef.current.offsetHeight;
-        setContactFormHeight(height);
-      }
-    };
-
-    // Create a ResizeObserver to watch for size changes
-    const resizeObserver = new ResizeObserver(() => {
-      calculateFormHeight();
-    });
-
-    // Start observing the form element
-    if (contactFormRef.current) {
-      resizeObserver.observe(contactFormRef.current);
-    }
-
-    // Calculate initially
-    calculateFormHeight();
-
-    // Cleanup
-    return () => {
-      if (contactFormRef.current) {
-        resizeObserver.unobserve(contactFormRef.current);
-      }
-      resizeObserver.disconnect();
-    };
-  }, []);
 
   const handleSubmit = async () => {
     if (!isFormValid) return;
@@ -115,11 +81,8 @@ export default function ContactSection() {
           "z-10"
         )}
       >
-        <ChatBot height={contactFormHeight} />
-
         <div
-          ref={contactFormRef}
-          className={clsx("flex", "flex-col", "justify-center", "gap-4", "w-full", "lg:h-[700px]")}
+          className={clsx("flex", "flex-col", "justify-center", "gap-4", "w-full", "lg:w-2/3")}
         >
           <p
             className={clsx(

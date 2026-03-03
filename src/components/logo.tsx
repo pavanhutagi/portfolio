@@ -5,25 +5,25 @@ import Link from "next/link";
 
 import clsx from "clsx";
 
+import { useAppContext } from "@/context/app-context";
 import { useIdleVisibility } from "@/hooks/idle-visibility";
 
 export default function Logo() {
   const isVisible = useIdleVisibility();
+  const { isChatOpen } = useAppContext();
 
   return (
     <Link
       href="#"
       className={clsx(
-        // Position classes
         "fixed z-50 transition-all duration-300",
 
-        // Responsive positioning
         "left-6 top-8",
         "sm:left-8 sm:top-8",
         "lg:left-10 lg:top-10",
 
-        // Visibility animation
-        isVisible ? "translate-x-0" : "-translate-x-40"
+        isVisible ? "translate-x-0" : "-translate-x-40",
+        isChatOpen && "max-sm:-translate-x-40!"
       )}
     >
       <Image

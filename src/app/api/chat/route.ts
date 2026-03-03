@@ -13,7 +13,8 @@ PERSONAL:
 - LinkedIn: pavan-hutagi
 - Portfolio: www.pavanhutagi.com
 - Tagline: "I love turning ideas into reality — whether in code, design, or on the dance floor."
-- You're a Frontend Engineer & Architect, Designer, DJ, and Backpacker. Hobbies: Coding, Backpacking, Designing, Breakdancing, DJing, Gaming.
+- You're a Frontend Engineer & Architect, Designer, DJ, and Backpacker.
+- Hobbies: Coding, Backpacking, Designing, DJing, Gaming.
 - Languages spoken: English, Hindi, Marathi, Kannada.
 
 PROFESSIONAL (7+ years of experience):
@@ -56,44 +57,49 @@ RESPONSE GUIDELINES:
 - If someone asks something you don't know about Pavan, say something like "Hmm, I haven't shared that publicly yet, but feel free to drop me an email at pavanhutagi@gmail.com!"
 - If someone asks to contact you, mention the contact form on the right or your email.
 - Don't make up facts about yourself that aren't listed above.
-- Keep it natural — don't list everything at once unless asked.`;
+- Keep it natural — don't list everything at once unless asked.
+- IMPORTANT: Do NOT repeatedly use the tagline "I love turning ideas into reality…" or any variation of it. Use it at most once in an entire conversation, and only if it fits organically. When asked what you do or what you're about, give a fresh, specific answer each time — talk about what you're currently working on, a recent interest, or something concrete instead of falling back on the tagline.
+- Avoid repeating the same phrases, sentences, or ideas across messages. Each response should feel fresh. If you've already mentioned something in the conversation, don't bring it up again unless the user specifically asks about it.
+- Talk like a real person catching up with someone — vary your tone, mix short and longer replies, and don't sound rehearsed.`;
 
 export async function POST(request: NextRequest) {
   try {
-    const { messages } = await request.json();
-
-    const apiKey = process.env.GEMINI_API_KEY;
-    if (!apiKey) {
-      return NextResponse.json({ error: "Gemini API key not configured" }, { status: 500 });
+    const apiKey = process.env.GEMINI_API_KEY || process.env.GOOGLE_GENERATIVE_AI_API_KEY;
+    if (!apiKey?.trim()) {
+      console.error("Gemini API error: API key is missing or empty");
+      return NextResponse.json(
+        { error: "Server misconfiguration: API key not set" },
+        { status: 500 }
+      );
     }
 
     const genAI = new GoogleGenerativeAI(apiKey);
+    const { message, history = [] } = await request.json();
+
     const model = genAI.getGenerativeModel({
       model: "gemini-2.5-flash",
       systemInstruction: SYSTEM_PROMPT,
     });
 
-    const relevantMessages = messages.slice(0, -1);
-    const firstUserIndex = relevantMessages.findIndex((msg: { isBot: boolean }) => !msg.isBot);
-    const historyMessages = firstUserIndex >= 0 ? relevantMessages.slice(firstUserIndex) : [];
+    const mapped = Array.isArray(history)
+      ? history.map((msg: { role: string; content: string }) => ({
+          role: msg.role === "user" ? "user" : "model",
+          parts: [{ text: msg.content ?? "" }],
+        }))
+      : [];
 
-    const history = historyMessages.map((msg: { text: string; isBot: boolean }) => ({
-      role: msg.isBot ? "model" : "user",
-      parts: [{ text: msg.text }],
-    }));
+    const firstUserIdx = mapped.findIndex((m) => m.role === "user");
+    const chatHistory = firstUserIdx >= 0 ? mapped.slice(firstUserIdx) : [];
 
-    const chat = model.startChat({ history });
+    const chat = model.startChat({ history: chatHistory });
 
-    const lastMessage = messages[messages.length - 1].text;
-    const result = await chat.sendMessage(lastMessage);
-    const response = result.response.text();
+    const result = await chat.sendMessage(message ?? "");
+    const responseText = result.response.text();
 
-    return NextResponse.json({ response });
+    return NextResponse.json({ text: responseText });
   } catch (error) {
-    console.error("Gemini API error:", error);
-    return NextResponse.json(
-      { error: "Failed to get a response. Please try again." },
-      { status: 500 }
-    );
+    const errMsg = error instanceof Error ? error.message : String(error);
+    console.error("Gemini API error:", errMsg, error);
+    return NextResponse.json({ error: "Failed to generate response" }, { status: 500 });
   }
 }

@@ -8,7 +8,7 @@ import MenuButton from "@/components/menu-button";
 import Navbar from "@/components/navbar";
 import ParticlesBackground from "@/components/particles-background";
 import RightNeonBulb from "@/components/right-neon-bulb";
-import ScrollControl from "@/components/scroll-control";
+import ChatToggle from "@/components/scroll-control";
 import ThemeToggle from "@/components/theme-toggle";
 import AppContextProvider from "@/context/app-context";
 import AboutSection from "@/sections/about";
@@ -37,7 +37,7 @@ export default function Root() {
 
         <AudioControl />
         <Navbar />
-        <ScrollControl />
+        <ChatToggle />
 
         <Footer />
       </div>

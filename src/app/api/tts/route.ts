@@ -5,59 +5,47 @@ const ELEVENLABS_API_URL = "https://api.elevenlabs.io/v1/text-to-speech";
 export async function POST(request: NextRequest) {
   try {
     const { text } = await request.json();
+    const voiceId = process.env.ELEVENLABS_VOICE_ID!;
+    const apiKey = process.env.ELEVENLABS_API_KEY!;
 
-    if (!text || typeof text !== "string") {
-      return NextResponse.json({ error: "Missing or invalid 'text' field" }, { status: 400 });
-    }
+    const response = await fetch(`${ELEVENLABS_API_URL}/${voiceId}/stream`, {
+      method: "POST",
+      headers: {
+        "xi-api-key": apiKey,
+        "Content-Type": "application/json",
+        Accept: "audio/mpeg",
+      },
+      body: JSON.stringify({
+        text,
+        model_id: "eleven_multilingual_v2",
+        voice_settings: {
+          stability: 0.5,
+          similarity_boost: 0.75,
+          style: 0.0,
+          use_speaker_boost: true,
+        },
+      }),
+    });
 
-    const apiKey = process.env.ELEVENLABS_API_KEY;
-    const voiceId = process.env.ELEVENLABS_VOICE_ID;
-    const modelId = process.env.ELEVENLABS_MODEL_ID || "eleven_multilingual_v2";
-
-    if (!apiKey || !voiceId) {
+    if (!response.ok) {
+      const errorBody = await response.text();
+      console.error("ElevenLabs API error:", response.status, errorBody);
       return NextResponse.json(
-        { error: "ElevenLabs API key or voice ID not configured" },
+        { error: "Failed to generate speech" },
         { status: 500 }
       );
     }
 
-    const elevenResponse = await fetch(`${ELEVENLABS_API_URL}/${voiceId}`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "audio/mpeg",
-        "xi-api-key": apiKey,
-      },
-      body: JSON.stringify({
-        text,
-        model_id: modelId,
-      }),
-    });
-
-    if (!elevenResponse.ok) {
-      const errorText = await elevenResponse.text();
-      console.error("ElevenLabs TTS error:", errorText);
-      return NextResponse.json(
-        { error: "Failed to generate speech from ElevenLabs" },
-        { status: 502 }
-      );
-    }
-
-    const audioBuffer = await elevenResponse.arrayBuffer();
-
-    return new NextResponse(audioBuffer, {
-      status: 200,
+    return new NextResponse(response.body, {
       headers: {
         "Content-Type": "audio/mpeg",
-        "Cache-Control": "no-store",
       },
     });
   } catch (error) {
-    console.error("TTS API error:", error);
+    console.error("TTS error:", error);
     return NextResponse.json(
-      { error: "Failed to process TTS request. Please try again." },
+      { error: "Failed to generate speech" },
       { status: 500 }
     );
   }
 }
-

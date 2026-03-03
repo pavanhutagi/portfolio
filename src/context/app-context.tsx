@@ -11,6 +11,8 @@ interface AppContextType {
   setIsRightNeonBulbLit: (isLit: boolean) => void;
   isMenuOpen: boolean;
   setIsMenuOpen: (isOpen: boolean) => void;
+  isChatOpen: boolean;
+  setIsChatOpen: (isOpen: boolean) => void;
 }
 
 interface AppProviderProps {
@@ -24,6 +26,7 @@ export default function AppContextProvider({ children }: AppProviderProps) {
   const [isLeftNeonBulbLit, setIsLeftNeonBulbLit] = useState(false);
   const [isRightNeonBulbLit, setIsRightNeonBulbLit] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isChatOpen, setIsChatOpen] = useState(false);
 
   useEffect(() => {
     const root = window.document.documentElement;
@@ -47,6 +50,8 @@ export default function AppContextProvider({ children }: AppProviderProps) {
     setIsRightNeonBulbLit,
     isMenuOpen,
     setIsMenuOpen,
+    isChatOpen,
+    setIsChatOpen,
   };
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;

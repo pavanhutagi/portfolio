@@ -2,12 +2,11 @@
 
 import React, { useState } from "react";
 
-import clsx from "clsx";
-
 import { DetailPopup } from "@/components/about/detail-popup";
 import { SubsectionCard } from "@/components/about/subsection-card";
-import { subsectionData } from "@/data/about-content";
 import type { SubsectionId } from "@/types/about";
+import clsx from "clsx";
+import { subsectionData } from "@/data/about-content";
 
 export default function AboutSection() {
   const [activePopup, setActivePopup] = useState<SubsectionId | null>(null);
@@ -46,7 +45,7 @@ export default function AboutSection() {
                     "p-6 relative"
                   )}
                 >
-                  <div className="overflow-scroll flex flex-col gap-6">
+                  <div className="overflow-scroll flex flex-col gap-10">
                     <h2 className="text-3xl font-bold text-text-primaryDark dark:text-text-primary">
                       Hey, I'm Pavan 👋
                     </h2>
