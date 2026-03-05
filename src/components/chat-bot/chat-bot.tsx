@@ -69,6 +69,7 @@ export default function ChatBot({ height, className }: ChatBotProps) {
   const voiceModeRef = useRef(false);
   const voiceStateRef = useRef<VoiceState>("idle");
   const processingRef = useRef(false);
+  const ignoreResultsRef = useRef(false);
   const retryCountRef = useRef(0);
   const chatMessagesRef = useRef(chatMessages);
   const audioContextRef = useRef<AudioContext | null>(null);
@@ -120,112 +121,112 @@ export default function ChatBot({ height, className }: ChatBotProps) {
   const startListening = useCallback(() => {
     if (!voiceModeRef.current) return;
 
+    if (recognitionRef.current) {
+      try {
+        recognitionRef.current.abort();
+      } catch {
+        /* ignore */
+      }
+      recognitionRef.current = null;
+    }
+
     const SpeechRecognitionAPI = window.SpeechRecognition || window.webkitSpeechRecognition;
     if (!SpeechRecognitionAPI) {
-      console.error("Speech recognition not supported in this browser");
       return;
     }
 
-    transcriptRef.current = "";
+    const recognition = new SpeechRecognitionAPI();
+    recognition.continuous = true;
+    recognition.interimResults = true;
+    recognition.lang = "en-US";
 
-    if (!recognitionRef.current) {
-      const recognition = new SpeechRecognitionAPI();
-      recognition.continuous = true;
-      recognition.interimResults = true;
-      recognition.lang = "en-US";
+    recognition.onresult = (event: SpeechRecognitionEvent) => {
+      if (processingRef.current || ignoreResultsRef.current) return;
 
-      recognition.onresult = (event: SpeechRecognitionEvent) => {
-        if (processingRef.current) return;
+      retryCountRef.current = 0;
+      let finalTranscript = "";
+      let interimTranscript = "";
 
+      for (let i = event.resultIndex; i < event.results.length; i++) {
+        const transcript = event.results[i][0].transcript;
+        if (event.results[i].isFinal) {
+          finalTranscript += transcript;
+        } else {
+          interimTranscript += transcript;
+        }
+      }
+
+      if (finalTranscript) {
+        transcriptRef.current += finalTranscript;
+      }
+
+      if (silenceTimerRef.current) {
+        clearTimeout(silenceTimerRef.current);
+      }
+
+      if (transcriptRef.current.trim() || interimTranscript.trim()) {
+        const hasFinalized = transcriptRef.current.trim().length > 0;
+        const silenceMs = hasFinalized ? 800 : 1200;
+        silenceTimerRef.current = setTimeout(() => {
+          if (processingRef.current || ignoreResultsRef.current) return;
+          const text = transcriptRef.current.trim();
+          if (text && voiceModeRef.current) {
+            processingRef.current = true;
+            transcriptRef.current = "";
+            ignoreResultsRef.current = true;
+            processVoiceInput(text);
+          }
+        }, silenceMs);
+      }
+    };
+
+    recognition.onerror = (event: SpeechRecognitionErrorEvent) => {
+      if (event.error === "no-speech" || event.error === "aborted") return;
+
+      if (event.error === "not-allowed") {
+        setVoiceMode(false);
+        voiceModeRef.current = false;
+        setVoiceState("idle");
+        recognitionRef.current = null;
+        setChatMessages((prev) => [
+          ...prev,
+          {
+            text: "Microphone access is needed for voice chat. Please allow it in your browser settings.",
+            isBot: true,
+            timestamp: new Date(),
+          },
+        ]);
+        return;
+      }
+
+      console.error("Speech recognition error:", event.error);
+    };
+
+    recognition.onend = () => {
+      recognitionRef.current = null;
+
+      if (!voiceModeRef.current) return;
+      if (processingRef.current || ignoreResultsRef.current) return;
+
+      retryCountRef.current++;
+      if (retryCountRef.current <= MAX_RETRIES) {
+        const delay = Math.min(500 * Math.pow(2, retryCountRef.current - 1), 8000);
+        setTimeout(() => startListening(), delay);
+      } else {
+        setVoiceMode(false);
+        voiceModeRef.current = false;
+        setVoiceState("idle");
         retryCountRef.current = 0;
-        let finalTranscript = "";
-        let interimTranscript = "";
+      }
+    };
 
-        for (let i = event.resultIndex; i < event.results.length; i++) {
-          const transcript = event.results[i][0].transcript;
-          if (event.results[i].isFinal) {
-            finalTranscript += transcript;
-          } else {
-            interimTranscript += transcript;
-          }
-        }
-
-        if (finalTranscript) {
-          transcriptRef.current += finalTranscript;
-        }
-
-        if (silenceTimerRef.current) {
-          clearTimeout(silenceTimerRef.current);
-        }
-
-        if (transcriptRef.current.trim() || interimTranscript.trim()) {
-          const hasFinalized = transcriptRef.current.trim().length > 0;
-          const silenceMs = hasFinalized ? 800 : 1200;
-          silenceTimerRef.current = setTimeout(() => {
-            if (processingRef.current) return;
-            const text = transcriptRef.current.trim();
-            if (text && voiceModeRef.current) {
-              processingRef.current = true;
-              transcriptRef.current = "";
-              try {
-                recognitionRef.current?.stop();
-              } catch {
-                /* ignore */
-              }
-              processVoiceInput(text);
-            }
-          }, silenceMs);
-        }
-      };
-
-      recognition.onerror = (event: SpeechRecognitionErrorEvent) => {
-        if (event.error === "no-speech" || event.error === "aborted") return;
-
-        const isTransient = event.error === "network" || event.error === "audio-capture";
-
-        if (isTransient && voiceModeRef.current) {
-          retryCountRef.current++;
-          if (retryCountRef.current <= MAX_RETRIES) {
-            const delay = Math.min(1000 * Math.pow(2, retryCountRef.current - 1), 8000);
-            setTimeout(() => startListening(), delay);
-          } else {
-            setVoiceMode(false);
-            voiceModeRef.current = false;
-            setVoiceState("idle");
-            retryCountRef.current = 0;
-          }
-          return;
-        }
-
-        if (voiceModeRef.current && voiceStateRef.current === "listening") {
-          setTimeout(() => startListening(), 500);
-        }
-      };
-
-      recognition.onend = () => {
-        if (
-          voiceModeRef.current &&
-          voiceStateRef.current === "listening" &&
-          !transcriptRef.current.trim()
-        ) {
-          setTimeout(() => {
-            try {
-              recognitionRef.current?.start();
-            } catch {
-              recognitionRef.current = null;
-              startListening();
-            }
-          }, 100);
-        }
-      };
-
-      recognitionRef.current = recognition;
-    }
-
+    recognitionRef.current = recognition;
+    ignoreResultsRef.current = false;
+    transcriptRef.current = "";
     setVoiceState("listening");
 
     try {
-      recognitionRef.current.start();
+      recognition.start();
     } catch {
       recognitionRef.current = null;
       setTimeout(() => startListening(), 300);
@@ -242,6 +243,15 @@ export default function ChatBot({ height, className }: ChatBotProps) {
       if (silenceTimerRef.current) {
         clearTimeout(silenceTimerRef.current);
         silenceTimerRef.current = null;
+      }
+
+      if (recognitionRef.current) {
+        try {
+          recognitionRef.current.abort();
+        } catch {
+          /* ignore */
+        }
+        recognitionRef.current = null;
       }
 
       setVoiceState("thinking");
@@ -375,6 +385,7 @@ export default function ChatBot({ height, className }: ChatBotProps) {
     stopAudio();
     transcriptRef.current = "";
     processingRef.current = false;
+    ignoreResultsRef.current = false;
     retryCountRef.current = 0;
     setIsSpeaking(false);
     setIsTyping(false);
@@ -386,26 +397,24 @@ export default function ChatBot({ height, className }: ChatBotProps) {
       return;
     }
 
-    if (!audioContextRef.current) {
-      audioContextRef.current = new (window.AudioContext || window.webkitAudioContext)();
-    }
-    if (audioContextRef.current.state === "suspended") {
-      await audioContextRef.current.resume();
-    }
-
-    try {
-      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-      stream.getTracks().forEach((track) => track.stop());
-    } catch {
+    const SpeechRecognitionAPI = window.SpeechRecognition || window.webkitSpeechRecognition;
+    if (!SpeechRecognitionAPI) {
       setChatMessages((prev) => [
         ...prev,
         {
-          text: "Microphone access is needed for voice chat. Please allow it in your browser settings.",
+          text: "Voice chat isn't supported in this browser. Please try Chrome or Edge for voice features.",
           isBot: true,
           timestamp: new Date(),
         },
       ]);
       return;
+    }
+
+    if (!audioContextRef.current) {
+      audioContextRef.current = new (window.AudioContext || window.webkitAudioContext)();
+    }
+    if (audioContextRef.current.state === "suspended") {
+      await audioContextRef.current.resume();
     }
 
     setVoiceMode(true);
