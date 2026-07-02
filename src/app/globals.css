@@ -4,184 +4,306 @@
 
 @theme {
   --font-oxanium: var(--font-oxanium);
-  --font-sans: Inter, system-ui, sans-serif;
+  --font-display: var(--font-display);
+  --font-mono: var(--font-mono);
+  --font-sans: var(--font-oxanium), Inter, system-ui, sans-serif;
 
-  --color-primary-50: #fdf2f2;
-  --color-primary-100: #fde3e3;
-  --color-primary-200: #fbb8b8;
-  --color-primary-300: #f98080;
-  --color-primary-400: #f65454;
-  --color-primary-500: #e41e1e;
-  --color-primary-600: #c81e1e;
-  --color-primary-700: #a41919;
-  --color-primary-800: #7c1e1e;
-  --color-primary-900: #641717;
-  --color-primary-950: #4c1111;
+  /* Primary — electric cyan neon */
+  --color-primary-50: #ecfeff;
+  --color-primary-100: #cff9ff;
+  --color-primary-200: #a5f2fc;
+  --color-primary-300: #67e8f9;
+  --color-primary-400: #38f0ff;
+  --color-primary-500: #00e5ff;
+  --color-primary-600: #00b8d9;
+  --color-primary-700: #0891b2;
+  --color-primary-800: #155e75;
+  --color-primary-900: #164e63;
+  --color-primary-950: #083344;
 
-  --color-secondary-50: #f5f6f7;
-  --color-secondary-100: #ebedf0;
-  --color-secondary-200: #d2d5dd;
-  --color-secondary-300: #b3b7c4;
-  --color-secondary-400: #606377;
-  --color-secondary-500: #343541;
-  --color-secondary-600: #2b2c36;
-  --color-secondary-700: #24252d;
-  --color-secondary-800: #1e1f24;
-  --color-secondary-900: #18181c;
-  --color-secondary-950: #121215;
+  /* Secondary — deep-space slate surfaces */
+  --color-secondary-50: #eef2fb;
+  --color-secondary-100: #d7ddef;
+  --color-secondary-200: #b3bcd9;
+  --color-secondary-300: #8593b5;
+  --color-secondary-400: #4a5878;
+  --color-secondary-500: #1a2338;
+  --color-secondary-600: #131a2b;
+  --color-secondary-700: #0e1421;
+  --color-secondary-800: #0a0e18;
+  --color-secondary-900: #070a12;
+  --color-secondary-950: #04060c;
 
-  --color-accent-50: #e9eaef;
-  --color-accent-100: #d3d5df;
-  --color-accent-200: #bcbfcf;
-  --color-accent-300: #a6aabf;
-  --color-accent-400: #8f94af;
-  --color-accent-500: #606375;
-  --color-accent-600: #4d4f5e;
-  --color-accent-700: #3a3c47;
-  --color-accent-800: #272830;
-  --color-accent-900: #131419;
-  --color-accent-950: #0a0a0d;
+  /* Accent — magenta / hot-pink neon */
+  --color-accent-50: #fff0f8;
+  --color-accent-100: #ffdcef;
+  --color-accent-200: #ffb3dc;
+  --color-accent-300: #ff85c6;
+  --color-accent-400: #ff5cb8;
+  --color-accent-500: #ff2d95;
+  --color-accent-600: #db1a78;
+  --color-accent-700: #a3145a;
+  --color-accent-800: #6e0e3d;
+  --color-accent-900: #430a26;
+  --color-accent-950: #260514;
 
-  --color-neutral-50: #e6e6e6;
-  --color-neutral-100: #d9d9d9;
-  --color-neutral-200: #bfbfbf;
-  --color-neutral-300: #a6a6a6;
-  --color-neutral-400: #8c8c8c;
-  --color-neutral-500: #121212;
-  --color-neutral-600: #0f0f0f;
-  --color-neutral-700: #0c0c0c;
-  --color-neutral-800: #090909;
-  --color-neutral-900: #060606;
-  --color-neutral-950: #030303;
+  /* Neutral — carbon */
+  --color-neutral-50: #e6e9ef;
+  --color-neutral-100: #d2d7e0;
+  --color-neutral-200: #a9b1c2;
+  --color-neutral-300: #7c8499;
+  --color-neutral-400: #565e73;
+  --color-neutral-500: #0a0e18;
+  --color-neutral-600: #080b12;
+  --color-neutral-700: #06080e;
+  --color-neutral-800: #04060a;
+  --color-neutral-900: #020306;
+  --color-neutral-950: #010203;
 
-  --color-success-50: #eef4f7;
-  --color-success-100: #dde9ef;
-  --color-success-200: #bbd3df;
-  --color-success-300: #99bdcf;
-  --color-success-400: #77a7bf;
-  --color-success-500: #7590a9;
-  --color-success-600: #5e7387;
-  --color-success-700: #475665;
-  --color-success-800: #2f3a44;
-  --color-success-900: #181d22;
-  --color-success-950: #0c0e11;
+  /* Success — neon lime/green */
+  --color-success-50: #ecfff5;
+  --color-success-100: #d0ffe6;
+  --color-success-200: #a2ffce;
+  --color-success-300: #63f5ad;
+  --color-success-400: #2ee88c;
+  --color-success-500: #05f29b;
+  --color-success-600: #04c07b;
+  --color-success-700: #05925e;
+  --color-success-800: #0a6b47;
+  --color-success-900: #0a4d34;
+  --color-success-950: #02291b;
 
-  --color-error-50: #f9ecec;
-  --color-error-100: #f3d9d9;
-  --color-error-200: #e8b3b3;
-  --color-error-300: #dd8d8d;
-  --color-error-400: #d27676;
-  --color-error-500: #c95f5f;
-  --color-error-600: #a14c4c;
-  --color-error-700: #793939;
-  --color-error-800: #512626;
-  --color-error-900: #291313;
-  --color-error-950: #150909;
+  /* Error — neon red/magenta */
+  --color-error-50: #fff0f2;
+  --color-error-100: #ffdce1;
+  --color-error-200: #ffb0bc;
+  --color-error-300: #ff7c90;
+  --color-error-400: #ff4d6a;
+  --color-error-500: #ff1f4f;
+  --color-error-600: #db0f3c;
+  --color-error-700: #a30a2c;
+  --color-error-800: #6e0a20;
+  --color-error-900: #430613;
+  --color-error-950: #26030a;
 
-  --color-warning-50: #f7ece3;
-  --color-warning-100: #f0d9c7;
-  --color-warning-200: #e6b38f;
-  --color-warning-300: #e0a176;
-  --color-warning-400: #dc9769;
-  --color-warning-500: #d98e5d;
-  --color-warning-600: #b0724a;
-  --color-warning-700: #875638;
-  --color-warning-800: #5d3a25;
-  --color-warning-900: #2e1d13;
-  --color-warning-950: #170f09;
+  /* Warning — neon amber */
+  --color-warning-50: #fff9e8;
+  --color-warning-100: #fff0c2;
+  --color-warning-200: #ffe085;
+  --color-warning-300: #ffce47;
+  --color-warning-400: #ffbe1a;
+  --color-warning-500: #ffab00;
+  --color-warning-600: #d98a00;
+  --color-warning-700: #a36700;
+  --color-warning-800: #6e4600;
+  --color-warning-900: #432b00;
+  --color-warning-950: #261800;
 
-  --color-info-50: #f4eef9;
-  --color-info-100: #e9ddf3;
-  --color-info-200: #d3bbe7;
-  --color-info-300: #bd99db;
-  --color-info-400: #b38ad4;
-  --color-info-500: #a97bcd;
-  --color-info-600: #8762a4;
-  --color-info-700: #654a7b;
-  --color-info-800: #443152;
-  --color-info-900: #221929;
-  --color-info-950: #110c14;
+  /* Info — neon violet */
+  --color-info-50: #f4f0ff;
+  --color-info-100: #e6dcff;
+  --color-info-200: #cbb3ff;
+  --color-info-300: #ab85ff;
+  --color-info-400: #915cff;
+  --color-info-500: #7a2dff;
+  --color-info-600: #631adb;
+  --color-info-700: #4a14a3;
+  --color-info-800: #320e6e;
+  --color-info-900: #1f0a43;
+  --color-info-950: #100526;
 
-  --color-background-light: #ebebeb;
-  --color-background-dark: #121212;
+  --color-background-light: #eef1f7;
+  --color-background-dark: #05070f;
   --color-background-paper: #ffffff;
-  --color-background-paperDark: #1e1e1e;
-  --color-background-subtle: #f5f5f5;
-  --color-background-subtleDark: #1a1a1a;
-  --color-background-elevated: #dbdbdb;
-  --color-background-elevatedDark: #262626;
-  --color-background-overlay: rgba(255, 255, 255, 0.8);
-  --color-background-overlayDark: rgba(0, 0, 0, 0.8);
+  --color-background-paperDark: #0a0e18;
+  --color-background-subtle: #f4f6fb;
+  --color-background-subtleDark: #0b1120;
+  --color-background-elevated: #e2e7f1;
+  --color-background-elevatedDark: #121a2b;
+  --color-background-overlay: rgba(238, 241, 247, 0.8);
+  --color-background-overlayDark: rgba(5, 7, 15, 0.85);
 
-  --color-text-primary: #0f172a;
-  --color-text-primaryDark: #f8fafc;
+  --color-text-primary: #0a0e18;
+  --color-text-primaryDark: #e8fbff;
   --color-text-secondary: #475569;
-  --color-text-secondaryDark: #94a3b8;
+  --color-text-secondaryDark: #7c8cae;
   --color-text-disabled: #9ca3af;
-  --color-text-disabledDark: #6b7280;
-  --color-text-link: #2563eb;
-  --color-text-linkDark: #60a5fa;
-  --color-text-code: #6d28d9;
-  --color-text-codeDark: #a78bfa;
-  --color-text-dark: #0f172a;
-  --color-text-light: #f8fafc;
+  --color-text-disabledDark: #4a5878;
+  --color-text-link: #00b8d9;
+  --color-text-linkDark: #38f0ff;
+  --color-text-code: #7a2dff;
+  --color-text-codeDark: #ab85ff;
+  --color-text-dark: #0a0e18;
+  --color-text-light: #e8fbff;
 
-  --color-particles-light: #d3d3d3;
-  --color-particles-dark: #252525;
+  --color-particles-light: #c3ccdd;
+  --color-particles-dark: #0f3a4d;
 
   --breakpoint-xs: 475px;
   --breakpoint-sm: 640px;
   --breakpoint-md: 768px;
   --breakpoint-lg: 1024px;
   --breakpoint-xl: 1280px;
+
+  /* Neon signal variables */
+  --neon-cyan: #00e5ff;
+  --neon-magenta: #ff2d95;
+  --neon-violet: #7a2dff;
+  --neon-lime: #05f29b;
 }
 
-/*
-  The default border color has changed to `currentcolor` in Tailwind CSS v4,
-  so we've added these compatibility styles to make sure everything still
-  looks the same as it did with Tailwind CSS v3.
-
-  If we ever want to remove these styles, we need to add an explicit border
-  color utility to any element that depends on these defaults.
-*/
 @layer base {
   *,
   ::after,
   ::before,
   ::backdrop,
   ::file-selector-button {
-    border-color: var(--color-gray-200, currentcolor);
+    border-color: var(--color-secondary-700, currentcolor);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: #05070f;
+    color: var(--color-text-primaryDark);
+    background-image:
+      radial-gradient(circle at 15% 0%, rgba(0, 229, 255, 0.08), transparent 40%),
+      radial-gradient(circle at 85% 100%, rgba(255, 45, 149, 0.08), transparent 42%),
+      linear-gradient(180deg, #05070f 0%, #060913 100%);
+    background-attachment: fixed;
+  }
+
+  :is(.light) body {
+    background-color: #eef1f7;
+    color: var(--color-text-primary);
+    background-image:
+      radial-gradient(circle at 15% 0%, rgba(0, 184, 217, 0.12), transparent 40%),
+      radial-gradient(circle at 85% 100%, rgba(255, 45, 149, 0.1), transparent 42%),
+      linear-gradient(180deg, #eef1f7 0%, #e5e9f2 100%);
+  }
+
+  ::selection {
+    background: rgba(0, 229, 255, 0.3);
+    color: #ffffff;
   }
 }
 
-html {
-  scroll-behavior: smooth;
+/* ============================================================
+   Cyberpunk utility layer
+   ============================================================ */
+
+/* Perspective grid background */
+.cyber-grid {
+  background-image:
+    linear-gradient(to right, rgba(0, 229, 255, 0.07) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 229, 255, 0.07) 1px, transparent 1px);
+  background-size: 46px 46px;
 }
 
-/* Custom scrollbar for the chat */
+.cyber-grid-fade {
+  -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 40%, #000 30%, transparent 75%);
+  mask-image: radial-gradient(ellipse 80% 60% at 50% 40%, #000 30%, transparent 75%);
+}
+
+/* Scanline overlay */
+.scanlines::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.025) 0px,
+    rgba(255, 255, 255, 0.025) 1px,
+    transparent 2px,
+    transparent 4px
+  );
+  z-index: 20;
+}
+
+/* Neon text glow */
+.neon-cyan {
+  color: #b6f7ff;
+  text-shadow:
+    0 0 4px rgba(0, 229, 255, 0.8),
+    0 0 12px rgba(0, 229, 255, 0.55),
+    0 0 28px rgba(0, 229, 255, 0.35);
+}
+
+.neon-magenta {
+  color: #ffc4e4;
+  text-shadow:
+    0 0 4px rgba(255, 45, 149, 0.85),
+    0 0 12px rgba(255, 45, 149, 0.55),
+    0 0 28px rgba(255, 45, 149, 0.3);
+}
+
+/* Neon box glow */
+.glow-cyan {
+  box-shadow:
+    0 0 8px rgba(0, 229, 255, 0.35),
+    0 0 24px rgba(0, 229, 255, 0.18);
+}
+
+.glow-magenta {
+  box-shadow:
+    0 0 8px rgba(255, 45, 149, 0.4),
+    0 0 24px rgba(255, 45, 149, 0.2);
+}
+
+/* Angular corner clip (HUD panel) */
+.clip-corner {
+  clip-path: polygon(
+    16px 0,
+    100% 0,
+    100% calc(100% - 16px),
+    calc(100% - 16px) 100%,
+    0 100%,
+    0 16px
+  );
+}
+
+.clip-corner-sm {
+  clip-path: polygon(
+    10px 0,
+    100% 0,
+    100% calc(100% - 10px),
+    calc(100% - 10px) 100%,
+    0 100%,
+    0 10px
+  );
+}
+
+/* Custom scrollbar */
 .custom-scrollbar::-webkit-scrollbar {
   width: 6px;
+  height: 6px;
 }
 
 .custom-scrollbar::-webkit-scrollbar-track {
-  background: rgba(30, 30, 30, 0.8);
+  background: rgba(10, 14, 24, 0.8);
   border-radius: 10px;
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb {
-  background: rgba(107, 114, 128, 0.8);
+  background: rgba(0, 229, 255, 0.4);
   border-radius: 10px;
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-  background: rgba(107, 114, 128, 1);
+  background: rgba(0, 229, 255, 0.7);
 }
 
-/* For Firefox */
 .custom-scrollbar {
   scrollbar-width: thin;
-  scrollbar-color: rgba(107, 114, 128, 0.8) rgba(30, 30, 30, 0.8);
+  scrollbar-color: rgba(0, 229, 255, 0.4) rgba(10, 14, 24, 0.8);
 }
+
+/* ============================================================
+   Animations
+   ============================================================ */
 
 @keyframes voice-bar {
   0%,
@@ -217,7 +339,7 @@ html {
   position: absolute;
   inset: -4px;
   border-radius: 9999px;
-  border: 2px solid #e41e1e;
+  border: 2px solid var(--neon-cyan);
   animation: pulse-ring 1.8s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
 
@@ -226,7 +348,141 @@ html {
   position: absolute;
   inset: -4px;
   border-radius: 9999px;
-  border: 2px solid #e41e1e;
+  border: 2px solid var(--neon-cyan);
   animation: pulse-ring 1.8s cubic-bezier(0.4, 0, 0.6, 1) infinite;
   animation-delay: 0.6s;
+}
+
+/* Neon flicker for hero text */
+@keyframes flicker {
+  0%,
+  19%,
+  21%,
+  23%,
+  25%,
+  54%,
+  56%,
+  100% {
+    opacity: 1;
+  }
+  20%,
+  24%,
+  55% {
+    opacity: 0.55;
+  }
+}
+
+.animate-flicker {
+  animation: flicker 4.5s infinite steps(1);
+}
+
+/* Glitch effect */
+@keyframes glitch-shift {
+  0%,
+  100% {
+    transform: translate(0);
+    clip-path: inset(0 0 0 0);
+  }
+  20% {
+    transform: translate(-2px, 1px);
+    clip-path: inset(10% 0 60% 0);
+  }
+  40% {
+    transform: translate(2px, -1px);
+    clip-path: inset(50% 0 20% 0);
+  }
+  60% {
+    transform: translate(-1px, 0);
+    clip-path: inset(20% 0 40% 0);
+  }
+  80% {
+    transform: translate(1px, 1px);
+    clip-path: inset(70% 0 5% 0);
+  }
+}
+
+.glitch {
+  position: relative;
+}
+
+.glitch::before,
+.glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.glitch::before {
+  color: var(--neon-magenta);
+  animation: glitch-shift 2.6s infinite linear alternate;
+  opacity: 0.75;
+}
+
+.glitch::after {
+  color: var(--neon-cyan);
+  animation: glitch-shift 3.4s infinite linear alternate-reverse;
+  opacity: 0.75;
+}
+
+/* Slow floating grid drift */
+@keyframes grid-drift {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 46px 46px;
+  }
+}
+
+.animate-grid-drift {
+  animation: grid-drift 8s linear infinite;
+}
+
+/* Scan sweep line */
+@keyframes scan-sweep {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh);
+    opacity: 0;
+  }
+}
+
+.animate-scan-sweep {
+  animation: scan-sweep 6s linear infinite;
+}
+
+/* Soft neon breathing */
+@keyframes neon-breathe {
+  0%,
+  100% {
+    opacity: 0.55;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.animate-neon-breathe {
+  animation: neon-breathe 3s ease-in-out infinite;
+}
+
+/* Marquee ticker */
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 26s linear infinite;
 }
