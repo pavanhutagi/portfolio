@@ -23,10 +23,10 @@ export default function ChatMessages({
       {messages.map((msg, index) => (
         <div key={index} className={`flex ${msg.isBot ? "justify-start" : "justify-end"}`}>
           <div
-            className={`max-w-[80%] rounded-2xl px-4 py-3 ${
+            className={`max-w-[80%] clip-corner-sm border px-4 py-3 text-sm ${
               msg.isBot
-                ? "bg-secondary-300 dark:bg-secondary-400 text-text-primary dark:text-text-primaryDark"
-                : "bg-primary-300 dark:bg-primary-400 text-text-primary dark:text-text-primaryDark"
+                ? "border-primary-500/40 bg-secondary-800/80 text-text-primaryDark"
+                : "border-accent-500/40 bg-accent-500/10 text-text-primaryDark"
             }`}
           >
             <div className="space-y-2">
@@ -46,10 +46,10 @@ export default function ChatMessages({
 
       {isTyping && (
         <div className="flex justify-start">
-          <div className="bg-secondary-300/60 dark:bg-secondary-400/60 text-text-primary dark:text-text-primaryDark rounded-full px-3 py-1.5">
+          <div className="clip-corner-sm border border-primary-500/40 bg-secondary-800/80 px-3 py-1.5 text-primary-300">
             <div className="flex items-center gap-2">
               <FaBrain className="animate-pulse" size={14} />
-              <span className="text-sm">Thinking...</span>
+              <span className="font-mono text-xs uppercase tracking-widest">Thinking...</span>
             </div>
           </div>
         </div>
@@ -57,10 +57,10 @@ export default function ChatMessages({
 
       {voiceState === "listening" && !isTyping && (
         <div className="flex justify-end">
-          <div className="bg-primary-300/60 dark:bg-primary-400/60 text-text-primary dark:text-text-primaryDark rounded-full px-3 py-1.5">
+          <div className="clip-corner-sm border border-accent-500/40 bg-accent-500/10 px-3 py-1.5 text-accent-300">
             <div className="flex items-center gap-2">
               <FaMicrophone className="animate-pulse" size={14} />
-              <span className="text-sm">Listening...</span>
+              <span className="font-mono text-xs uppercase tracking-widest">Listening...</span>
             </div>
           </div>
         </div>

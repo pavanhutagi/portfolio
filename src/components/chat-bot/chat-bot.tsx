@@ -532,19 +532,16 @@ export default function ChatBot({ height, className }: ChatBotProps) {
         "flex flex-col",
         "w-full",
         className || `h-[85vh] lg:h-[${height}px]`,
-        "bg-secondary-500 dark:bg-secondary-200",
-        "rounded-[15px]",
+        "border border-primary-500/40 bg-secondary-900/95",
+        "clip-corner",
         "overflow-hidden",
         "relative",
-        "backdrop-blur-xs"
+        "backdrop-blur-md glow-cyan"
       )}
     >
       <ChatHeader />
 
-      <div
-        id="chat-messages"
-        className={clsx("grow", "bg-secondary-500 dark:bg-secondary-200", "overflow-y-auto")}
-      >
+      <div id="chat-messages" className={clsx("grow", "bg-transparent", "overflow-y-auto")}>
         <ChatMessages
           messages={chatMessages}
           isTyping={isTyping}
@@ -552,22 +549,23 @@ export default function ChatBot({ height, className }: ChatBotProps) {
         />
       </div>
 
-      <div className={clsx("bg-gray-400 dark:bg-gray-600 ", "p-2", "rounded-t-2xl")}>
-        <form onSubmit={handleChatSubmit} className="flex items-center gap-1">
+      <div className={clsx("border-t border-primary-500/30 bg-secondary-800/90", "p-3")}>
+        <form onSubmit={handleChatSubmit} className="flex items-center gap-2">
           <input
             type="text"
             value={chatInput}
             onChange={(e) => setChatInput(e.target.value)}
-            placeholder={voiceMode ? "Voice mode active — speak!" : "Type your message here"}
+            placeholder={voiceMode ? "Voice mode active — speak!" : "> type your message..."}
             disabled={voiceMode}
             className={clsx(
               "grow",
-              "px-2 pb-1",
-              "bg-gray-400 dark:bg-gray-600 ",
-              "text-text-primary dark:text-text-primaryDark",
-              "placeholder-text-secondary dark:placeholder-text-secondaryDark",
-              "rounded-lg",
-              "focus:outline-hidden",
+              "px-3 py-2",
+              "border border-secondary-400/40 bg-secondary-900/80",
+              "font-mono text-sm",
+              "text-text-primaryDark",
+              "placeholder:text-text-secondaryDark",
+              "clip-corner-sm",
+              "focus:border-primary-500 focus:outline-hidden",
               voiceMode && "opacity-50"
             )}
           />
@@ -578,14 +576,13 @@ export default function ChatBot({ height, className }: ChatBotProps) {
               aria-label="Send message"
               title="Send message"
               className={clsx(
-                "rounded-full",
+                "clip-corner-sm",
                 "p-3",
-                "shadow-l",
                 "transition-all duration-300",
-                "shrink-0",
+                "shrink-0 border",
                 isTyping
-                  ? "bg-gray-500 cursor-not-allowed text-gray-400"
-                  : "bg-background-subtleDark hover:bg-red-600 text-white"
+                  ? "cursor-not-allowed border-secondary-400/40 bg-secondary-800 text-text-disabledDark"
+                  : "border-primary-500/60 bg-primary-500/15 text-primary-300 hover:bg-primary-500/30 hover:glow-cyan"
               )}
             >
               <FaPaperPlane />
@@ -598,17 +595,16 @@ export default function ChatBot({ height, className }: ChatBotProps) {
               aria-label={voiceButtonLabel}
               title={voiceButtonLabel}
               className={clsx(
-                "rounded-full",
+                "clip-corner-sm",
                 "p-3",
-                "shadow-l",
                 "transition-all duration-300",
                 "relative",
-                "shrink-0",
+                "shrink-0 border",
                 voiceMode
-                  ? "bg-red-500 hover:bg-red-600 text-white"
+                  ? "border-accent-500 bg-accent-500/20 text-accent-300 hover:glow-magenta"
                   : isTyping
-                    ? "bg-gray-500 cursor-not-allowed text-gray-400"
-                    : "bg-background-subtleDark hover:bg-blue-600 text-white"
+                    ? "cursor-not-allowed border-secondary-400/40 bg-secondary-800 text-text-disabledDark"
+                    : "border-accent-500/60 bg-accent-500/15 text-accent-300 hover:bg-accent-500/30 hover:glow-magenta"
               )}
             >
               {voiceMode ? <FaStop /> : <FaMicrophone />}
