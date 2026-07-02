@@ -24,9 +24,7 @@ export default function ChatToggle() {
           "fixed inset-0 z-40 sm:hidden",
           "bg-black/60 backdrop-blur-sm",
           "transition-opacity duration-300",
-          isChatOpen
-            ? "opacity-100 pointer-events-auto"
-            : "opacity-0 pointer-events-none"
+          isChatOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
         )}
         onClick={() => setIsChatOpen(false)}
       />
@@ -52,20 +50,16 @@ export default function ChatToggle() {
         onClick={() => setIsChatOpen(!isChatOpen)}
         className={clsx(
           "fixed z-50 flex items-center justify-center rounded-full transition-all duration-300",
-          "drop-shadow-[0_0_4px_rgba(0,0,0,0.2)]",
           "w-[40px] h-[40px] sm:w-[45px] sm:h-[45px] lg:w-[50px] lg:h-[50px]",
           "bottom-6 right-6 sm:bottom-8 sm:right-8 lg:bottom-10 lg:right-10",
+          "backdrop-blur-md",
           !isChatOpen && isChatBotActive
-            ? "bg-primary-500 animate-pulse-ring"
-            : "bg-[#4a4a4a]",
+            ? "bg-primary-500 text-secondary-900 animate-pulse-ring"
+            : "border border-primary-500/40 bg-secondary-900/80 text-primary-400 hover:border-primary-500 hover:glow-cyan hover:text-primary-300",
           visibilityClass
         )}
       >
-        {isChatOpen ? (
-          <FaTimes size={20} className="text-text-light" />
-        ) : (
-          <RiRobot2Fill size={22} className="text-text-light" />
-        )}
+        {isChatOpen ? <FaTimes size={20} /> : <RiRobot2Fill size={22} />}
       </button>
     </>
   );

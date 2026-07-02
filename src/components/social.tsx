@@ -39,14 +39,10 @@ export default function Social() {
           rel="noopener noreferrer"
           aria-label={label}
           className={clsx(
-            // Layout
             "flex items-center justify-center",
-            // Dimensions
-            "h-[40px] w-[40px]",
-            // Appearance
-            "rounded-full bg-[#D4D4D4]",
-            // Interactive states
-            "cursor-pointer transition-all hover:bg-white"
+            "h-[44px] w-[44px] clip-corner-sm",
+            "border border-primary-500/40 bg-secondary-800/70 text-primary-400",
+            "cursor-pointer transition-all hover:border-primary-500 hover:glow-cyan hover:text-primary-200"
           )}
         >
           <Icon size={20} />

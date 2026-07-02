@@ -36,7 +36,7 @@ export default function Logo() {
           "lg:w-[50px] lg:h-[50px]",
 
           // Effects
-          "drop-shadow-[0_0_4px_rgba(0,0,0,0.2)]"
+          "drop-shadow-[0_0_8px_rgba(0,229,255,0.55)] transition-all duration-300 hover:drop-shadow-[0_0_14px_rgba(0,229,255,0.9)]"
         )}
         width={50}
         height={50}

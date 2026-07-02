@@ -9,15 +9,20 @@ export default function FooterSection() {
     <footer
       id="footer"
       className={clsx(
-        // Layout
-        "flex flex-col items-center w-[90%] max-w-[1400px]",
-        // Spacing
-        "gap-8 pt-10 pb-20 sm:pb-40",
-        // Appearance
-        "bg-[#414141] rounded-t-[50px]"
+        "relative flex w-[92%] max-w-[1400px] flex-col items-center overflow-hidden clip-corner",
+        "gap-6 pt-12 pb-24 sm:pb-40",
+        "border-t-2 border-primary-500/60 bg-secondary-900/70 backdrop-blur-md"
       )}
     >
+      <span className="font-mono text-[10px] uppercase tracking-[0.4em] text-primary-400">
+        // End of transmission
+      </span>
+
       <Social />
+
+      <p className="font-mono text-xs text-text-secondaryDark">
+        © {new Date().getFullYear()} Pavan Hutagi — Crafted in the neon glow
+      </p>
     </footer>
   );
 }

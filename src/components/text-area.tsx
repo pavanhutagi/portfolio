@@ -39,15 +39,17 @@ const TextArea: FC<TextAreaProps> = ({
         onChange={handleChange}
         onBlur={() => setTouched(true)}
         className={clsx(
-          "rounded-[15px] p-3 sm:p-4 outline-hidden",
-          "bg-secondary-500 dark:bg-secondary-200",
-          "text-text-primaryDark dark:text-text-primary",
-          "focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
+          "clip-corner-sm resize-none p-3 outline-hidden sm:p-4",
+          "border border-secondary-400/40 bg-secondary-800/60",
+          "font-mono text-sm",
+          "text-text-primaryDark",
+          "placeholder:text-text-secondaryDark",
+          "transition-all focus:border-primary-500 focus:bg-secondary-800"
         )}
         rows={rows}
       />
       {required && touched && value === "" && (
-        <p className={clsx("text-sm", "text-primary-500 dark:text-primary-400")}>
+        <p className="font-mono text-xs uppercase tracking-wider text-accent-400">
           {placeholder} is required
         </p>
       )}

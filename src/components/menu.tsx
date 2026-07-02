@@ -52,24 +52,25 @@ export default function Menu() {
   return (
     <div
       className={clsx(
-        "fixed z-40 flex items-center justify-between p-4 rounded-3xl w-[150px]",
-        "right-6 top-8 sm:right-8 sm:top-8 lg:right-10 lg:top-10",
+        "fixed z-40 flex w-[170px] items-center justify-between p-4 clip-corner",
+        "right-6 top-20 sm:right-8 sm:top-24",
         "visible opacity-100 md:invisible md:opacity-0",
-        "bg-background-subtleDark dark:bg-background-subtle"
+        "border border-primary-500/40 bg-secondary-900/90 backdrop-blur-md glow-cyan"
       )}
     >
-      <div className="flex flex-col gap-4">
-        {navLinks.map(({ href, label }) => (
+      <div className="flex w-full flex-col gap-3 font-mono text-sm uppercase tracking-[0.2em]">
+        {navLinks.map(({ href, label }, i) => (
           <button
             key={href}
             onClick={() => scrollToSection(href)}
             className={clsx(
-              "flex transition-opacity hover:opacity-50",
+              "flex items-center gap-2 transition-colors",
               activeSection === href
-                ? "text-primary-500"
-                : "text-text-primaryDark dark:text-text-primary"
+                ? "text-primary-400 neon-cyan"
+                : "text-text-secondaryDark hover:text-primary-300"
             )}
           >
+            <span className="text-primary-500/60">0{i + 1}</span>
             {label}
           </button>
         ))}

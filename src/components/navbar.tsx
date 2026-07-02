@@ -57,17 +57,29 @@ export default function Navbar() {
         isVisible ? "translate-y-0" : "translate-y-full"
       } hidden md:block`}
     >
-      <div className="mx-auto max-w-fit rounded-2xl border border-[#393939] bg-linear-to-t from-[#202020] to-[#303030] px-10 py-5">
-        <div className="flex gap-16">
-          {navLinks.map(({ href, label }) => (
+      <div className="mx-auto max-w-fit clip-corner border border-primary-500/40 bg-secondary-900/80 px-8 py-4 backdrop-blur-md glow-cyan">
+        <div className="flex items-center gap-10 font-mono text-sm uppercase tracking-[0.2em]">
+          {navLinks.map(({ href, label }, i) => (
             <button
               key={href}
               onClick={() => scrollToSection(href)}
-              className={`${
-                activeSection === href ? "text-[#C86765]" : "text-[#D4D4D4]"
-              } transition-opacity hover:opacity-50`}
+              className="group relative flex items-center gap-2 transition-colors"
             >
-              {label}
+              <span
+                className={
+                  activeSection === href
+                    ? "text-primary-400 neon-cyan"
+                    : "text-text-secondaryDark hover:text-primary-300"
+                }
+              >
+                <span className="mr-1 text-primary-500/60">0{i + 1}</span>
+                {label}
+              </span>
+              <span
+                className={`absolute -bottom-2 left-0 h-px bg-primary-500 transition-all duration-300 ${
+                  activeSection === href ? "w-full" : "w-0 group-hover:w-full"
+                }`}
+              />
             </button>
           ))}
         </div>

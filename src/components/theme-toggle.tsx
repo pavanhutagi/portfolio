@@ -26,22 +26,18 @@ export default function ThemeToggle() {
         "lg:w-[50px] lg:h-[50px]",
 
         "flex items-center justify-center",
-        "bg-[#4a4a4a]",
-        "text-text-light",
-        "drop-shadow-[0_0_4px_rgba(0,0,0,0.2)]",
+        "border border-primary-500/40 bg-secondary-900/80 backdrop-blur-md",
+        "text-primary-400",
         "rounded-full",
+        "hover:border-primary-500 hover:glow-cyan hover:text-primary-300",
 
-        "transition-transform duration-300",
+        "transition-all duration-300",
 
         isVisible ? "translate-x-0" : "-translate-x-40 md:translate-x-40",
         isChatOpen && "max-sm:-translate-x-40!"
       )}
     >
-      {theme === "dark" ? (
-        <FaSun className="h-5 w-5 text-text-light" />
-      ) : (
-        <FaMoon className="h-5 w-5 text-text-light" />
-      )}
+      {theme === "dark" ? <FaSun className="h-5 w-5" /> : <FaMoon className="h-5 w-5" />}
     </button>
   );
 }

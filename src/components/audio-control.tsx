@@ -19,11 +19,11 @@ export default function AudioControl() {
       <button
         onClick={togglePlay}
         className={clsx(
-          "fixed flex items-center justify-center rounded-full transition-transform duration-300",
+          "fixed flex items-center justify-center rounded-full transition-all duration-300",
 
-          "bg-[#4a4a4a]",
-          "text-text-light",
-          "drop-shadow-[0_0_4px_rgba(0,0,0,0.2)]",
+          "border border-primary-500/40 bg-secondary-900/80 backdrop-blur-md",
+          "text-primary-400",
+          "hover:border-primary-500 hover:glow-cyan hover:text-primary-300",
 
           "bottom-6 left-6 sm:bottom-8 sm:left-8 lg:bottom-10 lg:left-10",
 
@@ -34,11 +34,7 @@ export default function AudioControl() {
           isChatOpen && "max-sm:-translate-x-40!"
         )}
       >
-        {isPlaying ? (
-          <FaVolumeUp className="h-5 w-5 text-text-light" />
-        ) : (
-          <FaVolumeMute className="h-5 w-5 text-text-light" />
-        )}
+        {isPlaying ? <FaVolumeUp className="h-5 w-5" /> : <FaVolumeMute className="h-5 w-5" />}
       </button>
     </div>
   );

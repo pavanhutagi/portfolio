@@ -28,10 +28,10 @@ export default function LeftNeonBulb() {
             isLeftNeonBulbLit
               ? [
                   "bg-primary-500",
-                  "shadow-[0_0_40px_var(--color-primary-600),0_0_120px_var(--color-primary-700)]",
+                  "shadow-[0_0_40px_var(--color-primary-500),0_0_120px_var(--color-primary-600)]",
                   "hover:bg-primary-400",
                 ]
-              : ["bg-primary-700", "hover:bg-primary-600"]
+              : ["bg-primary-900/70", "hover:bg-primary-700"]
           )}
         />
       </div>

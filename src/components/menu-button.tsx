@@ -20,13 +20,13 @@ export default function MenuButton() {
 
           "w-[40px] h-[40px] sm:w-[45px] sm:h-[45px] lg:w-[50px] lg:h-[50px]",
 
-          "rounded-full bg-[#4a4a4a]",
-          "text-text-light",
-          "drop-shadow-[0_0_4px_rgba(0,0,0,0.2)]",
+          "rounded-full border border-primary-500/40 bg-secondary-900/80 backdrop-blur-md",
+          "text-primary-400",
+          "hover:border-primary-500 hover:glow-cyan hover:text-primary-300",
 
           "flex items-center justify-center",
 
-          "transition-transform duration-300",
+          "transition-all duration-300",
 
           isVisible ? "translate-x-0" : "translate-x-40",
 
@@ -34,7 +34,7 @@ export default function MenuButton() {
           isChatOpen && "max-sm:translate-x-40!"
         )}
       >
-        <FaBars className="h-5 w-5 text-text-light" />
+        <FaBars className="h-5 w-5" />
       </button>
 
       {isMenuOpen && <Menu />}
