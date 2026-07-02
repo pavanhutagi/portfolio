@@ -21,16 +21,17 @@ export default function ParticlesBackground() {
   useEffect(() => {
     const config = JSON.parse(JSON.stringify(particlesConfigJson));
 
+    // Keep the canvas transparent so the body gradient + grid show through.
+    config.background.color.value = "transparent";
+
     if (theme === "dark") {
-      config.background.color.value = "#121212";
-      config.particles.color.value = "#252525";
-      config.particles.shape.stroke.color = "#252525";
-      config.particles.line_linked.color = "#252525";
+      config.particles.color.value = "#00e5ff";
+      config.particles.shape.stroke.color = "#00e5ff";
+      config.particles.line_linked.color = "#0e5f73";
     } else {
-      config.background.color.value = "#ebebeb";
-      config.particles.color.value = "#d3d3d3";
-      config.particles.shape.stroke.color = "#d3d3d3";
-      config.particles.line_linked.color = "#d3d3d3";
+      config.particles.color.value = "#00b8d9";
+      config.particles.shape.stroke.color = "#00b8d9";
+      config.particles.line_linked.color = "#9db8c4";
     }
 
     setParticlesConfig(config);

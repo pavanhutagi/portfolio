@@ -1,6 +1,7 @@
 "use client";
 
 import AudioControl from "@/components/audio-control";
+import CyberBackground from "@/components/cyber-background";
 import Footer from "@/components/footer";
 import LeftNeonBulb from "@/components/left-neon-bulb";
 import Logo from "@/components/logo";
@@ -19,6 +20,7 @@ export default function Root() {
   return (
     <AppContextProvider>
       <ParticlesBackground />
+      <CyberBackground />
 
       <div className="flex flex-col items-center justify-center">
         <Logo />
