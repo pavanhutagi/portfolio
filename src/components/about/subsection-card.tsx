@@ -10,39 +10,36 @@ export const SubsectionCard = ({ icon, title, description, onCardClick }: Subsec
   return (
     <div
       className={clsx(
-        // Card container styles
-        "bg-gray-800 dark:bg-gray-300",
-        "p-3 rounded-2xl",
+        "group relative cursor-pointer overflow-hidden clip-corner-sm",
+        "border border-secondary-400/40 bg-secondary-800/60",
+        "p-4",
         "flex flex-col gap-3",
-        "cursor-pointer",
         "transition-all duration-300",
-        "relative group"
+        "hover:border-primary-500/80 hover:bg-secondary-800/90 hover:glow-cyan"
       )}
       onClick={onCardClick}
     >
-      <div
-        className={clsx(
-          // Hover border effect
-          "absolute inset-0 rounded-2xl",
-          "border-2 border-transparent",
-          "group-hover:border-secondary-400",
-          "transition-all duration-300"
-        )}
-      ></div>
+      {/* Scan hover sheen */}
+      <div className="pointer-events-none absolute inset-0 -translate-x-full bg-linear-to-r from-transparent via-primary-500/10 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
 
-      <div className={clsx("flex items-center gap-2")}>
+      <div className="flex items-center gap-3">
         <div
           className={clsx(
-            // Icon container
-            "w-8 h-8 rounded-full bg-white",
-            "flex items-center justify-center"
+            "flex h-9 w-9 items-center justify-center",
+            "border border-primary-500/50 bg-secondary-900/80 text-lg",
+            "transition-all duration-300 group-hover:border-accent-500/70"
           )}
         >
-          <span className="text-l">{icon}</span>
+          <span>{icon}</span>
         </div>
-        <h3 className="font-bold text-text-primaryDark dark:text-text-primary">{title}</h3>
+        <h3 className="font-display text-sm font-bold uppercase tracking-wider text-text-primaryDark">
+          {title}
+        </h3>
       </div>
-      <p className="text-sm text-text-primaryDark dark:text-text-primary">{description}</p>
+      <p className="text-xs leading-relaxed text-text-secondaryDark">{description}</p>
+      <span className="mt-auto font-mono text-[10px] uppercase tracking-[0.3em] text-primary-400 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+        access →
+      </span>
     </div>
   );
 };

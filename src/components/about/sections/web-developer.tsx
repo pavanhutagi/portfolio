@@ -52,7 +52,7 @@ export default function WebDeveloper() {
       href={item.url}
       target="_blank"
       rel="noopener noreferrer"
-      className="border border-gray-700 rounded-lg p-2 bg-white hover:border-primary-500 transition-colors duration-200"
+      className="clip-corner-sm border border-secondary-400/40 bg-white p-2 transition-colors duration-200 hover:border-primary-500"
     >
       <span className="flex items-center gap-2">
         {item.icon}
@@ -64,7 +64,7 @@ export default function WebDeveloper() {
   // Helper function to render a tech category
   const renderTechCategory = (title: string, items: TechItem[]) => (
     <div className="flex flex-col gap-2">
-      <p className="font-medium text-sm">{title}</p>
+      <p className="font-mono text-xs uppercase tracking-[0.2em] text-primary-400">{title}</p>
       <div className="flex flex-wrap gap-2">{items.map(renderTechItem)}</div>
     </div>
   );
@@ -544,11 +544,13 @@ export default function WebDeveloper() {
   const renderWorkExperience = (experience: WorkExperience) => (
     <div
       key={`${experience.company}-${experience.period}`}
-      className="flex flex-col gap-4 border border-gray-300 dark:border-gray-700 rounded-lg p-4"
+      className="flex flex-col gap-4 clip-corner-sm border border-secondary-400/40 bg-secondary-800/40 p-4"
     >
       <div className="flex flex-col">
-        <p className="font-bold flex items-center">{experience.company}</p>
-        <p className="text-sm text-gray-500">
+        <p className="flex items-center font-display font-bold uppercase tracking-wide text-primary-300">
+          {experience.company}
+        </p>
+        <p className="font-mono text-xs uppercase tracking-wider text-text-secondaryDark">
           {experience.title} | {experience.type} | {experience.period}
         </p>
       </div>
@@ -572,8 +574,10 @@ export default function WebDeveloper() {
       <div className="flex flex-col md:flex-row gap-4">
         {/* Technologies Section */}
         <div className="flex flex-col w-full md:w-1/2 gap-2">
-          <p className="font-bold text-lg">Technologies</p>
-          <div className="flex flex-col gap-4 border border-gray-300 dark:border-gray-700 rounded-lg p-4">
+          <p className="font-display text-lg font-bold uppercase tracking-wider text-text-primaryDark">
+            Technologies
+          </p>
+          <div className="flex flex-col gap-4 clip-corner-sm border border-secondary-400/40 bg-secondary-800/40 p-4">
             {renderTechCategory("Frontend Frameworks", frontendFrameworks)}
             {renderTechCategory("Backend Frameworks", backendFrameworks)}
             {renderTechCategory("Languages", languages)}
@@ -586,8 +590,10 @@ export default function WebDeveloper() {
 
         {/* Tools Section */}
         <div className="flex flex-col w-full md:w-1/2 gap-2">
-          <p className="font-bold text-lg">Tools</p>
-          <div className="flex flex-col gap-4 border border-gray-300 dark:border-gray-700 rounded-lg p-4">
+          <p className="font-display text-lg font-bold uppercase tracking-wider text-text-primaryDark">
+            Tools
+          </p>
+          <div className="flex flex-col gap-4 clip-corner-sm border border-secondary-400/40 bg-secondary-800/40 p-4">
             {renderTechCategory("Development & Version Control", devTools)}
             {renderTechCategory("AI & Productivity", aiTools)}
             {renderTechCategory("Design & Prototyping", designTools)}
@@ -598,7 +604,9 @@ export default function WebDeveloper() {
 
       {/* Work Experience Section */}
       <div className="flex flex-col gap-2">
-        <h4 className="font-bold text-lg">Work Experience</h4>
+        <h4 className="font-display text-lg font-bold uppercase tracking-wider text-text-primaryDark">
+          Work Experience
+        </h4>
         <div className="flex flex-col gap-4">{workExperiences.map(renderWorkExperience)}</div>
       </div>
 

@@ -59,83 +59,76 @@ export default function ContactSection() {
     <section
       id="contact"
       className={clsx(
-        "flex",
-        "min-h-screen",
-        "items-center",
-        "justify-center",
-        "relative",
-        "overflow-hidden"
+        "relative flex min-h-screen items-center justify-center overflow-hidden py-24 px-6"
       )}
     >
-      <div
-        className={clsx(
-          "flex",
-          "flex-col",
-          "justify-center",
-          "items-center",
-          "lg:flex-row",
-          "gap-14",
-          "w-[90%]",
-          "max-w-[1200px]",
-          "relative",
-          "z-10"
-        )}
-      >
+      <div className="w-full max-w-[720px]">
+        {/* Section label */}
+        <div className="mb-6 flex items-center gap-4">
+          <span className="font-mono text-xs uppercase tracking-[0.4em] text-accent-400">
+            [ 02 ] // Transmit
+          </span>
+          <span className="h-px flex-1 bg-linear-to-r from-accent-500/60 to-transparent" />
+        </div>
+
         <div
-          className={clsx("flex", "flex-col", "justify-center", "gap-4", "w-full", "lg:w-2/3")}
+          className={clsx(
+            "relative overflow-hidden clip-corner",
+            "border border-secondary-400/40 bg-secondary-900/70 p-6 backdrop-blur-md sm:p-10"
+          )}
         >
-          <p
-            className={clsx(
-              "text-text-primary",
-              "dark:text-text-primaryDark",
-              "text-2xl",
-              "font-bold"
-            )}
-          >
-            Get in touch
-          </p>
+          <div className="flex flex-col gap-5">
+            <div className="flex flex-col gap-2">
+              <h2 className="font-display text-2xl font-bold uppercase tracking-wider text-text-primaryDark sm:text-3xl">
+                Open a <span className="neon-cyan">Channel</span>
+              </h2>
+              <p className="text-sm text-text-secondaryDark sm:text-base">
+                Got a project, an idea, or just want to connect? Drop a message and I'll respond as
+                soon as the signal reaches me.
+              </p>
+            </div>
 
-          <p className={clsx("text-text-primary", "dark:text-text-primaryDark", "text-lg")}>
-            Have a question or want to work together? Fill out the form below and I'll get back to
-            you as soon as possible.
-          </p>
+            <div className="flex flex-col gap-4">
+              <TextInput
+                placeholder="Name"
+                value={name}
+                onChange={(value) => setName(value)}
+                required
+                type="text"
+              />
 
-          <TextInput
-            placeholder="Name"
-            value={name}
-            onChange={(value) => setName(value)}
-            required
-            type="text"
-          />
+              <TextInput
+                placeholder="Email"
+                value={email}
+                onChange={(value) => setEmail(value)}
+                required
+                type="email"
+              />
 
-          <TextInput
-            placeholder="Email"
-            value={email}
-            onChange={(value) => setEmail(value)}
-            required
-            type="email"
-          />
+              <TextArea
+                placeholder="Message"
+                value={message}
+                rows={6}
+                onChange={(value) => setMessage(value)}
+                required
+              />
 
-          <TextArea
-            placeholder="Message"
-            value={message}
-            rows={10}
-            onChange={(value) => setMessage(value)}
-            required
-          />
+              <Button onClick={handleSubmit} disabled={status === "loading" || !isFormValid}>
+                {status === "loading" ? "Transmitting..." : "Send Transmission"}
+              </Button>
 
-          <Button onClick={handleSubmit} disabled={status === "loading" || !isFormValid}>
-            {status === "loading" ? "Sending..." : "Send"}
-          </Button>
-
-          {status === "success" && (
-            <p className={clsx("text-success-500", "text-center")}>Message sent successfully!</p>
-          )}
-          {status === "error" && (
-            <p className={clsx("text-error-500", "text-center")}>
-              Failed to send message. Please try again.
-            </p>
-          )}
+              {status === "success" && (
+                <p className="text-center font-mono text-sm uppercase tracking-widest text-success-400">
+                  ✓ Message transmitted successfully
+                </p>
+              )}
+              {status === "error" && (
+                <p className="text-center font-mono text-sm uppercase tracking-widest text-error-400">
+                  ✕ Transmission failed — retry
+                </p>
+              )}
+            </div>
+          </div>
         </div>
       </div>
     </section>
