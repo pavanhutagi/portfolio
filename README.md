@@ -1,20 +1,34 @@
-# Personal Portfolio
+# Portfolio v2
 
-Welcome to my personal portfolio website! This project showcases my skills, projects, and professional experience as a web developer.
+A clean starting point for building v2 of my personal portfolio.
 
-## 🚀 Features
+## Tech Stack
 
-- Modern, responsive design
-- Project showcase
-- Skills and technologies section
-- Contact information
-- Professional experience
-- Clean and intuitive user interface
+- [Next.js](https://nextjs.org/) (App Router)
+- [React](https://react.dev/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Tailwind CSS](https://tailwindcss.com/)
 
-## 🛠️ Built With
+## Getting Started
 
-- Next.js
-- TypeScript
-- Tailwind CSS
-- Modern CSS features
-- Responsive design principles
+Install dependencies:
+
+```bash
+npm install
+```
+
+Run the development server:
+
+```bash
+npm run dev
+```
+
+Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+## Scripts
+
+- `npm run dev` — start the development server
+- `npm run build` — create a production build
+- `npm run start` — run the production build
+- `npm run type-check` — run TypeScript type checking
+- `npm run format` — format the codebase with Prettier
