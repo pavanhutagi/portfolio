@@ -1,6 +1,6 @@
 {
-  "name": "portfolio",
-  "install": "npm ci",
+  "name": "portfolio-v2",
+  "install": "nvm install && nvm use && npm ci && npx playwright install --with-deps chromium",
   "terminals": [
     {
       "name": "dev",
