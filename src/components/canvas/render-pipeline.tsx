@@ -9,7 +9,7 @@ import { fxaa } from "three/addons/tsl/display/FXAANode.js";
 import { film } from "three/addons/tsl/display/FilmNode.js";
 import { ao } from "three/addons/tsl/display/GTAONode.js";
 import { smaa } from "three/addons/tsl/display/SMAANode.js";
-import { mrt, output, pass, transformedNormalView } from "three/tsl";
+import { float, mrt, normalView, output, pass, vec2, vec3, vec4 } from "three/tsl";
 import { RenderPipeline as ThreeRenderPipeline } from "three/webgpu";
 import type { Node } from "three/webgpu";
 
@@ -17,6 +17,20 @@ import { frameState } from "@/stores/frame-state";
 import { useQualitySettings } from "@/stores/scene-store";
 
 const BLOOM = { strength: 0.62, radius: 0.72, threshold: 0.82 } as const;
+
+/**
+ * Chromatic aberration parameters.
+ *
+ * `center` has to be passed explicitly. The addon documents its `center` default as
+ * "if null, uses screen center", but it never implements that fallback: it wraps the
+ * null in `nodeObject(null)`, which stays null, and then calls `.build()` on it while
+ * compiling — so invoking `chromaticAberration(color)` with defaults throws and takes
+ * the whole node graph down with it. Strength and scale are both well below the addon
+ * defaults of 1.0 and 1.1, which separate the channels far enough that thin bright
+ * geometry — the grid lines especially — fringes like a miscalibrated display rather
+ * than reading as lens character.
+ */
+const ABERRATION = { strength: 0.15, center: [0.5, 0.5] as const, scale: 0.28 } as const;
 
 /** A `vec4` colour node — the currency every stage of the chain trades in. */
 type ColorNode = Node<"vec4">;
@@ -54,7 +68,7 @@ export function RenderPipeline() {
     // Ambient occlusion reads view-space normals, which only exist if the scene
     // pass writes them into a second render target alongside colour.
     if (settings.ambientOcclusion) {
-      scenePass.setMRT(mrt({ output, normal: transformedNormalView }));
+      scenePass.setMRT(mrt({ output, normal: normalView }));
     }
 
     let color: ColorNode = scenePass.getTextureNode("output");
@@ -65,7 +79,14 @@ export function RenderPipeline() {
         scenePass.getTextureNode("normal"),
         camera
       );
-      color = asColor(color.mul(occlusion.getTextureNode()));
+
+      // Occlusion is a scalar, and GTAO renders it into a single-channel
+      // (`RedFormat`) target. Multiplying the colour by that texture directly would
+      // scale red by the occlusion term and multiply green and blue by zero, turning
+      // the whole scene red. Broadcasting the red channel across rgb — and leaving
+      // alpha at 1 — is what applies it as a brightness term.
+      const shade = occlusion.getTextureNode();
+      color = asColor(color.mul(vec4(vec3(shade.r), 1)));
     }
 
     if (settings.bloom) {
@@ -75,7 +96,14 @@ export function RenderPipeline() {
     }
 
     if (settings.chromaticAberration) {
-      color = asColor(chromaticAberration(color));
+      color = asColor(
+        chromaticAberration(
+          color,
+          float(ABERRATION.strength),
+          vec2(...ABERRATION.center),
+          float(ABERRATION.scale)
+        )
+      );
     }
 
     if (settings.filmGrain) {

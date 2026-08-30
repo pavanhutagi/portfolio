@@ -133,16 +133,23 @@ if you need to confirm the two agree.
 `npm test` — 49 unit tests over the storyboard resolver, quality tiers, capability
 detection, the stores and the display settings panel.
 
-`npm run e2e` — Playwright, against a production build. Beyond the usual behavioural
-checks it asserts performance properties: that a GPU backend is negotiated, that the
-render loop parks on a hidden tab, that a pinned tier survives, and that higher tiers
-actually submit more geometry.
+`npm run e2e` — 16 Playwright tests against a production build. Beyond the usual
+behavioural checks it asserts performance properties: that a GPU backend is negotiated,
+that the render loop parks on a hidden tab, and that a pinned tier survives.
 
-One test is worth calling out. CI has no GPU, so frames go through SwiftShader and
-absolute frame rates are meaningless. The suite therefore also measures at a 320×200
-viewport, which takes rasterisation off the critical path and leaves only main-thread
-cost. If a change introduces a per-frame allocation or a React render per frame, that
-test collapses while the full-viewport one would still pass.
+Two groups are worth calling out.
+
+**Per-tier rendering.** Each tier compiles a different TSL graph, and a node that fails
+to build takes the whole graph down and leaves a black canvas — while the page still
+loads, the HUD still reports the tier, and every other test still passes. So every tier
+is checked individually for submitted geometry and a clean console, and the tiers are
+checked to be strictly increasing in triangle count.
+
+**Main-thread cost.** CI has no GPU, so frames go through SwiftShader and absolute frame
+rates are meaningless. The suite therefore also measures at a 320×200 viewport, which
+takes rasterisation off the critical path and leaves only main-thread cost. If a change
+introduces a per-frame allocation or a React render per frame, that test collapses while
+the full-viewport one would still pass.
 
 ## Adding content
 

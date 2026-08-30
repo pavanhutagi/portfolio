@@ -67,9 +67,12 @@ export function AdaptiveQuality() {
       onDecline={handleDecline}
       onIncline={handleIncline}
       // After six direction changes the device is clearly borderline; pin the tier
-      // rather than keep re-tuning and causing visible quality pops.
+      // rather than keep re-tuning and causing visible quality pops. An explicit
+      // choice still outranks that, so a pinned tier is left alone — this callback
+      // passes `lock` and would otherwise be the one path that could overrule it.
       onFallback={() => {
-        const { qualityTier, setQualityTier } = useSceneStore.getState();
+        const { qualityTier, qualityLocked, setQualityTier } = useSceneStore.getState();
+        if (qualityLocked) return;
         setQualityTier(nextTierDown(qualityTier), { lock: true });
       }}
     />

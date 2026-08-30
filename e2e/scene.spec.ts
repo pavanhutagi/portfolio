@@ -205,28 +205,69 @@ test.describe("quality tiers", () => {
     await expect(hud).toContainText("ultra");
 
     // A pinned tier locks the adaptive controller out, so it must survive a stretch
-    // of deliberately slow frames rather than being downgraded.
-    await page.waitForTimeout(4000);
+    // of deliberately slow frames rather than being downgraded. The window has to be
+    // long enough to cover the monitor's flipflop fallback, which is a separate path
+    // from the gradual up/downgrades and previously overrode the pin.
+    await page.waitForTimeout(12_000);
     await expect(hud).toContainText("ultra");
   });
 
-  test("renders far more geometry on a higher tier", async ({ page }) => {
-    await waitForScene(page, "?quality=low");
-    await page.keyboard.press("Shift+P");
-    await expect(page.getByTestId("perf-hud")).toBeVisible();
-    await page.waitForTimeout(1500);
-    const lowTriangles = await readHudValue(page, "tris");
+  /**
+   * Every tier has to actually draw the scene.
+   *
+   * Each tier compiles a different TSL graph, and a node that fails to build takes
+   * the whole graph down and leaves a black canvas — while the page keeps loading,
+   * the HUD keeps reporting the tier, and every other test still passes. So this
+   * asserts on submitted geometry per tier, and treats any page error as a failure,
+   * because a broken graph surfaces as a console error rather than a thrown test.
+   */
+  for (const [tier, minimumTriangles] of [
+    ["low", 10_000],
+    ["medium", 30_000],
+    ["high", 50_000],
+    ["ultra", 90_000],
+  ] as const) {
+    test(`draws the scene on the ${tier} tier`, async ({ page }) => {
+      const errors: string[] = [];
+      page.on("pageerror", (error) => errors.push(error.message));
+      page.on("console", (message) => {
+        if (message.type() === "error") errors.push(message.text());
+      });
 
-    await waitForScene(page, "?quality=high");
-    await page.keyboard.press("Shift+P");
-    await expect(page.getByTestId("perf-hud")).toBeVisible();
-    await page.waitForTimeout(1500);
-    const highTriangles = await readHudValue(page, "tris");
+      await waitForScene(page, `?quality=${tier}`);
+      await page.keyboard.press("Shift+P");
+      await expect(page.getByTestId("perf-hud")).toBeVisible();
+      await page.waitForTimeout(2000);
 
-    console.log(`triangles — low: ${lowTriangles}, high: ${highTriangles}`);
+      const triangles = await readHudValue(page, "tris");
+      const draws = await readHudValue(page, "draws");
+      console.log(`${tier}: ${triangles} triangles, ${draws} draw calls`);
 
-    expect(lowTriangles).toBeGreaterThan(0);
-    expect(highTriangles).toBeGreaterThan(lowTriangles);
+      await expect(page.getByTestId("perf-hud")).toContainText(tier);
+      expect(triangles).toBeGreaterThan(minimumTriangles);
+      expect(draws).toBeGreaterThan(0);
+      expect(errors).toEqual([]);
+    });
+  }
+
+  test("renders more geometry as the tier climbs", async ({ page }) => {
+    const counts: number[] = [];
+
+    for (const tier of ["low", "medium", "high", "ultra"] as const) {
+      await waitForScene(page, `?quality=${tier}`);
+      await page.keyboard.press("Shift+P");
+      await expect(page.getByTestId("perf-hud")).toBeVisible();
+      await page.waitForTimeout(1500);
+      counts.push(await readHudValue(page, "tris"));
+    }
+
+    console.log(`triangles by tier: ${counts.join(" -> ")}`);
+
+    // Strictly increasing: a tier that silently renders the same scene as the one
+    // below it means its extra settings are not reaching the renderer.
+    for (let index = 1; index < counts.length; index += 1) {
+      expect(counts[index]).toBeGreaterThan(counts[index - 1]!);
+    }
   });
 
   test("pins the tier from the display settings panel", async ({ page }) => {
